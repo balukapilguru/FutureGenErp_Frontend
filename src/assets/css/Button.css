@@ -1,0 +1,23 @@
+.btn_primary {
+  background-color: var(--erp-indigo-700) !important;
+  color: white !important;
+  padding: 5px !important;
+}
+
+.btn {
+  transition: all 0.3s linear forwards !important;
+  /* font-size: var(--erp-fs-14) !important; */
+  outline: none !important;
+}
+
+.btn_primary:hover {
+  background-color: var(--erp-blue-300) !important;
+}
+
+.btn_primary:active {
+  outline: none !important;
+}
+
+.label-icon {
+  margin-left: 10px;
+}

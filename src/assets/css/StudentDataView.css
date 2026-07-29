@@ -1,0 +1,6 @@
+.table-hd th {
+    width: 10px !important;
+    background-color: var(--erp-sidebar-color)!important;
+    color: var(--erp-card-color) !important;
+
+}

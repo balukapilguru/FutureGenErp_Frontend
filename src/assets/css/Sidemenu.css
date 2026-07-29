@@ -1,0 +1,299 @@
+.wrapper {
+  display: flex;
+}
+
+.logo_css {
+  max-width: 80%;
+  height: 50px;
+  object-fit: contain;
+}
+
+.logoinvoice_css {
+  max-width: 70%;
+  height: 75px;
+  object-fit: contain;
+}
+
+.mini_logo_css {
+  max-width: 50%;
+  display: none;
+  height: 40px;
+  object-fit: contain;
+}
+
+.mini_logo_css.open {
+  display: inline-block;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+#sidebar {
+  width: 70px;
+  min-width: 70px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: var(--erp-sidebar-color);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+#sidebar.expand {
+  width: 260px;
+  min-width: 260px;
+}
+
+/* Scrollbar styling */
+#sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-nav {
+  padding: 2rem 0;
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+
+.sidebar-link {
+  padding: 0.625rem 0.8rem;
+  color: var(--erp-indigo-200);
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.sidebar-link:hover {
+  color: var(--erp-white-color) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link i,
+.sidebar-link svg {
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+  color: var(--erp-white-color) !important;
+  min-width: 20px;
+}
+
+.sidebar-item {
+  position: relative;
+}
+
+/* Dropdown indicator */
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+  border: solid;
+  border-width: 0 0.075rem 0.075rem 0;
+  content: "";
+  display: inline-block;
+  padding: 2.5px;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+  transform: rotate(-135deg);
+  transition: all 0.3s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+  transform: rotate(45deg);
+}
+
+/* Sub menu items */
+.sub_icon {
+  margin-left: 0.5rem;
+  font-size: 0.8rem !important;
+}
+
+.sidebar-dropdown .sidebar-link {
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.sidebar-dropdown .sidebar-link .sub_icon {
+  margin-right: 0.5rem;
+  font-size: 0.7rem !important;
+}
+
+/* Collapsed state */
+#sidebar:not(.expand) .sidebar-link span {
+  display: none;
+}
+
+#sidebar:not(.expand) .sidebar-link i,
+#sidebar:not(.expand) .sidebar-link svg {
+  margin-right: 0;
+}
+
+/* Hover tooltips for collapsed state - FIXED to not interfere with dropdowns */
+#sidebar:not(.expand) .sidebar-item {
+  position: relative;
+}
+
+/* Only show tooltips for items that don't have dropdowns */
+/* #sidebar:not(.expand) .sidebar-item:not(.has-dropdown-parent):hover .sidebar-link::before {
+  content: attr(data-title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--erp-sidebar-color);
+  color: var(--erp-white-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-left: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+} */
+/* 
+#sidebar:not(.expand) .sidebar-item:not(.has-dropdown-parent):hover .sidebar-link::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: var(--erp-sidebar-color);
+  margin-left: 0;
+} */
+
+/* Dropdown in collapsed state - CHANGED to only show when 'show' class is present */
+#sidebar:not(.expand) .sidebar-dropdown {
+  position: fixed;
+  left: 70px;
+  top: auto;
+  min-width: 200px;
+  background-color: var(--erp-sidebar-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  margin-left: 5px;
+  display: none !important;
+}
+
+/* REMOVED hover-based dropdown opening */
+/* #sidebar:not(.expand) .sidebar-item:hover .sidebar-dropdown {
+  display: block !important;
+} */
+
+/* ADDED - Show dropdown only when 'show' class is present (on click) */
+#sidebar:not(.expand) .sidebar-dropdown.show {
+  display: block !important;
+}
+
+#sidebar:not(.expand) .sidebar-dropdown .sidebar-link {
+  padding: 0.5rem 1rem;
+}
+
+#sidebar:not(.expand) .sidebar-dropdown .sidebar-link span {
+  display: inline;
+}
+
+#sidebar:not(.expand) .sidebar-dropdown .sidebar-link .sub_icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+/* Remove default collapse animation in collapsed state */
+#sidebar:not(.expand) .collapse {
+  transition: none;
+}
+
+.sidebar-link.active {
+  color: var(--erp-white-color) !important;
+  background-color: rgba(225, 248, 248, 0.1);
+  border-radius: 6px;
+  margin-left: 9px;
+}
+
+.sidebar-link.active svg,
+.sidebar-link.active i {
+  color: #fff !important;
+}
+
+/* Active submenu item styling */
+.sidebar-dropdown .sidebar-link.active .sub_icon {
+  color: white !important;
+}
+
+/* Parent menu item when child is active */
+.sidebar-link.has-dropdown.active-parent {
+  color: var(--erp-white-color) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid !important;
+  margin-bottom: 3px;
+}
+
+.sidebar-link.has-dropdown.active-parent .main_icon {
+  color: var(--erp-white-color) !important;
+}
+
+.sidebar-link.has-dropdown.active-parent span {
+  color: var(--erp-white-color) !important;
+  font-weight: 500;
+}
+
+/* Keep the dropdown arrow visible for active-parent */
+.sidebar-link.has-dropdown.active-parent::after {
+  color: var(--erp-white-color) !important;
+}
+
+/* Ensure the dropdown remains expanded */
+.sidebar-dropdown.show {
+  display: block !important;
+}
+
+.sidebar-dropdown .sidebar-link.active .sub_icon {
+  color: #ffffff !important;
+}
+
+.sidebar-link.active svg,
+.sidebar-link.active i {
+  color: #fff !important;
+}
+
+.submenu-container {
+  margin-top: 0.25rem;
+  margin-left: 1.25rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.4);
+  padding-left: 0.25rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  color: rgba(255, 255, 255, 0.8);
+  max-height: 900px;
+  opacity: 1;
+}
+
+.submenu-container.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left-color: transparent;
+}

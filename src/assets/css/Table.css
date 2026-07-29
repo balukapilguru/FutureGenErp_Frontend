@@ -1,0 +1,276 @@
+/* table icon css */
+.rupee_icon {
+  color: var(--erp-indigo-600);
+}
+
+.eye_icon {
+  color: var(--erp-primary-color);
+}
+
+.id_card {
+  color: var(--erp-blue-600);
+}
+
+.edit_icon {
+  color: var(--erp-sky-500);
+}
+.edit_icons {
+  color: var(--erp-blue-600) !important;
+}
+.delete_icon {
+  color: var(--erp-red-600);
+}
+
+.dwnld_icon {
+  color: var(--erp-indigo-700);
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-style: solid;
+  border-color: #e9ebec;
+  border-width: 0;
+}
+
+/* .table{
+  opacity: 0.9;
+} */
+.toggle_btn {
+  color: var(--erp-indigo-700);
+}
+
+/*background css */
+.bg_light {
+  background-color: var(--erp-card-color) !important;
+}
+
+/*table css*/
+.table {
+  border-radius: 0.2rem;
+  width: 100%;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.table tr td {
+  /* border-collapse: separate; */
+  border-spacing: 20px;
+  padding: 7px !important;
+
+}
+
+th,
+td {
+
+
+  text-align: left;
+}
+
+th {
+  color: var(--erp-thead-color) !important;
+  position: sticky;
+height: 40px!important;
+}
+
+.sticky_column {
+  position: sticky;
+  right: 0;
+  /* background-color: #dde5ff !important; */
+  /* background-color: var(--erp-last-child-bg-color) !important; */
+  /* color: #373737; */
+}
+
+.table td {
+  white-space: nowrap;
+  /* background-color: var(--erp-card-color) !important;  */
+
+}
+
+.table th {
+  /* max-width: 100px !important; */
+  background-color: var(--erp-thead-bg-color) !important;
+  /* z-index: auto; */
+  height: 10px !important;
+
+}
+
+/* .table-scroll {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--erp-gray-700) var(--erp-card-color) !important;
+} */
+
+/* ::-webkit-scrollbar {
+  width: 1px;
+ 
+} */
+
+.table tr:focus {
+  background-color: var(--erp-blue-200);
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: var(--erp-gray-100);
+  /* Color of the track */
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--erp-gray-700);
+  /* Color of the thumb */
+}
+
+.thead-fixed {
+  position: sticky;
+  top: 0;
+  /* z-index: 1; */
+}
+
+.table-container {
+  height: 445px;
+  /* Set the height of the container */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table_icons {
+  font-style: normal;
+  font-size: 16px !important;
+  font-weight: 400;
+}
+
+.table-card {
+  margin: -1rem -1rem;
+  border: 0px solid;
+  /* border-bottom: 1px solid var(--erp-gray-200); */
+}
+
+.table> :not(caption) {
+  border-bottom: var(--erp-table-bottom-border) !important;
+}
+
+.table> :not(caption)>*>* {
+  padding: 0.3rem 0.3rem !important;
+}
+
+.table-card td:first-child,
+.table-card th:first-child {
+  padding-left: 16px !important;
+}
+
+.table>thead {
+  background-color: var(--erp-input-bg-color);
+  position: sticky;
+}
+
+.table td,
+.table th {
+  line-height: 1.6;
+  padding-right: 15px !important;
+}
+
+/* certificate table button css */
+.badge {
+  line-height: 1.5 !important;
+  font-size: var(--erp-fs-xxs);
+}
+
+.btn_certificate_submit {
+  background-color: var(--erp-green-600) !important;
+  color: var(--erp-card-color);
+}
+
+.btn_issued_certificate {
+  background-color: var(--erp-green-600) !important;
+  color: var(--erp-card-color);
+}
+
+.btn_pending {
+  background-color: var(--erp-yellow-400) !important;
+  color: var(--erp-card-color);
+}
+
+.btn_issue_certificate {
+  background-color: var(--erp-yellow-400) !important;
+  color: var(--erp-card-color);
+}
+
+/* pagination*/
+.page-link {
+  color: var(--erp-text-color);
+  background-color: var(--erp-card-color);
+}
+
+.active>.page-link,
+.page-link.active {
+  color: var(--erp-white-color);
+  background-color: var(--erp-primary-color);
+  border-color: var(--erp-primary-color) !important;
+}
+
+.pagination-text {
+  font-size: var(--erp-fs-14);
+  color: var(--erp-text-color);
+  background-color: var(--erp-card-color) !important;
+  border-radius: 5px !important;
+}
+
+.dashboard-two-tables {
+  height: 200px !important;
+}
+
+.dashboard-one-table {
+  height: 400px !important;
+}
+
+/*/////*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+
+  line-height: 2;
+  text-align: left;
+}
+
+
+th {
+  margin-top: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #e9ebec !important;
+  padding: 20px !important;
+}
+
+@media only screen and (max-width: 320px) {
+  .table th {
+    z-index: unset;
+  }
+
+  th {
+    z-index: unset;
+  }
+
+  .pagination-res {
+    display: table-column !important;
+
+  }
+
+  .pagination-select {
+    align-items: center;
+  }
+}
+
+

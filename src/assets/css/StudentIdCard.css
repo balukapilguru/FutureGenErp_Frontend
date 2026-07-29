@@ -1,0 +1,126 @@
+.studentid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .idcard1 {
+  width: 100%;
+  max-width: 330px;
+  height: 550px;
+  background-color: white;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+} */
+.idcard1{
+  width: 100%;
+  max-width: 22rem;
+  height: 550px;
+  background-color: #2a619d;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+
+ 
+}
+
+/* Blue background with a half-circle shape */
+.idcard1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38%;
+  background-color: #2a619d; /* Blue color */
+  border-bottom-left-radius: 100% 20%;
+  border-bottom-right-radius: 100% 20%;
+ 
+  z-index: 0;
+}
+
+
+
+.idcard1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px; 
+  height: 28%; 
+  background-color: white;
+  z-index: 1; 
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.teksimg {
+ text-align: center;
+  position: relative; /* Ensure the logo stays in the foreground */
+
+  z-index: 2; /* Ensure the logo stays above both background layers */
+}
+
+.teksimg img {
+  width: 72%;
+  height: auto;
+  margin-top: 10px;
+}
+.card_Content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%; /* Increase height to cover the top portion of the card */
+  background-color: white; /* Blue background color */
+  position: relative; /* Ensure the logo is above the blue background */
+ 
+  border-top-left-radius: 130% 185px; /* No rounding at the bottom left */
+  border-top-right-radius: 130% 185px; /* No rounding at the bottom right */
+  border-bottom-left-radius: 130% 185px; /* No rounding at the bottom left */
+  border-bottom-right-radius: 130% 185px; /* No rounding at the bottom right */
+}
+
+
+ 
+.studid-photo img {
+  height: 9rem;
+  width: 9rem;
+  /* border: 2px double var(--erp-blue-200); */
+  border-radius: 10%;
+  position: relative; /* Ensure the logo is above the blue background */
+  z-index: 3;
+object-fit: cover;
+ 
+ 
+}
+.student_name {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a619d; /* Adjust the color for better visibility */
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+.student-info {
+  background-image: url(../images/student_idCard_images/Teks_Shape_01\ 1.png);
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+  background-position:center;
+  z-index: 1; /* Ensure the student info section stays above the blue background */
+ 
+}
+ 
+.student-info p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid var(--erp-text-color);
+  padding-bottom: 5px;
+  position: relative;
+  bottom: 15px;
+}

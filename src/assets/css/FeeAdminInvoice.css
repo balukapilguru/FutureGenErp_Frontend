@@ -1,0 +1,36 @@
+.invoice-border {
+    border-bottom: 1.5px solid var(--erp-black-color);
+}
+
+.invoice {
+    border: 1.5px solid var(--erp-black-color);
+    margin: 15px;
+    overflow: hidden;
+}
+
+.invoice-sideborder {
+    border-left: 1.5px solid var(--erp-black-color);
+}
+
+.th {
+    background-color: var(--erp-blue-100) !important;
+}
+
+.td {
+    border: 1px solid var( --erp-gray-900) !important;
+}
+
+.table-hd th {
+    width: 10px !important;
+    background-color: var(--erp-sidebar-color)!important;
+    color: var(--erp-white-color) !important;
+
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,27 @@
+.bg_red{
+    background-color:var(--erp-tab-bg-color)
+}
+.bg_subtle{
+    background-color: var( --erp-tab-two-color);
+}
+.bg_yellow{
+    background-color: var(--erp-tab-three-color);
+}
+.bg_infosubtle{
+    background-color: var(--erp-tab-four-color);
+}
+.bg_secondary{
+    background-color:var(--erp-tab-five-color);
+}
+.bg_infolight{
+    background-color: var(--erp-green-200) ;
+}
+.bg_primary{
+    background-color: var(--erp-green-400);
+}
+@media (min-width:320px)and (max-width: 425px) {
+
+    .tab-margin{
+        margin-top: 15px;
+    }
+}

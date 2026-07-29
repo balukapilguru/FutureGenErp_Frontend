@@ -1,0 +1,812 @@
+/* Base styles for larger screens */
+.certificate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+}
+
+.Outerline1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1090px;
+  width: 780px;
+  position: static;
+  background: url(../images/certificate_images/BG_certificate1.jpg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.outerborder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 7px solid var(--erp-blue-150);
+  height: 1040px;
+  width: 750px;
+  position: static;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px;
+}
+
+.innerborder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border: 3px solid var(--erp-blue-150);
+  box-sizing: border-box;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  width: fit-content;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+ 
+}
+
+.logo img {
+  height: 88px;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  top: 85px;
+}
+
+header h2 {
+  font-size: 55px;
+  font-weight: 600;
+  font-family: "Crimson Text", serif;
+  color: #0c1929;
+  position: relative;
+  top: -60px;
+  letter-spacing: 0.8px;
+}
+
+.header h2 {
+  letter-spacing: 4px;
+}
+
+.header h2 span {
+  letter-spacing: 4px;
+}
+
+.header p {
+  font-size: 32px;
+  color: var(--erp-blue-150);
+  font-weight: 500;
+  position: relative;
+  bottom: 51px;
+  letter-spacing: 0.2px;
+}
+
+header span {
+  font-family: "Prata", serif;
+  font-size: 74px;
+  font-weight: 900;
+}
+
+.certificate-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.certificate-info p {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--erp-blue-150);
+}
+
+.certificate-info h4 {
+  border-bottom: 2px dashed black;
+  margin-right: 19px;
+  font-size: 30px;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 40px;
+}
+
+.name h4 {
+  
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+}
+
+.name p {
+  margin-top: 22px;
+  margin-left: 22px;
+}
+
+.infor {
+  display: flex;
+  margin-bottom: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.infor p {
+  position: relative;
+  top: 50px;
+}
+
+.infor h4 {
+  width: 500px;
+  text-align: center;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+}
+
+.curve-text {
+  position: relative;
+  top: 25px;
+}
+
+.id h5 {
+  font-weight: 400;
+  color: var(--erp-blue-150);
+  font-size: 23px;
+  position: relative;
+  top: 100px;
+}
+
+.period {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 71px;
+}
+.period p{
+  margin-left: 10px;
+}
+.courses {
+  position: relative;
+  top: 60px;
+}
+
+.period h4 {
+  font-size: 25px;
+  padding: 0px 20px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
+
+.grade {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  position: relative;
+  top: 79px;
+}
+
+.grade h4 {
+  font-size: 30px;
+  padding: 0px 20px;
+  font-weight: bolder;
+}
+
+.sign-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 140px;
+  width: 700px;
+  font-size: 18px;
+  position: relative;
+  top: 100px;
+}
+
+.date-left .dt {
+  border-bottom: 1px black solid;
+  font-size: 20px;
+}
+
+.date-left p {
+  margin-bottom: -17px;
+}
+
+.date-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  right: 40px;
+}
+
+.sign-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  left: 40px;
+}
+
+.sign-right p {
+  margin-top: 3px;
+}
+
+.sign-right img {
+  width: 110px;
+  height: 41px;
+  border-bottom: 1px black solid;
+  margin-top: 30px;
+}
+
+.hologram-sticker img {
+  height: 130px;
+  width: 130px;
+  position: relative;
+  bottom: -5px;
+  right:30px;
+}
+
+
+
+
+text {
+  font-size: 26px;
+}
+
+.curved-path {
+  text-align: center;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.cname {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cname img {
+  height: 150px;
+  width: 140px;
+  margin: 45px 15px 0px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.cname .img5 {
+  height: 80px;
+  width: 70px;
+  position: relative;
+  top: 83px;
+  right: 25px;
+}
+
+.cname .img1 {
+  height: 150px;
+  width: 140px;
+  position: relative;
+  top:45px;
+  right: 1px;
+}
+
+.cname .img2 {
+  height: 140px;
+  width: 130px;
+  position: relative;
+  top:45px;
+  right: 20px;
+}
+
+.cname .img3 {
+  height: 130px;
+  width: 120px;
+  position: relative;
+  top: 58px;
+  right: 20px;
+}
+
+.cname .img4 {
+  position: relative;
+  top: 49px;
+  right: 20px;
+}
+/* .qrcode{
+  position: relative;
+  left: 70px;
+  bottom:20px;
+} */
+@media print {
+  .Outerline1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    background: url(../images/certificate_images/BG_certificate1.jpg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 17px;
+  }
+ 
+  .outerborder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 7px solid var(--erp-blue-150);
+    height: 1040px;
+    width: 750px;
+    position: static;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+  }
+   
+  .innerborder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 3px solid var(--erp-blue-150);
+    box-sizing: border-box;
+  }
+ 
+  .cname img {
+    height: 140px;
+    width: 130px;
+    margin: 25px 15px 0px 15px;
+    display: flex;
+    align-items: center;
+  }
+ 
+  .cname .img5 {
+    height: 80px;
+    width: 70px;
+  }
+ 
+  .cname .img3 {
+    height: 130px;
+    width: 120px;
+  }
+  .curved {
+    position: relative;
+    top: -175px;
+  }
+  .curved-path {
+    text-align: center;
+    justify-content: center;
+    margin-top: 62px;
+  }
+}
+ 
+@media (max-width: 320px) {
+  .certificate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+  }
+  
+  .Outerline1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 220px;
+    position: static;
+    background: url(../images/certificate_images/BG_certificate1.jpg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .outerborder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--erp-blue-150);
+    height: 300px;
+    width: 220px;
+    position: static;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+  }
+  
+  .innerborder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--erp-blue-150);
+    box-sizing: border-box;
+  }
+  
+  .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    width: fit-content;
+  }
+  
+  .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+  top:80px;
+    
+  }
+  
+  .logo img {
+    height: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    top:70px;
+
+  }
+  
+  header h2 {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: "Crimson Text", serif;
+    color: #0c1929;
+    position: relative;
+  
+    letter-spacing: 0.8px;
+  }
+  
+  .header h2 {
+    letter-spacing: 2px;
+  }
+  
+  .header h2 span {
+    letter-spacing: 4px;
+  }
+  
+  .header p {
+    font-size: 10px;
+    color: var(--erp-blue-150);
+    font-weight: 400;
+    position: relative;
+    bottom: 1px;
+    letter-spacing: 0.2px;
+  }
+  
+  header span {
+    font-family: "Prata", serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .certificate-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   
+  }
+  
+  .certificate-info p {
+    font-size: 7px;
+    font-weight: 300;
+    color: var(--erp-blue-150);
+  }
+  
+  .certificate-info h4 {
+    border-bottom: 1px dashed black;
+    font-size: 7px;
+    /* margin-top: 18px; */
+  }
+  
+  .name {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:45px;
+  
+  }
+  .studname h4{
+    margin-top: 18px!important;
+  }
+  .name h4 {
+    width: 200px!important;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+ 
+  }
+  
+  .name p {
+    margin-top: 22px;
+  }
+  
+  .infor {
+    display: flex;
+    margin-bottom: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .infor p {
+    position: relative;
+   
+  }
+  
+  .infor h4 {
+    width: 150px;
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+  }
+  
+  .curve-text {
+    position: relative;
+    top: 25px;
+  }
+  
+  .id h5 {
+    font-weight: 100;
+    color: var(--erp-blue-150);
+    font-size: 10px;
+    position: relative;
+    top:44px
+   
+  }
+  
+  .period {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    top:34px;
+ 
+  }
+  
+  .courses {
+    position: relative;
+    top: 50px;
+  }
+  
+  .period h4 {
+    font-size: 6px;
+    padding: 0px 5px!important;
+    font-weight: bold;
+    letter-spacing: 1px;
+   
+  }
+  
+  .grade {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    
+  }
+  
+  .grade h4 {
+    font-size: 10px;
+    padding: 0px 10px;
+    font-weight: bold;
+  }
+  
+  .sign-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+    width: 100px;
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+  }
+  
+  .date-left .dt {
+    border-bottom: 1px black solid;
+    font-size: 6px;
+  }
+  
+  .date-left p {
+    margin-bottom: -10px;
+    font-size: 8px;
+    
+  }
+  
+  .date-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 40px;
+    
+  }
+  
+  .sign-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    left: 4px;
+  }
+ 
+  .sign-right p {
+    margin-top: 1px;
+    font-size: 5px!important;
+  }
+  
+  .sign-right img {
+    width: 20px;
+    height: 24px;
+    border-bottom: 1px black solid;
+    margin-top: 10px;
+  }
+  
+  .hologram-sticker img {
+    height: 50px;
+    width: 50px;
+    position: relative;
+    top:30px;
+    right: 36px;
+   
+  }
+  
+  .curved {
+    position: relative;
+    bottom: 160px;
+  }
+  
+  .grade {
+    position: relative;
+    bottom: 16px;
+  }
+  
+  text {
+    font-size: 26px;
+  }
+  
+  .curved-path {
+    text-align: center;
+    justify-content: center;
+    margin-top: 45px;
+  }
+  
+  .cname {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .cname img {
+    height: 30px;
+    width: 40px;
+    margin: 25px 3px 0px 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cname .img1 {
+    height: 40px;
+    width: 50px;
+    position: relative;
+    margin-left: 15px!important;
+    top: -62px; /* Adjust as needed for smaller screens */
+  }
+  
+  .cname .img2 {
+    height: 40px;
+    width: 30px;
+    position: relative;
+    margin-left: 10px!important;
+    top: -62px; /* Adjust as needed */
+  }
+  
+  .cname .img3 {
+    height: 30px;
+    width: 20px;
+    position: relative;
+    top: -56px;/* Adjust as needed */
+  }
+  
+  .cname .img4 {
+    position: relative;
+    top: -55px; /* Adjust as needed */
+  }
+  
+  .cname .img5 {
+    height: 20px;
+    width: 30px;
+    position: relative;
+    margin-left: 10px!important;
+    top: -50px; /* Adjust as needed */
+  }
+  
+/* .qrcode{
+  width: 20px!important;
+  height: 20px!important;
+  position: relative;
+
+  right: 22px;
+} */
+
+}

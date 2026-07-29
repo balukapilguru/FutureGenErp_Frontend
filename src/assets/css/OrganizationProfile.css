@@ -1,0 +1,79 @@
+.profile-wid-bg {
+
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100px;
+}
+
+.avatar-xl {
+  height: 7.5rem;
+  width: 7.5rem;
+}
+
+.profile-img-card {
+  position: relative;
+  top: -100px;
+  bottom: 0;
+  /* right: 0;
+  left: 0%; */
+}
+
+
+.avatar-xs {
+  height: 2rem;
+  width: 2rem;
+}
+
+.profile-img-file-input {
+  display: none !important;
+}
+
+.avatar-title {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: var( --erp-indigo-700);
+  color: var(--erp-white-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 500;
+  height: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+.profile-photo-edit {
+  position: absolute;
+  right: 0;
+  /* left: ; */
+  bottom: 0;
+  cursor: pointer;
+}
+
+.progress-label .progress-bar {
+  position: relative;
+  overflow: visible;
+}
+
+.custom-progress .progress-bar {
+  position: relative;
+  border-radius: 30px;
+}
+
+.animated-progress .progress-bar {
+  position: relative;
+  border-radius: 6px;
+  -webkit-animation: animate-positive 2s;
+  animation: animate-positive 2s;
+}
+
+.organization-table-border {
+  /* border: 1px solid var(--erp-gray-500); */
+}
+
+.bg-organization-logo-header {
+  background-color: var(--erp-gray-300) !important;
+  padding: 8px !important;
+}

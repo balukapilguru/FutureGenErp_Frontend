@@ -1,0 +1,83 @@
+.caption {
+    background-color: var(--erp-sidebar-color)!important;
+    color: var(--erp-white-color);
+}
+
+.application-tbl-td {
+    border: 1px solid var(--erp-text-color) !important;
+}
+
+.page {
+    border: 1px solid #000000 !important;
+    padding: 14px !important;
+    box-sizing: border-box;
+}
+
+.application table,
+.application table th,
+.application table td,
+.application .table,
+.application .table th,
+.application .table td {
+    border: 1px solid #000000 !important;
+    border-collapse: collapse !important;
+}
+
+.bg-head {
+    background: var(--erp-applicationprint-header-color) !important;
+
+
+}
+
+.w-35 {
+    width: 35% !important;
+}
+
+.admform-sd {
+    border: 3px solid var(--erp-gray-400);
+    border-radius: 5px;
+    height: 180px;
+
+}
+
+@media print {
+    .student-data{
+        margin-top: 30px;
+    }
+    .application{
+        margin-top: 50px;
+    }
+    .terms-and-condition , .next-page{
+        page-break-before: always;
+    }
+    .page-break{
+        margin-top: 200px;
+    }
+    .page {
+        border: 1px solid #000000 !important;
+        box-sizing: border-box;
+    }
+    .application table,
+    .application table th,
+    .application table td {
+        border: 1px solid #000000 !important;
+        border-collapse: collapse !important;
+    }
+    .application table tr,
+    .application table td,
+    .application table th {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .fee_detail{
+
+    }
+    .admission_detail{
+        margin-top: 90px;
+
+    }
+   .college-wrap{
+    text-wrap: wrap!important;
+   }
+   
+}

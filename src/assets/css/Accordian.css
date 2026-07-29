@@ -1,0 +1,22 @@
+/* .custom-accordionwithicon-plus .accordion-button::after {
+    background-image: none !important;
+    font-family: "Material Design Icons";
+    content: "+";
+    font-size: var(--erp-fs-l);
+    vertical-align: middle;
+    line-height: var(--erp-xxs-lh);
+}
+
+.custom-accordionwithicon-plus .accordion-button:not(.collapsed)::after {
+    background-image: none !important;
+    content: "-";
+    margin-right: -3px;
+}
+.bg_white{
+    background-color: var(--erp-bg-white
+    );
+}
+.fs-s{
+    font-size: var(--erp-fs-s);
+} */
+ 

@@ -1,0 +1,168 @@
+.fs-s {
+    font-size: var(--erp-fs-s);
+    font-weight: var(--erp-fw-500);
+}
+
+.dropone-border {
+    min-height: 230px;
+    border: 2px #e9ebec dashed;
+    background: var(--erp-white-color);
+    border-radius: 6px;
+}
+
+
+.filepond {
+    border: 2px dashed var(--erp-light-gray);
+    background: var(--erp-white-color);
+    border-radius: 6px;
+}
+
+
+.filepond-profile-picture {
+    border: 2px dashed var(--erp-light-gray);
+    background: var(--erp-white-color);
+    border-radius: 50%;
+}
+
+.img-box-fs-12 {
+    font-size: 14px;
+}
+
+
+.form-fs-12 {
+    font-size: 14px;
+}
+
+.img-box-fsize {
+    font-size: var(--erp-fs-14);
+}
+
+
+.fs-16 {
+    font-size: var(--erp-fs-16);
+}
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.select-scrl {
+    scrollbar-width: thin;
+}
+
+/* .btn_primary {
+    background-color: var(--erp-sidebar-color) !important;
+    border-color: var(--erp-sidebar-color) !important;
+    color: var(--erp-card-color)
+} */
+
+.btn_sucess {
+    background-color: var(--erp-light-green);
+    color: var(--erp-card-color)
+}
+
+
+
+/* .acc-plus::after {
+    display: none;
+} */
+
+.primary_outline {
+    border-color: var(--erp-sidebar-color);
+}
+
+.primary_outline:hover {
+    background-color: var(--erp-sidebar-color);
+    color: var(--erp-card-color)
+}
+
+.success_outline {
+    border-color: var(--erp-light-green);
+}
+
+.success_outline:hover {
+    background-color: var(--erp-light-green);
+    color: var(--erp-card-color)
+}
+
+.date-pic {
+    width: 150px !important;
+    border: none !important;
+}
+
+.react-datepicker__header {
+    background-color: var(--erp-primary-color) !important;
+}
+
+.react-datepicker__current-month {
+    color: var(--erp-card-color) !important;
+}
+
+.react-datepicker__day-name {
+    color: var(--erp-card-color) !important;
+}
+
+.bg_white {
+    background-color: var(--erp-bg-white);
+}
+
+.bg_transparent {
+    background-color: var(--erp-bg-white);
+}
+
+.bg-form {
+    background-color: var(--erp-bg-white);
+    border-color: var(--erp-card-color);
+    color: var(--erp-text-color)
+}
+
+.txt-color {
+    color: var(--erp-text-color)
+}
+
+/* page*/
+.page-item.active.square {
+    background-color: var(--erp-sidebar-color);
+    color: var(--erp-card-color)
+}
+
+.page-link.rounded.col {
+    background-color: var(--erp-sidebar-color);
+    color: var(--erp-card-color)
+}
+
+.form-control:focus {
+    color: var(--erp-gray-800);
+    background-color: var(--erp-bg-white);
+    border-color: var(--erp-gray-400) !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 1 0.25rem rgba(var(--vz-primary-rgb), .25);
+    box-shadow: 0 0 1 0.25rem rgba(var(--vz-primary-rgb), .25);
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+    border-radius: 0.3rem;
+    background-color: var(--erp-primary-color) !important;
+    color: white !important;
+}
+
+.select-dropdown {
+    max-height: 100px !important;
+    /* Adjust this value as needed */
+    overflow-y: auto !important;
+}
+
+.inputLable{
+    width: 90%;
+}
+.inputButton{
+    width: 10%;
+    height: 50%;
+    background: transparent;
+    border: 0px;
+}

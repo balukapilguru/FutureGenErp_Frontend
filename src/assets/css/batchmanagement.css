@@ -1,0 +1,21 @@
+.avatar-md-batch {
+    height: 3rem;
+    width: 3rem;
+}
+.avatar-title-batch {
+    align-items: center;
+    color: var(--erp-white-color);
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+  .batch_icon_color{
+    color:  var(--erp-sidebar-color);
+    font-size: 22px;
+
+  }
+  .batch_bg{
+    background-color: #dff0fa;
+  }

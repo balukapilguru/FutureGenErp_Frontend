@@ -1,0 +1,107 @@
+.registration_form_section {
+  margin: auto;
+  background: var(--erp-card-color);
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+  border-radius: 2px;
+}
+
+.registration_form_tabs .button_grp {
+  width: 100%;
+  display: flex;
+  box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+  border-radius: 2px;
+}
+
+.registration_form_tabs .button_grp .form_tab_btn {
+  width: 100% !important;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  position: relative;
+  background-color: var(--erp-input-bg-color) !important;
+  font-size: var(--erp-fs-13);
+}
+
+.registration_form_tabs .button_grp .form_tab_btn[disabled] {
+  opacity: 1 !important;
+  color: var(--erp-text-color);
+}
+
+.registration_form_tabs .button_grp .form_tab_btn.active {
+  background-color: var(--erp-gray-200) !important;
+  color: #405189;
+}
+
+.registration_form_tabs .button_grp .form_tab_btn.dark.active {
+  background-color: var(--erp-gray-400) !important;
+}
+
+.registration_form_tabs .button_grp .active::before {
+  position: absolute;
+  border: 7px solid transparent;
+  right: -14px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  content: "";
+  z-index: 100;
+}
+
+.registration_form_tabs .button_grp .form_tab_btn.active::before {
+  border-left-color: var(--erp-gray-200);
+}
+
+.registration_form_tabs .button_grp .form_tab_btn.dark.active::before {
+  border-left-color: var(--erp-gray-400);
+}
+
+.registration_form_tabs.button_grp .active:last-child::before {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.controls .control_next_btn {
+  color: #fff;
+  order: 2;
+}
+
+.control_prev_btn {
+  order: 1;
+  background-color: var(--erp-gray-300) !important;
+  /* color: var(--erp-text-color) !important; */
+  color: var(--erp-gray-700) !important;
+}
+
+.control_prev_btn:hover {
+  background-color: var(--erp-gray-400) !important;
+}
+
+.prev_bold {
+  color: var(--erp-gray-500) !important;
+  font-weight: 600;
+}
+@media screen and (max-width: 425px) {
+  .registration_form_tabs .button_grp {
+    overflow-x: scroll;
+    scrollbar-width: thin;
+  }
+  input {
+    margin-bottom: 5px;
+  }
+  select {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .response {
+   margin-bottom: 8px!important;
+   
+  }
+}

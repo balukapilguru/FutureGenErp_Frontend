@@ -1,0 +1,111 @@
+.login_bg_image {
+  /* background-image: url(./src/assets/images/login_bg.png); */
+  background-image: url(../../../src/assets/images/login_bg.png);
+  background-position: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+.form-control:focus {
+  border: 1px solid var(--erp-sky-100) !important;
+}
+
+.login_welcome_text {
+  color: var(--erp-sidebar-color);
+  font-size: var(--erp-fs-16);
+  font-weight: var(--erp-fw-500);
+}
+.blue_color{
+  color: var(--erp-sidebar-color);
+}
+
+.login_welcome_description {
+  color: var(--erp-lightblack-color) !important ;
+  font-size: var(--erp-fs-13);
+}
+
+.signin-other-title {
+  position: relative;
+}
+
+.signin-other-title .title {
+  background-color: var(--erp-white-color);
+  display: inline-block;
+  padding: 2px 16px;
+  position: relative;
+  z-index: 9;
+}
+
+.signin-other-title::after {
+  border-top: 1px dashed var(--erp-white-200);
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66667%;
+  }
+  
+}
+@media (max-width: 768px){
+  .login_bg_image{
+    /* background-image: url(/src/assets/images/login_bg_2.png); */
+    background-image:url(../../../src/assets/images/login_bg_2.png) ;
+  background-position: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  }
+
+}
+@media (min-width: 992px) {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-xl-5 {
+    flex: 0 0 auto;
+    width: 36%;
+  }
+}
+
+
+.error-text {
+  font-size: var(--erp-fs-13);
+}
+
+.reset-password-message {
+  font-size: var(--erp-fs-13);
+  color: var(--erp-yellow-color);
+  font-weight: var(--erp-fw-500);
+}
+
+.custom-password-length-text {
+  color: var(--erp-sky-200) !important;
+  font-size: var(--erp-fs-7) !important;
+}
+
+.custom-href > a {
+  text-decoration: underline !important;
+}
+
+/* Lockscreen */
+.lock-screen-username {
+  color: var(--erp-black-300);
+  font-size: var(--erp-fs-16) !important;
+  font-weight: var(--erp-fw-500);
+}

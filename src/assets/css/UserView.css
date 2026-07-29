@@ -1,0 +1,102 @@
+
+
+ .back-col {
+    background-color: var(--erp-green-400);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: var(--bs-nav-pills-link-active-color) !important;
+    background-color: var(--erp-sky-500) !important;
+}
+
+/* .nav-link.active {
+    border-bottom: none;
+} */
+
+.bg_light {
+    background-color: var(--erp-white-color);
+}
+
+/* .btn_success {
+    background-color: var(--erp-success-color) !important;
+    border-color: var(--erp-success-color) !important;
+    color: var(--erp-white-color)
+} */
+.fs-12 {
+    font-size: var(--erp-fs-s);
+
+}
+
+.student-bg-position {
+    height: 310px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    /* top: 18; */
+    width: 100%;
+
+}
+
+.bg-imges::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .9;
+    background: linear-gradient(var(--erp-primary-color), var(--erp-primary-color));
+    /* z-index: 1; */
+}
+
+.bg-imges {
+    background-image: url("../images/viewbg-images.png");
+    background-position: 50%;
+    background-size: cover
+}
+
+.bg-other {
+    /* background-color: #000; */
+    bottom: 0;
+    left: 0;
+    opacity: .7;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+}
+
+.text-white-50 {
+    --vz-text-opacity: 1;
+    color: var( --erp-dark-gray) !important;
+}
+
+
+.cards {
+    position: relative;
+    top: 250px;
+}
+
+.thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
+.avatar-lg {
+    height: 7rem;
+    width: 7rem;
+}
+
+.card-two {
+    position: relative;
+    top: 250px;
+}
+.tr.heading{
+    width: 30px!important;
+}
+
+
+
+

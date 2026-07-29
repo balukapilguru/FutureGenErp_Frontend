@@ -1,0 +1,124 @@
+.navbar-header {
+  width: 100%;
+  padding: 0.5rem 1.5rem 0 0.75rem;
+  z-index: 9999;
+  position: sticky;
+  right: 0px;
+  top: 0px;
+  height: 70px;
+  background-color: var(--erp-navbar-color);
+}
+.navbar-main {
+  display: flex;
+  justify-content: end;
+}
+.main_icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: inherit;
+  min-width: 1.75rem;
+  margin-right: 10px;
+  color: var(--erp-light-blue-color);
+  font-weight: var(--bs-font-weight-regular);
+}
+.main_icon:hover {
+  color: var(--erp-white-color);
+}
+.sub_icon {
+  display: inline-block;
+  font-size: 12px;
+  line-height: inherit;
+  min-width: 1.75rem;
+  margin-right: 10px;
+  color: var(--erp-light-blue-color);
+  font-weight: var(--bs-font-weight-regular);
+}
+.sub_icon:hover {
+  color: var(--erp-white-color);
+}
+.navbar_icons {
+  display: inline-block;
+  font-size: var(--erp-fs-24);
+  line-height: inherit;
+  min-width: 1.75rem;
+  margin-right: 10px;
+  color: var(--erp-gray-500);
+  font-weight: var(--erp-fw-500);
+  cursor: pointer;
+}
+
+.navbar_username {
+  font-size: 0.9rem;
+  font-weight: var(--bs-font-weight-medium);
+  color: var(--erp-text-color);
+}
+
+.navbar_userrole {
+  font-size: var(--erp-fs-xs);
+  color: var(--erp-gray-400);
+  letter-spacing: 1px;
+}
+
+.profile-item {
+  cursor: pointer;
+}
+
+.avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+.dropdown-card {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 150px;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background-color: var(--erp-gray-100);
+  margin-top: 10px;
+  padding: 0 10px 0 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease-in-out;
+}
+
+.dropdown-card .small-text {
+  font-size: var(--bs-fs-xs);
+  color: var(--erp-tab-four-color);
+  font-weight: 500;
+}
+
+.menu-items a {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 5px;
+}
+.menu-items a .dropdown-icon {
+  font-size: 16px;
+  color: var(--erp-tab-four-color);
+}
+
+.dropdown-card.show {
+  opacity: 1;
+  visibility: visible;
+  animation: popover 0.5s linear forwards;
+}
+
+@keyframes popover {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+.dropdown-item-dark:hover {
+  color: var(--erp-text-color) !important;
+  background-color: var(--erp-gray-600) !important;
+}

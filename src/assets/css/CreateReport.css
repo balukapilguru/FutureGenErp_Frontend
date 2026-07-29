@@ -1,0 +1,16 @@
+.side-line{
+
+    max-height: 73vh;
+    overflow-y: auto;
+
+}
+.alldimensions {
+    background-color: var(--erp-primary-color);
+    border: 1px solid  var(--erp-primary-color);
+    border-radius: 7px;
+    color: var(--erp-card-color);
+    padding: 10px;
+}
+.btn.btn-color{
+    border: 1px solid var(--erp-card-color);
+}

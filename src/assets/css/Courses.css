@@ -1,0 +1,22 @@
+/* Hide the default 'Choose file' text */
+.custom-file-input::file-selector-button {
+    visibility: hidden;
+    width: 0; /* Ensures no extra space */
+    padding: 0; /* Ensures no padding space */
+    margin: 0;  /* Removes margin if any */
+  }
+  
+  /* Keep the file input button functional and customize the button */
+  .custom-file-input {
+    cursor: pointer;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }

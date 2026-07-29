@@ -1,0 +1,18 @@
+.avatar-sm {
+  height: 2rem;
+  width: 2rem;
+}
+
+.fee-nav {
+  display: contents !important;
+}
+
+
+/* @media screen and (max-width: 425px) {
+  .fee-nav{
+    width: 200px !important;
+    overflow-x: scroll!important;
+    scrollbar-width: thin!important;
+  }
+
+} */

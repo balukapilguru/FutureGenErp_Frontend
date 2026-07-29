@@ -1,0 +1,634 @@
+/* .test {
+  width: 100%;
+  height: 790px;
+} */
+.logos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 20px;
+  left: 37%;
+}
+
+.logos img {
+  height: 80px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.headers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+
+  top: 65px;
+  left: 30%;
+}
+
+.headers h3 {
+  font-size: 60px;
+  font-weight: 600;
+
+  color: #0c1929;
+
+  letter-spacing: 7px;
+}
+
+.headers-color {
+  color: white;
+  font-size: 28px;
+  letter-spacing: 1.9;
+  top: 13px;
+  text-align: center;
+}
+
+.bg-colorinter {
+  top: 15px;
+  right: -20px;
+  width: 400px;
+}
+
+.headers p {
+  margin-top: 0; /* Remove the top margin of the p element */
+}
+
+.internship-p {
+  font-size: 25px;
+  font-weight: 100 !important;
+  margin-top: 13px !important;
+}
+.internship-info {
+  position: absolute;
+  top: 350px;
+  left: 20%;
+  font-size: 20px;
+}
+
+.internship-info h4 {
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+  font-size: 30px;
+  width: 700px;
+}
+
+.inter-info p {
+  top: 50%;
+  width: 950px;
+  left: 8%;
+  line-height: 1.8;
+}
+.date-lefts .dts {
+  border-bottom: 1px black solid;
+  width: 200px;
+  font-size: 20px;
+}
+
+.date-lefts p {
+  margin-bottom: 6px;
+}
+.internship-date {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 22px;
+  position: absolute; /* Added to allow top and left adjustments */
+  top: 564px; /* Adjust the top position to move the element up */
+  left: 220px; /* Adjust the left position to move the element to the left */
+}
+.internship-dates {
+  font-size: 22px;
+  position: absolute; /* Added to allow top and left adjustments */
+  top: 528px; /* Adjust the top position to move the element up */
+  left: 690px; /* Adjust the left position to move the element to the left */
+}
+
+.date-rights .dts {
+  border-bottom: 1px black solid;
+  width: 200px;
+  font-size: 20px;
+}
+
+.date-rights p {
+  margin: 0;
+}
+
+.date-rights img {
+  width: 150px;
+  height: 71px;
+  border-bottom: 1px black solid;
+}
+
+/* Container for image sections */
+/* Container for image sections */
+/* Container for image sections */
+.image-container {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
+  background-color: rebeccapurple;
+  justify-content: space-between;
+}
+.border-section {
+  position: absolute;
+  bottom: 20px;
+  left: 44%;
+  right: 0;
+}
+/* Main section containing images */
+.image-row {
+  display: flex;
+  /* background-color: red !important; */
+  height: 200px;
+  width: 100px;
+  position: absolute;
+  /* bottom: -20px; */
+  left: 50px;
+  /* top: -190px;   */
+  justify-content: space-around;
+}
+
+.imgs1 {
+  width: 160px;
+  position: absolute;
+  bottom: 45px;
+  left: 150px;
+}
+
+.imgs2 {
+  width: 130px;
+  position: absolute;
+  bottom: 50px;
+  left: 150px;
+}
+
+.imgs3 {
+  width: 130px;
+  position: absolute;
+  bottom: 62px;
+  left: 270px;
+}
+
+.imgs4 {
+  width: 55px;
+  position: absolute;
+  bottom: 120px;
+  left: 330px;
+}
+
+.border-section {
+  margin-left: 30px;
+  height: 100px;
+  border-left: 3px solid #000; /* Adjust thickness and color as needed */
+}
+
+.association {
+  bottom: 80px;
+  left: 250px;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+.icon1 {
+  bottom: -310px;
+}
+.iconImg img {
+  height: 30px;
+  width: 30px;
+  margin: 0 9px;
+}
+.iconImg1 img {
+  height: 35px;
+  width: 35px;
+  margin: 0 9px;
+}
+.completion-info span {
+  text-decoration: underline;
+}
+
+@media (max-width: 320px) {
+  .test img {
+    width: 100%;
+    height: auto;
+  }
+
+  .logos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 4px;
+    left: 30%;
+  }
+
+  .logos img {
+    height: 20px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    top: -20px;
+    left: 45%;
+  }
+
+  .headers h3 {
+    font-size: 10px;
+    font-weight: 700;
+    color: #0c1929;
+    letter-spacing: 3px;
+  }
+
+  .headers-color {
+    color: white;
+    font-size: 28px;
+    letter-spacing: 1.9;
+    top: 13px;
+    text-align: center;
+  }
+
+  .headers p {
+    margin-top: 0;
+  }
+  
+  .internship-p {
+    font-size: 5px;
+    font-weight: 100 !important;
+    margin-top: 3px !important;
+  }
+
+  .internship-info {
+    position: absolute;
+    top: 70px;
+    left: 30%;
+  }
+
+  .internship-info h4 {
+    border-bottom: 1px solid black;
+    font-size: 6px;
+    width: 70px;
+  }
+
+  .inter-info p {
+    top: 50%;
+    width: 180px;
+    left: 3%;
+    font-size: 4px;
+  }
+
+  .date-lefts .dts {
+    border-bottom: 1px black solid;
+    width: 40px;
+    font-size: 5px;
+  }
+
+  .date-lefts p {
+    margin-bottom: -17px;
+  }
+
+  .isueddate {
+    font-size: 5px;
+    margin-top: 15px;
+  }
+
+  .internship-date {
+    display: flex;
+    flex-direction: column; /* Stack date and sign vertically */
+    align-items: center; /* Center the contents */
+    font-size: 22px;
+    position: absolute;
+    top: 70px; /* Adjust to fit within the viewport */
+    left: 30px; /* Adjust as needed */
+  }
+
+  .internship-dates {
+    font-size: 6px;
+    position: absolute;
+    top: 10px; /* Position above the date */
+    left: 30px; /* Align with the date */
+  }
+
+  .date-rights .dts {
+    border-bottom: 1px black solid;
+    width: 200px;
+    font-size: 20px;
+  }
+
+  .date-rights p {
+    margin: 0;
+  }
+
+  .date-rights img {
+    width: 100px;
+    height: 20px;
+    border-bottom: 1px black solid;
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    background-color: rebeccapurple;
+    justify-content: space-between;
+  }
+
+  .border-section {
+    position: absolute;
+    bottom: 20px;
+    left: 44%;
+    right: 0;
+  }
+
+  .image-row {
+    display: flex;
+    height: 100px;
+    width: 20px;
+    position: absolute;
+    left: 10px;
+    justify-content: space-around;
+  }
+
+  .imgs1 {
+    width: 0px;
+    position: absolute;
+    bottom: 45px;
+    left: 1px;
+  }
+
+  .imgs2 {
+    width: 130px;
+    position: absolute;
+    bottom: 45px;
+    left: 30px;
+  }
+
+  .imgs3 {
+    width: 130px;
+    position: absolute;
+    bottom: 45px;
+    left: 50px;
+  }
+
+  .imgs4 {
+    width: 10px;
+    position: absolute;
+    bottom: 49px;
+    left: 75px;
+  }
+
+  .border-section {
+    display: none;
+  }
+
+  .association {
+    bottom: 2px;
+    left: 30px;
+    font-size: 4px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .icon1 {
+    bottom: -10px;
+  }
+
+  .iconImg img {
+    height: 10px;
+    width: 10px;
+    margin: 0 0px;
+  }
+
+  .iconImg1 img {
+    height: 10px;
+    width: 10px;
+    margin: 0 0px;
+  }
+
+  .completion-info span {
+    text-decoration: underline;
+  }
+
+  .email-info {
+    font-size: 6px;
+  }
+
+  .phone-info {
+    font-size: 6px;
+  }
+
+  .badge-css {
+    position: relative;
+    left: -30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .test img {
+    width: 90%;
+  }
+  .logos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 4px;
+    left: 30%;
+  }
+
+  .logos img {
+    height: 20px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+  }
+  .headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+
+    top: -20px;
+    left: 45%;
+  }
+
+  .headers h3 {
+    font-size: 10px;
+    font-weight: 700;
+    color: #0c1929;
+    letter-spacing: 3px;
+  }
+
+  .headers-color {
+    color: white;
+    font-size: 28px;
+    letter-spacing: 1.9;
+    top: 13px;
+    text-align: center;
+  }
+  .headers p {
+    margin-top: 0; /* Remove the top margin of the p element */
+  }
+  
+  .internship-p {
+    font-size: 5px;
+    font-weight: 100 !important;
+    margin-top: 3px !important;
+  }
+  .internship-info {
+    position: absolute;
+    top: 70px;
+    left: 30%;
+  }
+  
+  .internship-info h4 {
+    border-bottom: 1px solid black;
+    
+    font-size: 6px;
+    width: 70px;
+  }
+  
+  .inter-info p {
+    top: 50%;
+    width: 200px;
+    left: 3%;
+   
+    font-size: 4px;
+  }
+  .date-lefts .dts {
+    border-bottom: 1px black solid;
+    width: 40px;
+    font-size:5px;
+  }
+  
+  .date-lefts p {
+    margin-bottom: -17px;
+  }
+  .isueddate{
+    font-size: 5px;
+    margin-top: 15px;
+  }
+  .internship-date {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 22px;
+    position: absolute; /* Added to allow top and left adjustments */
+    top: 120px; /* Adjust the top position to move the element up */
+    left: 30px; /* Adjust the left position to move the element to the left */
+  }
+  .internship-dates {
+    font-size: 6px;
+    position: absolute; /* Added to allow top and left adjustments */
+    top: 110px; /* Adjust the top position to move the element up */
+    left: 120px; /* Adjust the left position to move the element to the left */
+  }
+  
+  .date-rights .dts {
+    border-bottom: 1px black solid;
+    width: 100px;
+    font-size: 20px;
+  }
+  
+  .date-rights p {
+    margin: 0;
+  }
+  
+  .date-rights img {
+    width: 45px;
+    height: 20px;
+    border-bottom: 1px black solid;
+  }
+  .image-container {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    background-color: rebeccapurple;
+    justify-content: space-between;
+  }
+
+  /* Main section containing images */
+  .image-row {
+    display: flex;
+    /* background-color: red !important; */
+    height: 100px;
+    width: 20px;
+    position: absolute;
+    /* bottom: -20px; */
+    left: 10px;
+    /* top: -190px;   */
+    justify-content: space-around;
+  }
+  
+  .imgs1 {
+    width: 0px;
+    position: absolute;
+    bottom: 45px;
+    left: 1px;
+  }
+  
+  .imgs2 {
+    width: 130px;
+    position: absolute;
+    bottom: 45px;
+    left: 30px;
+  }
+  
+  .imgs3 {
+    width: 130px;
+    position: absolute;
+    bottom: 45px;
+    left: 50px;
+  }
+  
+  .imgs4 {
+    width: 10px;
+    position: absolute;
+    bottom: 49px;
+    left: 75px;
+  }
+  
+  .border-section {
+    position: absolute;
+    bottom: 5px;
+    left: 25%;
+    right: 0;
+    border-left: none;
+  }
+  
+  .association {
+    bottom: 2px;
+    left: 30px;
+    font-size: 4px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+  .icon1 {
+    bottom: -10px;
+  }
+  .iconImg img {
+    display: none;
+  }
+  .iconImg1 img {
+    display: none;
+  }
+  .completion-info span {
+    text-decoration: underline;
+  }
+  .email-info{
+    font-size: 6px;
+    position: absolute;
+    bottom: 10px;
+  }
+  .phone-info{
+    font-size: 6px;
+    position: absolute;
+    bottom: 1px;
+  }
+  .badge-css{
+  position: relative;
+  left: -30px;
+  }
+
+}

@@ -1,0 +1,18 @@
+/* .nav-link.active {
+    border-bottom: 2px solid var(--erp-green-400);
+    color: var(--erp-green-400)
+} */
+
+.bg_white {
+    background-color: var(--erp-bg-white);
+}
+.btn-soft-primary:hover {
+    color: var(--erp-white-color);
+    background-color: var(--erp-sky-500);
+
+}
+
+.btn_soft_primary {
+    color: var(--erp-sky-500);
+    background-color: var(--erp-gray-200);
+}
