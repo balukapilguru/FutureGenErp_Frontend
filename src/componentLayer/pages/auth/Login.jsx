@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Teks_Logo from "../../../assets/images/Teks_Logo.svg";
+import Teks_Logo from "../../../assets/images/FG-LOGO.png";
 import "../../../assets/css/Login.css";
 import { AuthContext } from "../../../dataLayer/context/authContext/AuthContextProvider";
 import { Link, useNavigate } from "react-router-dom";
