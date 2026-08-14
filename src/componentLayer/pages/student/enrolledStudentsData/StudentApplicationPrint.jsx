@@ -16,7 +16,7 @@ import { useLoaderData } from "react-router-dom";
 import jsPDF from "jspdf";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../../../dataLayer/hooks/useAuthContext.jsx";
-import mainLogo from  "../../../../assets/images/mainlogo/mainlogoteks.png"
+import fgLogo from "../../../../assets/images/FG-LOGO.png";
 
 export const studentApplicationPrintLoader = async ({ params }) => {
   try {
@@ -141,21 +141,21 @@ const StudentApplicationPrint = () => {
                     </p>
                     <p className="p-0 fs-14 black_300 ">
                       {" "}
-                      <IoMdMail className="fs-16 ms-3" /> info@teksacademy.com
+                      <IoMdMail className="fs-16 ms-3" />  info@futuregentechnologies.com
                     </p>
                     <p className="p-0 fs-14 black_300">
                       <IoCall className="fs-16 ms-3" />
-                      1800-120-4748{" "}
+                      91 98489 47799{" "}
                     </p>
                     <p className="p-0 fs-14 black_300">
                       {" "}
                       <PiAtBold className="fs-16 ms-3" />
-                      www.teksacademy.com
+                      www.futuregentechnologies.com
                     </p>
                   </div>
                   <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-center ">
                     <img
-                      src= {branchLogo ?  branchLogo :  mainLogo}
+                      src= {fgLogo}
                       alt="Branch Logo"
                       className=" w-75 "
 

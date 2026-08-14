@@ -7,7 +7,7 @@ import img2 from "../../../../assets/images/certificate_images/NSDC.png";
 import img3 from "../../../../assets/images/certificate_images/ISO.png";
 import img4 from "../../../../assets/images/certificate_images/Skill_india.png";
 import img5 from "../../../../assets/images/certificate_images/MSME_logo.png";
-import tekslogo from "../../../../assets/images/certificate_images/Tesks_Logo.png";
+import fgLogo from "../../../../assets/images/FG-LOGO.png";
 import { useReactToPrint } from "react-to-print";
 import { useParams } from "react-router-dom";
 import Button from "../../../components/button/Button";
@@ -68,8 +68,12 @@ const CertificatePrint = () => {
   // }, [id]);
 
   const formatDate = (dateString) => {
-    const options = { month: "short", year: "numeric" };
-    return new Date(dateString).toLocaleString("en-Us", options).toUpperCase();
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
   };
 
   const getNameFontSize = (nameLength) => {
@@ -100,115 +104,100 @@ const CertificatePrint = () => {
           <MdLocalPrintshop /> Print
         </Button>
       </div>
-      <div className="contain" ref={componentRef}>
+      <div className="cert-page-wrap" ref={componentRef}>
         {certificatePrint && (
-          <div className="Outerline1 mb-5">
-            <div className="outerborder">
-              <div className="innerborder">
-                <div className="section">
-                  <div className="logo">
-                    <img src={tekslogo} alt="" />
-                  </div>
-                  <header className="header">
-                    <h2>
-                      <span>C</span>ERTIFICATE
-                    </h2>
-                    <p>This is to certify that</p>
-                  </header>
+          <div className="cert-outer-box">
+            
+            <div className="cert-inner-box">
 
-                  <div className="certificate-info" action="">
-                    <div className="name">
-                      <p>Mr./Ms</p>
-                      <div className="studname">
-                        <h4
-                          className="studname"
-                          style={{
-                            fontSize: getNameFontSize(
-                              certificatePrint.name.length
-                            ),
-                          }}
-                        >
-                          {certificatePrint?.name}
-                        </h4>
-                      </div>
-                    </div>
-                    <div className="infor">
-                      <p className="para">
-                        has successfully completed Real Time Training on
-                      </p>
-                      <h4
-                        className="courses"
-                        style={{
-                          fontSize: getCourseFontSize(
-                            certificatePrint?.courses?.length
-                          ),
-                        }}
-                      >
-                        {certificatePrint?.courses.toUpperCase()}
-                      </h4>
-                    </div>
-                    <div className="period">
-                      <div className="d-block">
-                        <p>during the period of </p>
-                      </div>
-                      <h4 className="from">
-                        {formatDate(
-                          certificatePrint?.certificate_status[0]
-                            ?.courseStartDate
-                        )}
-                      </h4>
-                      <p className="d-block">to </p>
-                      <h4 className="to d-block">
-                        {formatDate(
-                          certificatePrint?.certificate_status[0]?.courseEndDate
-                        )}
-                      </h4>
-                    </div>
-                    <div className="grade ">
-                      <p className="grade-start">with</p>
-                      <h4 className="gradeA"> A+ </h4>
-                      <p className="grade-end">Grade</p>
-                    </div>
-                  </div>
-                  <div className="id">
-                    <h5>ID:{certificatePrint?.registrationnumber}</h5>
-                  </div>
-                  <div className="sign-date">
-                    <div className="date-left">
-                      <p className="dt">
-                        {new Date(
-                          certificatePrint?.certificate_status?.[0]?.issuedDate
-                        )
-                          .toLocaleDateString("en-GB")
-                          .replace(/\//g, "-")}
-                      </p>
-                      <p className="mt-3" style={{ color: "#2a619d" }}>DATE</p>
-                    </div>
-                    <div className="hologram-sticker  ">
-                      <img src={logo1} alt="" />
-                    </div>
-                    <div>
-                      <QRCode
-                        className="mt-5 qrcode"
-                        style={{ height: "70px", width: "70px" }}
-                        value={`https://teksacademy.com/verifyCertificate/${certificatePrint?.registrationnumber}`}
-                      />
-                    </div>
+              {/* TOP CONTENT */}
+              <div className="cert-content-top">
 
-                    <div className="sign-right">
-                      <img src={sign} alt="" />
-                      <p style={{ color: "#2a619d" }}>SIGNATURE</p>
+                {/* LOGO */}
+                <div className="cert-logo-section">
+                  <img src={fgLogo} alt="FutureGen Technologies Logo" className="cert-logo-img" />
+                </div>
+
+                {/* CERTIFICATE HEADING */}
+                <div className="cert-heading-section">
+                  <h1 className="cert-title">CERTIFICATE</h1>
+                </div>
+
+                {/* CERTIFY TEXT */}
+                <div className="cert-certify-text">
+                  <p>This is to certify that</p>
+                </div>
+
+                {/* STUDENT NAME */}
+                <div className="cert-name-section">
+                  <h2
+                    className="cert-student-name"
+                    style={{ fontSize: getNameFontSize(certificatePrint?.name?.length || 0) }}
+                  >
+                    {certificatePrint?.name?.toUpperCase()}
+                  </h2>
+                  <div className="cert-name-underline"></div>
+                </div>
+
+                {/* COURSE COMPLETION PARAGRAPH */}
+                <div className="cert-body-text">
+                  <p>
+                    has successfully completed the{" "}&nbsp;
+                    <strong
+                      style={{ fontSize: getCourseFontSize(certificatePrint?.courses?.length || 0) }}
+                    >
+                      {certificatePrint?.courses?.toUpperCase()}
+                    </strong>{" "}
+                    &nbsp;course during the period of{" "}
+                    <strong>
+                      {formatDate(certificatePrint?.certificate_status?.[0]?.courseStartDate)}
+                    </strong>{" "}
+                    to{" "}
+                    <strong>
+                      {formatDate(certificatePrint?.certificate_status?.[0]?.courseEndDate)}
+                    </strong>{" "}
+                    and has successfully fulfilled the requirements of the prescribed training
+                    program, including practical training, hands-on exercises, and
+                    project-oriented learning.
+                  </p>
+                </div>
+
+                {/* CERTIFICATE ID */}
+                <div className="cert-id-section">
+                  <p className="cert-id-text">
+                    Certificate ID: <strong>{certificatePrint?.registrationnumber}</strong>
+                  </p>
+                </div>
+
+                {/* DATE + DIRECTOR ROW */}
+                <div className="cert-sign-row">
+                  <div className="cert-sign-left">
+                    <div className="cert-sign-value">
+                      {new Date(certificatePrint?.certificate_status?.[0]?.issuedDate)
+                        .toLocaleDateString("en-GB")
+                        .replace(/\//g, ".")}
                     </div>
+                    <div className="cert-sign-line"></div>
+                    <div className="cert-sign-label">Date of Issue:</div>
                   </div>
-                  <div className="cname">
-                    <img src={img1} className="img1" alt="" />
-                    <img src={img2} className="img2" alt="" />
-                    <img src={img3} className="img3" alt="" />
-                    <img src={img4} className="img4" alt="" />
-                    <img src={img5} className="img5" alt="" />
+                  <div className="cert-sign-right">
+                    <img src={sign} alt="Director Signature" className="cert-sign-img" />
+                    <div className="cert-sign-line"></div>
+                    <div className="cert-sign-label">Director</div>
                   </div>
                 </div>
+
+              </div>{/* end cert-content-top */}
+
+              {/* BOTTOM LOGOS — anchored to bottom */}
+              <div className="cert-bottom-logos">
+                <img src={img2} className="cert-bottom-logo cert-nsdc" alt="NSDC" />
+                <img src={img3} className="cert-bottom-logo cert-iso" alt="ISO" />
+                <img src={img1} className="cert-bottom-logo cert-nasscom" alt="nasscom" />
+                <img src={img5} className="cert-bottom-logo cert-msme" alt="MSME" />
+                <img src={img4} className="cert-bottom-logo cert-skillindia" alt="Skill India" />
               </div>
+
             </div>
           </div>
         )}

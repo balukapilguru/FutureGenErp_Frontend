@@ -21,12 +21,12 @@ import ProfileView, {
 import TicketsRoute from "./tickets/TicktesRoute";
 import ExamsRoutes from "./exams/ExamsRoutes";
 import ReferralsRoutes from "./referrals/Referrals.router";
-import VouchersDashboard from "../componentLayer/pages/settings/Entities/entityVouchers/VouchersDashboard";
-import { VouchersDashboardLoader } from "../componentLayer/pages/settings/Entities/entityVouchers/Voucher.loader";
-import WalletWithDrawlsRequests from "../componentLayer/pages/wallet/WalletWithDrawlsRequests";
-import { WalletWithDrawlsRequestsLoader } from "../componentLayer/pages/wallet/WalletWithDrawlsRequests.loader";
-import { WalletWithDrawlsRequestsAction } from "../componentLayer/pages/wallet/WalletWithDrawlsRequests.action";
-import { VouchersDashboardAction } from "../componentLayer/pages/settings/Entities/entityVouchers/Voucher.action";
+// import VouchersDashboard from "../componentLayer/pages/settings/Entities/entityVouchers/VouchersDashboard";
+// import { VouchersDashboardLoader } from "../componentLayer/pages/settings/Entities/entityVouchers/Voucher.loader";
+// import WalletWithDrawlsRequests from "../componentLayer/pages/wallet/WalletWithDrawlsRequests";
+// import { WalletWithDrawlsRequestsLoader } from "../componentLayer/pages/wallet/WalletWithDrawlsRequests.loader";
+// import { WalletWithDrawlsRequestsAction } from "../componentLayer/pages/wallet/WalletWithDrawlsRequests.action";
+// import { VouchersDashboardAction } from "../componentLayer/pages/settings/Entities/entityVouchers/Voucher.action";
 import { demoroutes } from "./demobatches/DemobatchesRoutes";
 
 const router = createBrowserRouter([
@@ -49,18 +49,18 @@ const router = createBrowserRouter([
         loader: profileViewLoader,
         element: <ProfileView />,
       },
-      {
-        path: "vouchers",
-        loader: VouchersDashboardLoader,
-        action: VouchersDashboardAction,
-        element: <VouchersDashboard />,
-      },
-      {
-        path: "wallet",
-        loader: WalletWithDrawlsRequestsLoader,
-        element: <WalletWithDrawlsRequests />,
-        action: WalletWithDrawlsRequestsAction,
-      },
+      // {
+      //   path: "vouchers",
+      //   loader: VouchersDashboardLoader,
+      //   action: VouchersDashboardAction,
+      //   element: <VouchersDashboard />,
+      // },
+      // {
+      //   path: "wallet",
+      //   loader: WalletWithDrawlsRequestsLoader,
+      //   element: <WalletWithDrawlsRequests />,
+      //   action: WalletWithDrawlsRequestsAction,
+      // },
       {
         path: "user",
         element: (

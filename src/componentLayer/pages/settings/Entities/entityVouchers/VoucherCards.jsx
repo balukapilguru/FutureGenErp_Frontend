@@ -10,7 +10,7 @@ import { BiCalendar, BiMedal } from 'react-icons/bi';
 const VoucherCard = ({
   data,
   variant = 'percent',
-  watermark = "TEKSACADEMY",
+  watermark = "FUTUREGEN",
   watermarkDesign = 'diploma',
   watermarkOpacity = 0.15
 }) => {

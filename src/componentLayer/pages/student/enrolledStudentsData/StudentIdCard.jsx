@@ -12,6 +12,7 @@ import logo from "../../../../assets/images/student_idCard_images/Tesks_Logo.png
 import Defaultimg from "../../../../assets/images/student_idCard_images/DefaultimgBG.png";
 import { useLoaderData } from "react-router-dom";
 import { useAuthContext } from "../../../../dataLayer/hooks/useAuthContext";
+import fgLogo from "../../../../assets/images/FG-LOGO.png";
 
 export const studentIdCardLoader = async ({ params }) => {
   try {
@@ -153,7 +154,7 @@ const StudentIdCard = () => {
         <div className="studentid">
           <div className="idcard1" ref={componentRefff}>
             <div className="teksimg">
-              <img className="mb-4" src={branchLogo ? branchLogo : logo} alt="Logo" />
+              <img className="mb-4" src={branchLogo ? branchLogo : fgLogo} alt="Logo" />
             </div>
             <div className="card_Content">
               <div className="studid-photo text-center">

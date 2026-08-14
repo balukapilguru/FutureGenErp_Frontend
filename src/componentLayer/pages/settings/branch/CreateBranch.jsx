@@ -18,6 +18,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import Select from "react-select";
 import { ERPApi } from "../../../../serviceLayer/interceptor";
+import fgLogo from "../../../../assets/images/FG-LOGO.png";
 
 const CreateBrnach = () => {
 const {id} = useParams()
@@ -28,7 +29,7 @@ const {id} = useParams()
   const { singlebranchData, options } = useLoaderData();
   const [activeTab, setActiveTab] = useState(1);
   const [branchId, setBranchId] = useState(null);
-  const [previewBranchLogo, setPreviewBranchLogo] = useState(null);
+  // const [previewBranchLogo, setPreviewBranchLogo] = useState(null);
   const [errors, setErrors] = useState({});
   const [BranchFrom, setBranchFrom] = useState({
     branch_name: "",
@@ -312,11 +313,11 @@ const {id} = useParams()
     setBranchFrom((prev) => ({ ...prev, logoName: file }));
 
     // Generate preview
-    const reader = new FileReader();
-    reader.onload = () => {
-      setPreviewBranchLogo(reader.result); // Set the preview state to the file's data URL
-    };
-    reader.readAsDataURL(file);
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   setPreviewBranchLogo(reader.result); // Set the preview state to the file's data URL
+    // };
+    // reader.readAsDataURL(file);
 
 
   };
@@ -771,24 +772,12 @@ const {id} = useParams()
                           <div className="">
                             <div className="row">
                               <div className="col-lg-4 col-md-6  col-sm-4  mt-2">
-                                {
-
-                                  previewBranchLogo && previewBranchLogo ?
-                                    (<div>
-                                      <img src={previewBranchLogo} alt="branch Logo" className="img-fluid" width={"50%"} />
-                                    </div>)
-
-                                    : !BranchFrom?.logoName ? (
-                                      <img src={DefaultBG} alt="photo" className="img-fluid" width={"50%"} />
-                                    ) : (
-                                      <img
-                                        src={`https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${BranchFrom?.logoName}`}
+                                 <img
+                                        src={fgLogo}
                                         className="w-50 admform-sd"
                                         width={"50%"}
                                         alt="Branch Logo"
                                       />
-                                    )
-                                }
                               </div>
                               <div className="col-lg-4 col-md-6 col-sm-12">
                                 <div className="table-responsive table-scroll">

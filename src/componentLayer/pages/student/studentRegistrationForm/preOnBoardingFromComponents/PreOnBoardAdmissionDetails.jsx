@@ -151,9 +151,9 @@ const PreOnBoardAdmissionDetails = ({ steps, activeStep, onNavigate, coursePacka
         }
 
         // Voucher Validation
-        if (admissionDetails.voucherCode && !isVoucherVerified) {
-            newErrors.voucherCode = "Please verify the voucher code";
-        }
+        // if (admissionDetails.voucherCode && !isVoucherVerified) {
+        //     newErrors.voucherCode = "Please verify the voucher code";
+        // }
 
         // if (admissionDetails.validityenddate < admissionDetails.validitystartdate) {
         //     newErrors.validityenddate = "End date must be after start date";
@@ -303,7 +303,7 @@ const PreOnBoardAdmissionDetails = ({ steps, activeStep, onNavigate, coursePacka
                     </>
                 )}
 
-                <div className="col-md-3 mb-3">
+                {/* <div className="col-md-3 mb-3">
                     <label className="form-label text-nowrap">Voucher Code (Optional)</label>
                     <div className="input-group">
                         <input
@@ -321,7 +321,6 @@ const PreOnBoardAdmissionDetails = ({ steps, activeStep, onNavigate, coursePacka
                             </button>
                         )}
                     </div>
-                    {/* Voucher Feedback */}
                     <div style={{ height: "15px" }}>
                         {errors.voucherCode && <p className="text-danger m-0 fs-xs small">{errors.voucherCode}</p>}
                         {isVoucherVerified ? (
@@ -330,7 +329,7 @@ const PreOnBoardAdmissionDetails = ({ steps, activeStep, onNavigate, coursePacka
                             voucherResponseData?.failed?.status && <p className="text-danger m-0 fs-xs small">{voucherResponseData.failed.message}</p>
                         )}
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-md-3 mb-3">
                     <label className="form-label text-nowrap">Mode Of Training <span className="text-danger">*</span></label>

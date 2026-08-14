@@ -4,6 +4,7 @@ import { AuthContext } from "../../../dataLayer/context/authContext/AuthContextP
 import Teks_Logo from "../../../assets/images/Teks_Logo.svg";
 import "../../../assets/css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import fgLogo from "../../../assets/images/FG-LOGO.png";
 
 const ChangePassword = () => {
 
@@ -11,10 +12,10 @@ const ChangePassword = () => {
   const [showPassword, setShowPassword] = useState();
   const [showOldPassword, setShowOldPassword] = useState();
   const [showRePassword, setShowRePassword] = useState();
-  const branchLogoImage = AuthState?.user
-    const branchLogo = branchLogoImage?.branch_setting?.logoName
-      ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${ branchLogoImage?.branch_setting?.logoName}`
-      : null;
+  // const branchLogoImage = AuthState?.user
+  //   const branchLogo = branchLogoImage?.branch_setting?.logoName
+  //     ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${ branchLogoImage?.branch_setting?.logoName}`
+  //     : null;
 
   const navigate1 =useNavigate();
 
@@ -148,8 +149,8 @@ const ChangePassword = () => {
             <div className="col-lg-12 mt-3">
               <div className="text-center mt-sm-5 mb-1 text-white-50 ">
                 <div>
-                  <a className="d-inline-block auth-logo">
-                    <img src={ branchLogo ? branchLogo : Teks_Logo} alt="Login page logo" height="40" />
+                  <a className="d-inline-block auth-logo bg-white">
+                    <img src={ fgLogo ? fgLogo : fgLogo} alt="Login page logo" height="40" />
                   </a>
                 </div>
               </div>

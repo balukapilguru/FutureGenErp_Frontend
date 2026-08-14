@@ -86,9 +86,7 @@ const StudentView = () => {
                       {studentdata?.studentImg && (
                         <img
                           className=" w-50 admform-sd "
-                          // src={`https://teksacademyimages.s3.amazonaws.com/${studentdata?.studentImg}`}
                           src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
-                          // src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`}
                           alt="photo"
                         />
                       )}

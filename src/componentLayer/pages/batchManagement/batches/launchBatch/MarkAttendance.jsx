@@ -190,7 +190,7 @@ const MarkAttendance = ({ show, handleClose, BatchState }) => {
       show={show}
       onHide={handleClose}
       backdrop="static"
-      size="md"
+     
       dialogClassName="modal-dialog-centered"
       size="lg"
     >

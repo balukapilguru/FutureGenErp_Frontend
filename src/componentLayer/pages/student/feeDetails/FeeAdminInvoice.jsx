@@ -7,7 +7,7 @@ import { MdLocalPrintshop } from "react-icons/md";
 import { ERPApi } from "../../../../serviceLayer/interceptor.jsx";
 import BackButton from "../../../components/backbutton/BackButton.jsx";
 import { useAuthContext } from "../../../../dataLayer/hooks/useAuthContext.jsx";
-import mainLogo from  "../../../../assets/images/mainlogo/logoteksnew.png"
+import mainLogo from  "../../../../assets/images/FG-LOGO.png"
 export const FeeAdminInvoiceLoader = async ({ request, params }) => {
 
   const invoiceFor = params?.name;

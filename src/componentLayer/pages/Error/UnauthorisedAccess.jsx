@@ -165,7 +165,7 @@ function UnauthorisedAccess() {
                     type="text"
                     className="form-control"
                     disabled
-                    value="erp.coordinator@teksacademy.com"
+                    value="info@futuregentechnologies.com"
                   />
                 </div>
 

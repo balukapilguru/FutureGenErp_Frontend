@@ -11,7 +11,7 @@ import "../../../../assets/css/RegistrationForm.css";
 import { MdDelete } from "react-icons/md";
 import Button from "../../../components/button/Button";
 import BackButton from "../../../components/backbutton/BackButton";
-import mainLogo from "../../../../assets/images/mainlogo/mainlogoteks.png";
+import mainLogo from "../../../../assets/images/FG-LOGO.png";
 import DefaultBG from "../../../../assets/images/student_idCard_images/DefaultimgBG.png";
 import jsPDF from "jspdf";
 import {
@@ -1263,13 +1263,13 @@ const StudentRegistrationFrom = () => {
       }));
       return;
     }
-    if (admissionDetails?.voucherCode && !isVouherVerified) {
-      setErrors((prev) => ({
-        ...prev,
-        voucherCode: "Please verify the voucher code",
-      }));
-      return;
-    }
+    // if (admissionDetails?.voucherCode && !isVouherVerified) {
+    //   setErrors((prev) => ({
+    //     ...prev,
+    //     voucherCode: "Please verify the voucher code",
+    //   }));
+    //   return;
+    // }
 
     localStorage.setItem("admissionDetails", JSON.stringify(admissionDetails));
     handleNext();
@@ -1634,68 +1634,68 @@ const StudentRegistrationFrom = () => {
       message: "",
     },
   });
-  const verifyVoucherCode = async (code) => {
-    setErrors((prev) => ({ ...prev, voucherCode: "" }));
-    setVerifyVoucherLoading(true);
-    try {
-      const VoucherResponse = await ERPApi.post("student/checkvoucher", {
-        voucherCode: code,
-        phone_number: studentDetails?.mobilenumber,
-      });
-      if (VoucherResponse.status === 200) {
-        setVoucherResponseData((prev) => ({
-          ...prev,
-          success: {
-            status: true,
-            message:
-              VoucherResponse.data.message ||
-              "Voucher code verified successfully",
-            voucherDetails: VoucherResponse?.data?.data || null,
-          },
-          failed: {
-            status: false,
-            message: "",
-          },
-        }));
-        localStorage.setItem("voucherVerified", "true");
-        localStorage.setItem(
-          "VoucherData",
-          JSON.stringify(VoucherResponse?.data?.data),
-        );
-        localStorage.setItem(
-          "voucherCode",
-          VoucherResponse?.data?.data?.voucherCode,
-        );
-        localStorage.setItem(
-          "voucherAmount",
-          VoucherResponse?.data?.data?.amount,
-        );
-        localStorage.setItem(
-          "voucherAmount",
-          VoucherResponse?.data?.data?.amount,
-        );
-        localStorage.setItem(
-          "voucherSuccessMessage",
-          VoucherResponse?.data?.message,
-        );
-        setIsVouherVerified(true);
-      }
-      return VoucherResponse.data;
-    } catch (error) {
-      console.error(error);
-      setVoucherResponseData((prev) => ({
-        ...prev,
-        failed: {
-          status: true,
-          message:
-            error?.response?.data?.message || "Failed to verify voucher code",
-        },
-      }));
-      setVerifyVoucherLoading(false);
-    } finally {
-      setVerifyVoucherLoading(false);
-    }
-  };
+  // const verifyVoucherCode = async (code) => {
+  //   setErrors((prev) => ({ ...prev, voucherCode: "" }));
+  //   setVerifyVoucherLoading(true);
+  //   try {
+  //     const VoucherResponse = await ERPApi.post("student/checkvoucher", {
+  //       voucherCode: code,
+  //       phone_number: studentDetails?.mobilenumber,
+  //     });
+  //     if (VoucherResponse.status === 200) {
+  //       setVoucherResponseData((prev) => ({
+  //         ...prev,
+  //         success: {
+  //           status: true,
+  //           message:
+  //             VoucherResponse.data.message ||
+  //             "Voucher code verified successfully",
+  //           voucherDetails: VoucherResponse?.data?.data || null,
+  //         },
+  //         failed: {
+  //           status: false,
+  //           message: "",
+  //         },
+  //       }));
+  //       localStorage.setItem("voucherVerified", "true");
+  //       localStorage.setItem(
+  //         "VoucherData",
+  //         JSON.stringify(VoucherResponse?.data?.data),
+  //       );
+  //       localStorage.setItem(
+  //         "voucherCode",
+  //         VoucherResponse?.data?.data?.voucherCode,
+  //       );
+  //       localStorage.setItem(
+  //         "voucherAmount",
+  //         VoucherResponse?.data?.data?.amount,
+  //       );
+  //       localStorage.setItem(
+  //         "voucherAmount",
+  //         VoucherResponse?.data?.data?.amount,
+  //       );
+  //       localStorage.setItem(
+  //         "voucherSuccessMessage",
+  //         VoucherResponse?.data?.message,
+  //       );
+  //       setIsVouherVerified(true);
+  //     }
+  //     return VoucherResponse.data;
+  //   } catch (error) {
+  //     console.error(error);
+  //     setVoucherResponseData((prev) => ({
+  //       ...prev,
+  //       failed: {
+  //         status: true,
+  //         message:
+  //           error?.response?.data?.message || "Failed to verify voucher code",
+  //       },
+  //     }));
+  //     setVerifyVoucherLoading(false);
+  //   } finally {
+  //     setVerifyVoucherLoading(false);
+  //   }
+  // };
 
   return (
     <div className="position-relative">
@@ -3200,7 +3200,7 @@ const StudentRegistrationFrom = () => {
                         )}
                       </div>
                     </div>
-                    <div className="form-group text-start col-lg-3 col-md-6">
+                    {/* <div className="form-group text-start col-lg-3 col-md-6">
                       <label
                         className="form-label fs-s text_color"
                         htmlFor="voucherCode"
@@ -3273,7 +3273,7 @@ const StudentRegistrationFrom = () => {
                           )
                         )}
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="form-group text-start col-lg-3 col-md-6">
                       <label
@@ -4689,16 +4689,16 @@ const StudentRegistrationFrom = () => {
                 </p>
                 <p className="p-0 fs-14 black_300 ">
                   {" "}
-                  <IoMdMail className="fs-16 ms-3" /> info@teksacademy.com
+                  <IoMdMail className="fs-16 ms-3" />  info@futuregentechnologies.com
                 </p>
                 <p className="p-0 fs-14 black_300">
                   <IoCall className="fs-16 ms-3" />
-                  1800-120-4748{" "}
+                  91 98489 47799{" "}
                 </p>
                 <p className="p-0 fs-14 black_300">
                   {" "}
                   <PiAtBold className="fs-16 ms-3" />
-                  www.teksacademy.com
+                  www.futuregentechnologies.com
                 </p>
               </div>
               <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-center ">

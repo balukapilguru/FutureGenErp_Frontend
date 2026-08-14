@@ -2022,7 +2022,7 @@ input:disabled {
 
 .register_bg_image {
   /* background-image: url(./src/assets/images/login_bg.png); */
-  background-image: url(../../../src/assets/images/login_bg.png);
+  background-image: url(../src/assets/images/login_bg.png);
   background-position: 100%;
   background-size: cover;
   background-position: center;

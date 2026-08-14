@@ -39,7 +39,7 @@ const defaultFields = [
     { label: "Name", value: "", type: "text" },
     { label: "Email", value: "", type: "email" },
     { label: "Phone Number", value: "", type: "text" },
-    { label: "Voucher Code", value: "", type: "text" },
+    // { label: "Voucher Code", value: "", type: "text" },
 ];
 
 const convertTo24HourFormat = (time12h) => {
@@ -219,7 +219,7 @@ const CreateRegistrationForm = () => {
             "Form Start Date": "activeFrom",
             "Form Closing Date": "activeTo",
             "Exam End Date": "examEndDate",
-            "Voucher Code": "voucherCode",
+            // "Voucher Code": "voucherCode",
         };
 
         fields.forEach((field) => {
@@ -261,7 +261,7 @@ const CreateRegistrationForm = () => {
                                     "Duration (in minutes)",
                                     "Form Start Date",
                                     "Form Closing Date",
-                                    "Voucher Code",
+                                    // "Voucher Code",
                                 ].includes(field.label);
 
                                 let disabled = !isEditable;

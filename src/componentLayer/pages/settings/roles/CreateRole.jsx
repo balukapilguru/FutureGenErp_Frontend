@@ -352,34 +352,34 @@ export const CreateRole = () => {
           ],
         },
 
-        {
-          module: "Vouchers",
-          all: false,
-          submenus: [
-            {
-              module: "Vouchers Data",
-              all: false,
-              canCreate: false,
-              canRead: false,
-              canUpdate: false,
-              canDelete: false,
-            },
-          ],
-        },
-        {
-          module: "Wallet",
-          all: false,
-          submenus: [
-            {
-              module: "Withdrawal Requests",
-              all: false,
-              canCreate: false,
-              canRead: false,
-              canUpdate: false,
-              canDelete: false,
-            },
-          ],
-        },
+        // {
+        //   module: "Vouchers",
+        //   all: false,
+        //   submenus: [
+        //     {
+        //       module: "Vouchers Data",
+        //       all: false,
+        //       canCreate: false,
+        //       canRead: false,
+        //       canUpdate: false,
+        //       canDelete: false,
+        //     },
+        //   ],
+        // },
+        // {
+        //   module: "Wallet",
+        //   all: false,
+        //   submenus: [
+        //     {
+        //       module: "Withdrawal Requests",
+        //       all: false,
+        //       canCreate: false,
+        //       canRead: false,
+        //       canUpdate: false,
+        //       canDelete: false,
+        //     },
+        //   ],
+        // },
         {
           module: "Settings",
           all: false,

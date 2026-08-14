@@ -15,7 +15,8 @@ import { useAuthContext } from "../../../dataLayer/hooks/useAuthContext";
 import { usePermissionsProvider } from "../../../dataLayer/hooks/usePermissionsProvider";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { IoTicketOutline } from "react-icons/io5";
-import { BiWallet } from "react-icons/bi";
+// import { BiWallet } from "react-icons/bi";
+import fgLogo from "../../../assets/images/FG-LOGO.png";
 
 const Sidemenu = ({ isExpanded }) => {
   const navigate = useNavigate();
@@ -24,10 +25,10 @@ const Sidemenu = ({ isExpanded }) => {
   const { permission } = usePermissionsProvider();
 
   const profile = AuthState?.user?.profile;
-  const branchLogoImage = AuthState?.user;
-  const branchLogo = branchLogoImage?.branch_setting?.logoName
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
-    : null;
+  // const branchLogoImage = AuthState?.user;
+  // const branchLogo = branchLogoImage?.branch_setting?.logoName
+  //   ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
+  //   : null;
 
   // Function to check if any child path is active (for parent menus)
   const isChildActive = (childPaths) => {
@@ -76,17 +77,17 @@ const Sidemenu = ({ isExpanded }) => {
               <div className="text-center">
                 <NavLink to={"/"}>
                   <img
-                    src={isExpanded ? branchLogo : TeksSmallLogo}
+                    src={isExpanded ? fgLogo : fgLogo}
                     className={
                       isExpanded
-                        ? "img-fluid logo_css"
-                        : "mini_logo_css open img-fluid"
+                        ? "img-fluid logo_css bg-white"
+                        : "mini_logo_css open img-fluid bg-white"
                     }
                     alt="Branch Logo"
                     onError={(e) => {
                       e.target.src = isExpanded
-                        ? branchLogo || Teks_Logo
-                        : TeksSmallLogo;
+                        ? fgLogo || fgLogo
+                        : fgLogo;
                     }}
                   />
                 </NavLink>
@@ -637,7 +638,7 @@ const Sidemenu = ({ isExpanded }) => {
                 </GateKeeper>
 
                 {/* Vouchers */}
-                <GateKeeper requiredModule="Vouchers" requiredPermission="all">
+                {/* <GateKeeper requiredModule="Vouchers" requiredPermission="all">
                   <li className="sidebar-item cursor-pointer">
                     <div
                       className={`sidebar-link has-dropdown ${
@@ -676,10 +677,10 @@ const Sidemenu = ({ isExpanded }) => {
                       </GateKeeper>
                     </ul>
                   </li>
-                </GateKeeper>
+                </GateKeeper> */}
 
                 {/* Wallet */}
-                <GateKeeper requiredModule="Wallet" requiredPermission="all">
+                {/* <GateKeeper requiredModule="Wallet" requiredPermission="all">
                   <li className="sidebar-item cursor-pointer">
                     <div
                       className={`sidebar-link has-dropdown ${
@@ -718,7 +719,7 @@ const Sidemenu = ({ isExpanded }) => {
                       </GateKeeper>
                     </ul>
                   </li>
-                </GateKeeper>
+                </GateKeeper> */}
 
                 {/* Reports */}
                 <GateKeeper requiredModule="Reports" requiredPermission="all">

@@ -237,7 +237,7 @@ function OrganizationProfile() {
                                       </th>
                                       <td className="fs-13 black_300  organization-table-border ">
                                         {" "}
-                                        info@teksacademy.com1
+                                        info@futuregentechnologies.com
                                       </td>
                                     </tr>
                                     <tr>
@@ -249,7 +249,7 @@ function OrganizationProfile() {
                                       </th>
                                       <td className="fs-13 black_300  organization-table-border ">
                                         {" "}
-                                        https://erp.teksacademy.com
+                                        https://futuregentechnologies.com
                                       </td>
                                     </tr>
                                     <tr>
