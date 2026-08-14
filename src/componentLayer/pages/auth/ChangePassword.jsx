@@ -147,12 +147,7 @@ const ChangePassword = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 mt-3">
-              <div className="text-center mt-sm-5 mb-1 text-white-50 ">
-                <div>
-                  <a className="d-inline-block auth-logo bg-white">
-                    <img src={ fgLogo ? fgLogo : fgLogo} alt="Login page logo" height="40" />
-                  </a>
-                </div>
+             
               </div>
             </div>
           </div>
@@ -161,6 +156,10 @@ const ChangePassword = () => {
               <div className=" card">
                 <div className="p-4 card-body">
                   <div className="text-center">
+                    <div>
+                  <a className="d-inline-block auth-logo bg-white">
+                    <img src={ fgLogo ? fgLogo : fgLogo} alt="Login page logo" height="40" />
+                  </a>
                     <h5 className="login_welcome_text">Create new password!</h5>
                     <p className=" login_welcome_description">
                       Your new password must be different from previous used

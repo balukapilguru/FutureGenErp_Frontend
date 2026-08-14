@@ -70,12 +70,7 @@ const Login = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="text-center mt-sm-5 mb-1 text-white-50 ">
-                <div className="bg-white">
-                  
-                    <img src={Teks_Logo} alt="Login page logo" height="40" />
-                </div>
-              </div>
+             
             </div>
           </div>
           <div className="justify-content-center row mt-3">
@@ -83,6 +78,10 @@ const Login = () => {
               <div className="mt-3 card">
                 <div className="p-4 card-body">
                   <div className="text-center mt-2">
+                    <div className="bg-white">
+                  
+                    <img src={Teks_Logo} alt="Login page logo" height="40" />
+                </div>
                     <h5 className="login_welcome_text">Welcome Back!</h5>
                     {/* <p className="text-mute login_welcome_description">
                       Sign in to continue to TeksAcademy.
