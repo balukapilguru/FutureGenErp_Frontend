@@ -70,8 +70,8 @@ const Login = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="text-center mt-sm-5 mb-1 text-white-50">
-                <div>
+              <div className="text-center mt-sm-5 mb-1 text-white-50 ">
+                <div className="bg-white">
                   
                     <img src={Teks_Logo} alt="Login page logo" height="40" />
                 </div>

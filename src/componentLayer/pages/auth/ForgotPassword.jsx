@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Teks_Logo from "../../../assets/images/Teks_Logo.svg";
+import Teks_Logo from "../../../assets/images/FG-LOGO.png";
 import "../../../assets/css/Login.css";
 import { AuthContext } from "../../../dataLayer/context/authContext/AuthContextProvider";
 import gif from "../../../assets/images/GIF_01.gif";
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
               <div className="text-center mt-sm-5  mb-1 text-white-50">
                 <div>
                   <a
-                    className="d-inline-block auth-logo"
+                    className="d-inline-block auth-logo bg-white"
                     href="/velzon/react/default"
                   >
                     <img
