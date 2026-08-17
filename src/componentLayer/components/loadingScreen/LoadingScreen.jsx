@@ -1,8 +1,8 @@
 
 import "./LoadingScreen.css"
 const LoadingScreen = () => {
-    const text1 = "Teks";
-    const text2 = "Academy";
+    const text1 = "Future";
+    const text2 = "Gen";
     return (
         <div className="wrapper">
             <div className="text-part">
