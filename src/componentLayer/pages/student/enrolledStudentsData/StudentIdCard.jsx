@@ -154,7 +154,7 @@ const StudentIdCard = () => {
         <div className="studentid">
           <div className="idcard1" ref={componentRefff}>
             <div className="teksimg">
-              <img className="mb-4" src={branchLogo ? branchLogo : fgLogo} alt="Logo" />
+              <img className="mb-4" src={fgLogo} alt="Logo" />
             </div>
             <div className="card_Content">
               <div className="studid-photo text-center">

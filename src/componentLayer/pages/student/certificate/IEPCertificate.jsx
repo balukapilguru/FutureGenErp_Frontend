@@ -3,7 +3,7 @@ import Button from "../../../components/button/Button";
 import BackButton from "../../../components/backbutton/BackButton";
 import { MdLocalPrintshop } from "react-icons/md";
 import { useReactToPrint } from "react-to-print";
-import infozit from "../../../../assets/images/Infoz-IT.svg";
+import infozit from "../../../../assets/images/FG-LOGO.png";
 import "../../../../assets/css/IEPCertificate.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
@@ -193,7 +193,7 @@ const IEPCertificate = () => {
                             <h6 className="black_300">Bhaskar Saragadam</h6>
                             <h6 className="black_300">Project Manager</h6>
                             <h6 className="black_300">
-                              InfozIT Solution (A Unit of Kapil Knowledge Hub
+                              Future Gen (A Unit of Kapil Knowledge Hub
                               Pvt Ltd)
                             </h6>
                           </div>
@@ -208,15 +208,15 @@ const IEPCertificate = () => {
                         <div className="d-flex justify-content-around">
                           <h6 className="">
                             <RiGlobalLine className="me-1" />
-                            www.infozit.com
+                            www.futuregentechnologies.com
                           </h6>
                           <h6 className="">
                             <CiMail className="me-1" />
-                            info@infozit.com
+                            info@futuregentechnologies.com
                           </h6>
                           <h6 className="">
                             <IoIosCall className="me-1" />
-                            +91-6281160120
+                             +91 98489 47799
                           </h6>
                         </div>
                       </div>

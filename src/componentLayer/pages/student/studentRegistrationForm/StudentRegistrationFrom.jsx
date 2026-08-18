@@ -4703,7 +4703,7 @@ const StudentRegistrationFrom = () => {
               </div>
               <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-center ">
                 <img
-                  src={branchLogo ? branchLogo : mainLogo}
+                  src={ mainLogo}
                   alt="Branch Logo"
                   className=" w-75 "
                 />

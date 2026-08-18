@@ -63,7 +63,7 @@ const FeeAdminInvoice = () => {
         <div className="invoice" ref={componentRefff}>
           <div className="invoice-border black_300 border-black d-flex justify-content-center">
             <img
-              src={branchLogo ? branchLogo : mainLogo}
+              src={mainLogo}
               className="img-fluid logoinvoice_css"
               alt="Branch Logo"
             />

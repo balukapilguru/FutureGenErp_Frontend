@@ -18,7 +18,7 @@ import icon1 from "../../../../assets/images/certificate_images/telephone-call.s
 import icon2 from "../../../../assets/images/certificate_images/envelope (3).svg";
 import { useParams } from "react-router-dom";
 import { ERPApi } from "../../../../serviceLayer/interceptor.jsx";
-import infozit from "../../../../assets/images/Infoz-IT.svg";
+import infozit from "../../../../assets/images/FG-LOGO.png";
 import { useLoaderData } from "react-router-dom";
 
 export const intrernshipCertificateLoader = async ({ params }) => {
@@ -155,7 +155,7 @@ const IntrernshipCertificate = () => {
                   <div className="inter-info">
                     <p className="position-absolute completion-info">
                       For his/her successful completion of the internship
-                      program at <span>Infoz IT </span>as the role{" "}
+                      program at <span>Future Gen </span>as the role{" "}
                       <span> {certificatePrint?.courses} Intern</span> for the
                       duration of{" "}
                       <span>
