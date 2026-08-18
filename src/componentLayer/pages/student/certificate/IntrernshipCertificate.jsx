@@ -43,9 +43,15 @@ const IntrernshipCertificate = () => {
     content: () => componentRef.current,
     pageStyle: `
       @page {
-        size: landscape !important;
+        size: A4 landscape !important;
+        margin: 0 !important;
       }
-      
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+      }
     `,
   });
   const data = useLoaderData();

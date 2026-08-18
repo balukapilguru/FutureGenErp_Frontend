@@ -124,3 +124,20 @@ object-fit: cover;
   position: relative;
   bottom: 15px;
 }
+
+@media print {
+  @page {
+    size: portrait;
+    margin: 15mm;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .idcard1 {
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+  }
+}

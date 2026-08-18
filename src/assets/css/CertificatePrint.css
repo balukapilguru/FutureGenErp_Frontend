@@ -258,13 +258,18 @@
     margin: 0;
   }
 
-  body * {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body:has(.cert-page-wrap) *:not(.cert-page-wrap, .cert-page-wrap *) {
     visibility: hidden;
   }
 
   .cert-page-wrap,
   .cert-page-wrap * {
-    visibility: visible;
+    visibility: visible !important;
   }
 
   .cert-page-wrap {
@@ -275,6 +280,7 @@
     padding: 0;
     min-height: unset;
     display: block;
+    width: 100%;
   }
 
   .cert-outer-box {
@@ -282,6 +288,8 @@
     min-height: 1050px;
     box-shadow: none;
     margin: 0 auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 
