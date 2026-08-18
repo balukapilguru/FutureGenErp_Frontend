@@ -118,8 +118,8 @@ const FeeAdminInvoice = () => {
                 </strong>
               </p>
               <span className=" black_300 fs-14">
-                <b className="ps-2  black_300 fs-14 ">CIN : </b>
-                U80100TG2018PTC123853
+                <b className="ps-2  black_300 fs-14 ">PAN : </b>
+                  AALFF5087H
               </span>{" "}
               <br />
               <span className="   black_300 fs-14">

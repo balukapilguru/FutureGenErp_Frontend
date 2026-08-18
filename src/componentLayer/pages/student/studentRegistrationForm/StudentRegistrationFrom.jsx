@@ -4681,11 +4681,11 @@ const StudentRegistrationFrom = () => {
             <div className="row">
               <div className="col-12 col-md-5 col-lg-5 col-xl-5">
                 <h5 className="black_300 fw-600 fs_18 p-0 ms-3">
-                  Kapil Knowledge Hub Private Limited
+                  Futuregen Technologies Private Limited
                 </h5>
                 <p className="p-0 fs-14 black_300 ms-3">
                   {" "}
-                  CIN: U80100TG2018PTC123853
+                  PAN : AALFF5087H
                 </p>
                 <p className="p-0 fs-14 black_300 ">
                   {" "}
@@ -4708,7 +4708,7 @@ const StudentRegistrationFrom = () => {
                   className=" w-75 "
                 />
                 <p className="fs-15 mt-4 black_300">
-                  <b className="">Branch:</b> {studentdata?.branch}
+                  <b className="">Branch:</b> Kukatpally, Hyderabad
                 </p>
               </div>
               <div className=" mt-3 ">

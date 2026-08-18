@@ -202,8 +202,8 @@ const IEPCertificate = () => {
                       <div className="address-iep p-2 mt-4 mb-5">
                         <h6 className="">
                           <IoLocationOutline className="ms-5" />{" "}
-                          F.No:501,502,5th floor, Amsri Faust Building,
-                          Secunderabad-500003
+                          Door No. 2-22-227/16, Second Floor, Krishna Commercial Complex,
+                           Kukatpally, Hyderabad, Telangana – 500072
                         </h6>
                         <div className="d-flex justify-content-around">
                           <h6 className="">

@@ -11,9 +11,9 @@ import course from "../../../assets/images/setting_tabs_icons/course.png";
 import sources from "../../../assets/images/setting_tabs_icons/sources.png";
 import oraganisation from "../../../assets/images/setting_tabs_icons/oraganisation.png";
 import Bank from "../../../assets/images/setting_tabs_icons/Bank.png";
-import entity from "../../../assets/images/setting_tabs_icons/entity.jpg";
-import entityUsers from "../../../assets/images/setting_tabs_icons/entityusers.png";
-import entityBranch from "../../../assets/images/setting_tabs_icons/entityBranch.png";
+// import entity from "../../../assets/images/setting_tabs_icons/entity.jpg";
+// import entityUsers from "../../../assets/images/setting_tabs_icons/entityusers.png";
+// import entityBranch from "../../../assets/images/setting_tabs_icons/entityBranch.png";
 import BackButton from "../../components/backbutton/BackButton";
 import Curriculum from "../../../assets/images/setting_tabs_icons/curriculam.png";
 import GateKeeper from "../../../rbac/GateKeeper";
@@ -72,21 +72,21 @@ export const SettingsTabs = () => {
       icon: Bank,
       link: "bankDetails",
     },
-    {
-      name: "Entity",
-      icon: entity,
-      link: "entity",
-    },
-    {
-      name: "Entity Branch",
-      icon: entityBranch,
-      link: "entity-branch",
-    },
-    {
-      name: "Entity User",
-      icon: entityUsers,
-      link: "entity-users",
-    },
+    // {
+    //   name: "Entity",
+    //   icon: entity,
+    //   link: "entity",
+    // },
+    // {
+    //   name: "Entity Branch",
+    //   icon: entityBranch,
+    //   link: "entity-branch",
+    // },
+    // {
+    //   name: "Entity User",
+    //   icon: entityUsers,
+    //   link: "entity-users",
+    // },
     // {
     //   name: "Issues",
     //   icon: "",

@@ -328,6 +328,22 @@ const SettingsRoutes = [
     }],
   },
   {
+    path: "admissionfee/edit/:id",
+    element: <RouteBlocker requiredModule="Settings" requiredPermission="all" submenumodule="Admission Fee" submenuReqiredPermission="canUpdate" />,
+    children: [{
+      index: true,
+      element: <CreateAdmissionFee />
+    }],
+  },
+  {
+    path: "admissionfee/edit",
+    element: <RouteBlocker requiredModule="Settings" requiredPermission="all" submenumodule="Admission Fee" submenuReqiredPermission="canUpdate" />,
+    children: [{
+      index: true,
+      element: <CreateAdmissionFee />
+    }],
+  },
+  {
     path: "createbankdetails",
     element: <RouteBlocker requiredModule="Settings" requiredPermission="all" submenumodule="Bank Details" submenuReqiredPermission="canCreate" />,
     children: [{

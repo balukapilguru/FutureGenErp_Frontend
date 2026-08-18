@@ -241,8 +241,8 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
             <div className="application-template bg-white p-5 text-dark text-start" style={{ fontFamily: "serif", fontSize: "13px", lineHeight: "1.4" }}>
                 <div className="row border-bottom pb-2">
                     <div className="col-7">
-                        <h5 className="fw-bold m-0" style={{ fontSize: "18px" }}>Kapil Knowledge Hub Private Limited</h5>
-                        <p className="m-0 small">CIN: U80100TG2018PTC123853</p>
+                        <h5 className="fw-bold m-0" style={{ fontSize: "18px" }}>Futuregen Technologies Private Limited</h5>
+                        <p className="m-0 small">PAN : AALFF5087H</p>
                         <p className="m-0 small"><IoMdMail />  info@futuregentechnologies.com</p>
                         <p className="m-0 small"><IoCall /> 91 98489 47799</p>
                         <p className="m-0 small"><PiAtBold /> www.futuregentechnologies.com</p>

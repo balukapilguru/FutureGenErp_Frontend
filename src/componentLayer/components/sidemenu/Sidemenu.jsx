@@ -223,7 +223,7 @@ const Sidemenu = ({ isExpanded }) => {
                       </GateKeeper>
 
                       {/* Installments */}
-                      <GateKeeper
+                      {/* <GateKeeper
                         requiredModule="Student Management"
                         requiredPermission="all"
                         submenumodule="Installment"
@@ -240,7 +240,7 @@ const Sidemenu = ({ isExpanded }) => {
                             Installments
                           </NavLink>
                         </li>
-                      </GateKeeper>
+                      </GateKeeper> */}
 
                       {/* Certificate */}
                       <GateKeeper
