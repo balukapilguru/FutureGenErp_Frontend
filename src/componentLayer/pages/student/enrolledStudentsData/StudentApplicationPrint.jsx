@@ -130,7 +130,7 @@ const StudentApplicationPrint = () => {
           <div className="container-fluid " ref={componentRefff}>
             <div className="page">
               <div className="application">
-                <div className="row">
+                <div className="row justify-content-between align-items-center">
                   <div className="col-12 col-md-5 col-lg-5 col-xl-5">
                     <h5 className="black_300 fw-600 fs_18 p-0 ms-3">
                       Futuregen Technologies Private Limited
@@ -153,7 +153,7 @@ const StudentApplicationPrint = () => {
                       www.futuregentechnologies.com
                     </p>
                   </div>
-                  <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-center ">
+                  <div className=" col-md-6 col-lg-6 col-xl-6 text-center ">
                     <img
                       src= {fgLogo}
                       alt="Branch Logo"
