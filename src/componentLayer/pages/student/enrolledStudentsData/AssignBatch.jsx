@@ -108,6 +108,12 @@ const AssignBatch = ({ show, handleClose, student, branch }) => {
           batchType: "",
           batchId: null,
         };
+        setTrainersList([]);
+        setTrainerBatchesList([]);
+        setFetchErrors({
+          trainersList: false,
+          trainer: false,
+        });
         break;
       }
       case "curriculum": {
@@ -122,6 +128,11 @@ const AssignBatch = ({ show, handleClose, student, branch }) => {
           batchType: "",
           batchId: null,
         };
+        setTrainerBatchesList([]);
+        setFetchErrors((prev) => ({
+          ...prev,
+          trainer: false,
+        }));
         await fetchTrainersList(assignBatchState?.branchId, curriculumId);
         break;
       }
@@ -176,12 +187,20 @@ const AssignBatch = ({ show, handleClose, student, branch }) => {
   const fetchTrainersList = async (branchId, curriculumId) => {
     if (branchId && curriculumId) {
       try {
+        setFetchErrors((prev) => ({
+          ...prev,
+          trainersList: false,
+        }));
         const { data, status } = await ERPApi.get(
           `${import.meta.env.VITE_API_URL
           }/batch/gettrainerdetails?branchId=${branchId}&curriculumId=${curriculumId}`
         );
         if (status === 200) {
-          setTrainersList(data?.trainerDetails);
+          setTrainersList(data?.trainerDetails || []);
+          setFetchErrors((prev) => ({
+            ...prev,
+            trainersList: false,
+          }));
         }
       } catch (error) {
         console.error(error);
@@ -191,24 +210,45 @@ const AssignBatch = ({ show, handleClose, student, branch }) => {
           trainersList: true,
         }));
       }
+    } else {
+      setTrainersList([]);
+      setFetchErrors((prev) => ({
+        ...prev,
+        trainersList: false,
+      }));
     }
   };
 
   const fetchSingleTrainer = async (trainerId, trainingMode, batchType, curriculumId) => {
     if (trainerId && trainingMode && batchType) {
       try {
+        setFetchErrors((prev) => ({
+          ...prev,
+          trainer: false,
+        }));
         const { data, status } = await ERPApi.get(
           `/batch/gettrainerdetails?trainerId=${trainerId}&trainingMode=${trainingMode}&batchStatus=${batchType}&curriculumId=${curriculumId}`
         );
         if (status === 200) {
-          setTrainerBatchesList(data);
+          setTrainerBatchesList(data || []);
+          setFetchErrors((prev) => ({
+            ...prev,
+            trainer: false,
+          }));
         }
       } catch (error) {
         setTrainerBatchesList([]);
-        setFetchErrors({
+        setFetchErrors((prev) => ({
+          ...prev,
           trainer: true,
-        });
+        }));
       }
+    } else {
+      setTrainerBatchesList([]);
+      setFetchErrors((prev) => ({
+        ...prev,
+        trainer: false,
+      }));
     }
   };
 
@@ -332,10 +372,12 @@ const AssignBatch = ({ show, handleClose, student, branch }) => {
   };
   useEffect(() => {
     if (fetcher?.data?.status == 200) {
-      handleClose()
-      setLoading((prev) => !prev)
+      handleClose();
+      setLoading(false);
+    } else if (fetcher?.data) {
+      setLoading(false);
     }
-  }, [fetcher])
+  }, [fetcher]);
 
 
   const [branchList, setBranchList] = useState();

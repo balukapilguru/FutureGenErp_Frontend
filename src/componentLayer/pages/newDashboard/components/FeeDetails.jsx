@@ -227,16 +227,60 @@ const FeeDetails = ({
             return;
         }
 
+        if (filteredDatesFeeDetails.fromDate && !filteredDatesFeeDetails.toDate) {
+            toast.error("Please select To Date.");
+            return;
+        }
+        if (!filteredDatesFeeDetails.fromDate && filteredDatesFeeDetails.toDate) {
+            toast.error("Please select From Date.");
+            return;
+        }
+        if (filteredDatesFeeDetails.fromDate && filteredDatesFeeDetails.toDate) {
+            if (new Date(filteredDatesFeeDetails.toDate) < new Date(filteredDatesFeeDetails.fromDate)) {
+                toast.error("To Date cannot be earlier than From Date.");
+                return;
+            }
+        }
+
+        if (filteredDatesFeeDetails.admissionFromDate && !filteredDatesFeeDetails.admissionToDate) {
+            toast.error("Please select Admission To Date.");
+            return;
+        }
+        if (!filteredDatesFeeDetails.admissionFromDate && filteredDatesFeeDetails.admissionToDate) {
+            toast.error("Please select Admission From Date.");
+            return;
+        }
+        if (filteredDatesFeeDetails.admissionFromDate && filteredDatesFeeDetails.admissionToDate) {
+            if (new Date(filteredDatesFeeDetails.admissionToDate) < new Date(filteredDatesFeeDetails.admissionFromDate)) {
+                toast.error("Admission To Date cannot be earlier than Admission From Date.");
+                return;
+            }
+        }
+
+        const closeOffcanvas = () => {
+            const offcanvasElement = document.getElementById("offcanvasRightOne");
+            if (offcanvasElement) {
+                const offcanvasInstance = Offcanvas.getInstance(offcanvasElement) || (window.bootstrap ? new window.bootstrap.Offcanvas(offcanvasElement) : null);
+                if (offcanvasInstance) {
+                    offcanvasInstance.hide();
+                } else {
+                    const closeBtn = offcanvasElement.querySelector('[data-bs-dismiss="offcanvas"]');
+                    if (closeBtn) closeBtn.click();
+                }
+            }
+        };
+
         if ((userData?.user?.profile === "Counsellor" || userData?.user?.profile === "counsellor")) {
             const fetchStudentData = async (payload) => {
                 const response = await getStudentsListInFeeDetails(payload)
                 setStudentData(response?.data?.students)
                 return response.data
             }
-            fetchStudentData({
+            await fetchStudentData({
                 enquirytakenby: userData?.user?.id,
                 ...filteredDatesFeeDetails,
-            })
+            });
+            closeOffcanvas();
             return;
         } else if (activeBranchFeeDetails && activeCouncellorFeeDetails) {
             try {
@@ -294,9 +338,7 @@ const FeeDetails = ({
                 console.error(error, "Filter Error Fee Details Tab")
             }
         }
-        const offcanvasElement = document.getElementById("offcanvasRightOne");
-        const offcanvasInstance = Offcanvas.getInstance(offcanvasElement);
-        offcanvasInstance?.hide();
+        closeOffcanvas();
     };
     /** Filter End */
 
@@ -396,6 +438,7 @@ const FeeDetails = ({
                             id="rdob"
                             name="fromDate"
                             type="date"
+                            max={filteredDatesFeeDetails?.toDate || undefined}
                             onChange={handleDateChangeInFeeDeatils}
                             value={filteredDatesFeeDetails?.fromDate}
                         />
@@ -410,6 +453,7 @@ const FeeDetails = ({
                             id="rdob"
                             name="toDate"
                             type="date"
+                            min={filteredDatesFeeDetails?.fromDate || undefined}
                             onChange={handleDateChangeInFeeDeatils}
                             value={filteredDatesFeeDetails?.toDate}
                         />
@@ -424,6 +468,7 @@ const FeeDetails = ({
                             id="rdob"
                             name="admissionFromDate"
                             type="date"
+                            max={filteredDatesFeeDetails?.admissionToDate || undefined}
                             onChange={handleDateChangeInFeeDeatils}
                             value={filteredDatesFeeDetails?.admissionFromDate}
                         />
@@ -437,6 +482,7 @@ const FeeDetails = ({
                             id="rdob"
                             name="admissionToDate"
                             type="date"
+                            min={filteredDatesFeeDetails?.admissionFromDate || undefined}
                             onChange={handleDateChangeInFeeDeatils}
                             value={filteredDatesFeeDetails?.admissionToDate}
                         />

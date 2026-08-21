@@ -396,6 +396,37 @@ const TotalEnrollmentsStatusGraph = ({ getTaboneData, userData, TotalEnrollmentG
             toast.error("Please fill in at least one filter criteria.");
             return;
         }
+
+        if (filterDatesTotalEnrollments.fromDate && !filterDatesTotalEnrollments.toDate) {
+            toast.error("Please select To Date.");
+            return;
+        }
+
+        if (!filterDatesTotalEnrollments.fromDate && filterDatesTotalEnrollments.toDate) {
+            toast.error("Please select From Date.");
+            return;
+        }
+
+        if (filterDatesTotalEnrollments.fromDate && filterDatesTotalEnrollments.toDate) {
+            if (new Date(filterDatesTotalEnrollments.toDate) < new Date(filterDatesTotalEnrollments.fromDate)) {
+                toast.error("To Date cannot be earlier than From Date.");
+                return;
+            }
+        }
+
+        const closeOffcanvas = () => {
+            const offcanvasElement = document.getElementById("offcanvasRight");
+            if (offcanvasElement) {
+                const offcanvasInstance = Offcanvas.getInstance(offcanvasElement) || (window.bootstrap ? new window.bootstrap.Offcanvas(offcanvasElement) : null);
+                if (offcanvasInstance) {
+                    offcanvasInstance.hide();
+                } else {
+                    const closeBtn = offcanvasElement.querySelector('[data-bs-dismiss="offcanvas"]');
+                    if (closeBtn) closeBtn.click();
+                }
+            }
+        };
+
         if ((userData?.user?.profile === "Counsellor" || userData?.user?.profile === "counsellor")) {
             const fetchStudentData = async (payload) => {
                 const response = await getStudentsListInTotalEnrollments(payload)
@@ -403,11 +434,12 @@ const TotalEnrollmentsStatusGraph = ({ getTaboneData, userData, TotalEnrollmentG
                 setStudentTableData(response?.data?.students)
                 return response.data
             }
-            fetchStudentData({
+            await fetchStudentData({
                 enquirytakenby: userData?.user?.id,
                 ...filterDatesTotalEnrollments
-            })
-            return
+            });
+            closeOffcanvas();
+            return;
         } else if (activeBranch && activeCouncellor) {
             try {
                 const mergedObject = { branch: activeBranch, ...filterDatesTotalEnrollments };
@@ -420,12 +452,6 @@ const TotalEnrollmentsStatusGraph = ({ getTaboneData, userData, TotalEnrollmentG
                     })
                 ]);
 
-                // setTablesData((prev) => ({
-                //     ...prev,
-                //     enrolmentsInBranch: Graphresponse.data.branches,
-                //     enrollmentsByCouncellors: response?.data?.enquirytakenbyData || [],
-                //     councellerWiseStudentsDetails: studentData.data.students || []
-                // }))
                 setFirstTableData(Graphresponse?.data?.branches)
                 setSecondTableData(response?.data?.enquirytakenbyData)
                 setBranchManagerData(response?.data?.enquirytakenbyData)
@@ -449,15 +475,6 @@ const TotalEnrollmentsStatusGraph = ({ getTaboneData, userData, TotalEnrollmentG
                 setSecondTableData(response?.data?.enquirytakenbyData)
                 setBranchManagerData(response?.data?.enquirytakenbyData)
                 setStudentTableData([]);
-
-
-
-                // setTablesData((prev) => ({
-                //     ...prev,
-                //     enrolmentsInBranch: Graphresponse.data.branches,
-                //     enrollmentsByCouncellors: response?.data?.enquirytakenbyData || [],
-                //     councellerWiseStudentsDetails: []
-                // }))
                 updateTopEnrollers(Graphresponse)
             } catch (error) {
                 console.error(error)
@@ -471,11 +488,7 @@ const TotalEnrollmentsStatusGraph = ({ getTaboneData, userData, TotalEnrollmentG
                 console.error(error)
             }
         }
-        const offcanvasElement = document.getElementById("offcanvasRight");
-        const offcanvasInstance = Offcanvas.getInstance(offcanvasElement);
-
-
-        offcanvasInstance.hide();
+        closeOffcanvas();
     };
     // Branch Search function
     const searchBranch = async (search) => {

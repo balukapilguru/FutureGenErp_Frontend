@@ -43,23 +43,38 @@ export const StudentDataAction = async ({ request, params }) => {
         }
     } else if (type === "assignBatch") {
         const assignBatchData = JSON.parse(formData.get("assignBatchData"));
-        const id = formData.get("id")
-        const { data, status } = await toast.promise(
-            ERPApi.patch(
-                `${import.meta.env.VITE_API_URL}/batch/assignStudent/${id
-                }`,
+        const id = formData.get("id");
+        try {
+            const response = await ERPApi.patch(
+                `${import.meta.env.VITE_API_URL}/batch/assignStudent/${id}`,
                 assignBatchData
-            ),
-            {
-                success:"Batch Assigned Successfully",
-                pending: "Assigning Student to Batch",
-                error: "Error while assigning batch",
+            );
+            if (response?.status === 200 || response?.status === 201) {
+                toast.success("Batch Assigned Successfully");
+                return {
+                    data: response?.data,
+                    status: response?.status,
+                    success: true,
+                };
             }
-        );
-        return {
-            data,
-            status
-        };
+            return {
+                data: response?.data,
+                status: response?.status,
+            };
+        } catch (error) {
+            console.error("Assign batch error:", error);
+            const errorMessage =
+                error?.response?.data?.message ||
+                error?.response?.data?.error ||
+                error?.message ||
+                "Error while assigning batch";
+            toast.error(errorMessage);
+            return {
+                success: false,
+                status: error?.response?.status || 400,
+                error: errorMessage,
+            };
+        }
     }
 
     return { success: false, message: "Unknown or missing action type." };

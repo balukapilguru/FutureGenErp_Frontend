@@ -11,12 +11,12 @@ import BackButton from "../../../components/backbutton/BackButton";
 import { toast } from "react-toastify";
 
 const defaultOrgDetails = {
-  organization_name: "Teks Academy",
+  organization_name: "Futuregen Technologies ",
   institute_type: "Computer/Dance/Music Training Institute",
-  office_address: "501, 5th floor, green house building, Ameerpet",
-  whatsapp_number: "9492910454",
-  landline_number: "18001204748",
-  email: "info@futuregentechnologies.com",
+  office_address: "	Kukatpally",
+  whatsapp_number: "9848947799",
+  landline_number: "9848947799",
+  email: "i	info@futuregentechnologies.com",
   branding_type: "subdomain",
   domain_name: "https://futuregentechnologies.com",
   account_validity: "N/A",

@@ -97,6 +97,7 @@ const FirstTabTables = ({
                             name="fromDate"
                             type="date"
                             value={filterDatesTotalEnrollments?.fromDate}
+                            max={filterDatesTotalEnrollments?.toDate || undefined}
                             onChange={handleDateChange}
                         />
                     </div>
@@ -110,6 +111,7 @@ const FirstTabTables = ({
                             id="rdob"
                             name="toDate"
                             type="date"
+                            min={filterDatesTotalEnrollments?.fromDate || undefined}
                             onChange={handleDateChange}
                             value={filterDatesTotalEnrollments?.toDate}
                         />

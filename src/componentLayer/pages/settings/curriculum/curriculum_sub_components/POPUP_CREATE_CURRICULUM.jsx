@@ -38,7 +38,6 @@ const POPUP_CREATE_CURRICULUM = ({
         setExamOptions(response.data?.exams || []);
       } catch (err) {
         console.error("Failed to fetch exams:", err);
-        toast.error("Failed to fetch exams.");
       }
     };
 

@@ -106,7 +106,7 @@ const RegistrationLinkForm = () => {
             <div>Time: {registrationFormData?.examTime}</div>
             <div>Duration: {registrationFormData?.time} minutes</div>
           </div>
-          <button className="btn btn-primary w-100" onClick={() => window.location.reload()}>
+          <button className="btn btn_primary w-100" onClick={() => window.location.reload()}>
             ← Register Another Student
           </button>
         </div>

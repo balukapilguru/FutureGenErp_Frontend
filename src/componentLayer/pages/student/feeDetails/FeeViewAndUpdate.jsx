@@ -659,6 +659,29 @@ const FeeViewAndUpdate = () => {
 
     // Installment Update
     const handleInstallmentSubmit = async (index) => {
+        // Validate required fields first
+        if (!Installments[index]?.paidamount) {
+            toast.error("Please Enter Paid Amount");
+            return;
+        }
+        if (!Installments[index]?.paiddate) {
+            toast.error("Please Select the Paid Date");
+            return;
+        }
+        if (!Installments[index]?.modeofpayment) {
+            toast.error("Please Select Mode Of Payment");
+            return;
+        }
+        // Transaction ID is required for all payment modes except Cash and loan
+        const requiresTransactionID =
+            Installments[index]?.modeofpayment !== "Cash" &&
+            Installments[index]?.modeofpayment !== "loan" &&
+            Installments[index]?.modeofpayment !== "";
+        if (requiresTransactionID && !Installments[index]?.transactionID) {
+            toast.error("Please Enter Transaction ID");
+            return;
+        }
+
         if (
             Installments[index]?.paidamount > 0 &&
             Installments[index]?.paiddate &&
@@ -723,17 +746,6 @@ const FeeViewAndUpdate = () => {
                     toast.error("Error");
                     return;
                 }
-            }
-        } else {
-            if (!Installments[index].paidamount) {
-                toast.error("Please Enter Paid Amount");
-                return;
-            } else if (!Installments[index].paiddate) {
-                toast.error("Please  Select the Paid Date");
-                return;
-            } else if (!Installments[index].modeofpayment) {
-                toast.error(" Please Select Mode Of Payment");
-                return;
             }
         }
     };
@@ -1206,7 +1218,7 @@ const FeeViewAndUpdate = () => {
                                                                             <input
                                                                                 type="date"
                                                                                 className="w-100 form-control fs-s bg-form txt-color"
-                                                                                placeholder="18-Mar-2024"
+                                                                                placeholder="18-Mar-2026"
                                                                                 required
                                                                                 id="paiddate"
                                                                                 name="paiddate"

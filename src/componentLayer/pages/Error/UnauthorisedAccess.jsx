@@ -10,7 +10,7 @@ import {
 
 import { BsKeyFill } from "react-icons/bs";
 import { HiMiniCommandLine } from "react-icons/hi2";
-import Teks_Shape from "../../../assets/images/Teks_Shape.svg"
+import Teks_Shape from "../../../assets/images/FG-LOGO.png"
 function UnauthorisedAccess() {
   const [showDetails, setShowDetails] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -36,12 +36,12 @@ function UnauthorisedAccess() {
               fontWeight: "700",
             }}
           >
-            <img src={Teks_Shape} alt="Teks Shape" style={{ width: "40px", height: "40px" }} />
+            <img src={Teks_Shape} alt="Future Gen" style={{ width: "40px", height: "40px" }} />
           </div>
 
           <div className="text-start">
             
-            <h5 className="mb-0 fw-bold text-dark">Teks academy®</h5>
+            <h5 className="mb-0 fw-bold text-dark">Future Gen®</h5>
 
             <small className="text-muted text-uppercase">
               ERP Security Shield

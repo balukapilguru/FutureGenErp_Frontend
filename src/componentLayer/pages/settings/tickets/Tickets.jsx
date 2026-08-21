@@ -409,7 +409,7 @@ const Tickets = () => {
                                             <th scope="col" className="fs-13 lh-xs fw-600">Description</th>
                                             <th scope="col" className="fs-13 lh-xs fw-600">Date</th>
                                             <th scope="col" className="fs-13 lh-xs fw-600 text-truncate"
-                                                style={{maxWidth: "120px"}}>Ticket Nmuber
+                                                style={{maxWidth: "120px"}}>Ticket Number
                                             </th>
                                             <GateKeeper
                                                 requiredModule="Tickets Mangement"

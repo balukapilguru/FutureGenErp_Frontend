@@ -257,6 +257,9 @@ const FeeView = () => {
     } else if (!admissionFee.modeofpayment) {
       return toast.error("Please Select the Mode of Payment");
     }
+    else if (!admissionFee.transactionID) {
+      return toast.error("Please Enter Transaction ID");
+    }
     let initialpayment = [];
     initialpayment.push(admissionFee);
     initialpayment[0].initialamount = parseInt(
@@ -704,7 +707,8 @@ const FeeView = () => {
       if (
         installments[index]?.paidamount > 0 &&
         installments[index]?.paiddate &&
-        installments[index]?.modeofpayment
+        installments[index]?.modeofpayment &&
+        installments[index]?.transactionid
       ) {
         if (
           installments[index].paidamount > 0 &&
@@ -836,9 +840,11 @@ const FeeView = () => {
         if (!installments[index].paidamount) {
           toast.error("Please Enter Paid amount");
         } else if (!installments[index].paiddate) {
-          toast.error("please Enter Paid date");
+          toast.error("Please Enter Paid date");
         } else if (!installments[index].modeofpayment) {
-          toast.error(" please Enter mode of payment");
+          toast.error("Please Enter mode of payment");
+        } else if (!installments[index].transactionid) {
+          toast.error("Please Enter Transaction ID");
         }
       }
     } catch (error) {

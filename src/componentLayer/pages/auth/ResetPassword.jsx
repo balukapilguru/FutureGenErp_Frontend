@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import Teks_Logo from "../../../assets/images/Infoz-IT.svg";
+import Teks_Logo from "../../../assets/images/FG-LOGO.png";
 import "../../../assets/css/Login.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from '../../../dataLayer/hooks/useAuthContext';

@@ -670,10 +670,9 @@ const StudentRoutes = [
         path: "refundform",
         element: (
             <RouteBlocker
-                requiredModule="Student Management"
-                requiredPermission="all"
-                submenumodule="refund"
-                submenuReqiredermission="canCreate"
+ requiredModule="Student Management"
+                        submenumodule="refund"
+                        submenuReqiredPermission="canCreate"
             />
         ),
         children: [{index: true, element: <RefundForm/>}],
