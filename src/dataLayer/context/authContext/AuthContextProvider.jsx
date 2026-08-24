@@ -225,72 +225,40 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const userLogout = async (navigate) => {
-    // let token = JSON.parse(localStorage.getItem("data"))?.token;
-
     try {
-      const { data, status } = await toast.promise(
+      await toast.promise(
         axios.post(
           `${import.meta.env.VITE_API_URL}/auth/logout`,
           {},
           {
             headers: {
-              Authorization: `Bearer ${AuthState?.token}`,
+                Authorization: `Bearer ${AuthState?.token}`,
             },
+            validateStatus: (status) => status === 498 || status >= 200 && status < 300,
           }
         ),
         {
           pending: "Please Wait Logging Out!...",
-          success: {
-            render({
-              data: {
-                data: { updated },
-              },
-            }) {
-              return `Log Out Successfully..!`;
-            },
-          },
-          error: "Unauthorized Access 🤯",
+          success: "Log Out Successfully..!",
+          error: false,
         }
       );
-
-      if (status === 200) {
-        navigate("/auth/login");
-        localStorage.removeItem("data");
-        localStorage.removeItem("password");
-
-        localStorage.removeItem("emailVerificationState");
-        localStorage.removeItem("studentDetails");
-        localStorage.removeItem("parentsDetails");
-        localStorage.removeItem("educationDetails");
-        localStorage.removeItem("admissionDetails");
-        localStorage.removeItem("feeAndBillingDetails");
-
-
-        DispatchAuth({ type: "SET_USER", payload: {} });
-        DispatchAuth({ type: "SET_TOKEN", payload: "" });
-        DispatchAuth({ type: "SET_ROLE", payload: {} });
-        DispatchAuth({ type: "SET_PASSWORD_LOCALSTORAGE", payload: "" });
-      }
     } catch (e) {
-      console.error(e,"Logout data");
-      if (e.status === 498) {
-        navigate("/auth/login");
-        localStorage.removeItem("data");
-        localStorage.removeItem("password");
+      console.error(e, "Logout data");
+    } finally {
+      localStorage.removeItem("data");
+      localStorage.removeItem("password");
+      localStorage.removeItem("emailVerificationState");
+      localStorage.removeItem("studentDetails");
+      localStorage.removeItem("parentsDetails");
+      localStorage.removeItem("educationDetails");
+      localStorage.removeItem("admissionDetails");
 
-        localStorage.removeItem("emailVerificationState");
-        localStorage.removeItem("studentDetails");
-        localStorage.removeItem("parentsDetails");
-        localStorage.removeItem("educationDetails");
-        localStorage.removeItem("admissionDetails");
-        localStorage.removeItem("feeAndBillingDetails");
-
-        
-        DispatchAuth({ type: "SET_USER", payload: {} });
-        DispatchAuth({ type: "SET_TOKEN", payload: "" });
-        DispatchAuth({ type: "SET_ROLE", payload: {} });
-        DispatchAuth({ type: "SET_PASSWORD_LOCALSTORAGE", payload: "" });
-      }
+      DispatchAuth({ type: "SET_USER", payload: {} });
+      DispatchAuth({ type: "SET_TOKEN", payload: "" });
+      DispatchAuth({ type: "SET_ROLE", payload: {} });
+      DispatchAuth({ type: "SET_PASSWORD_LOCALSTORAGE", payload: "" });
+      navigate("/auth/login", { replace: true });
     }
   };
 
