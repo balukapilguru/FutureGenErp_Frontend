@@ -762,7 +762,7 @@ const Installment = () => {
                   <CustomTable
                     data={showInstallment ? installmentData?.latestInstallments : admissionData?.latestInstallments}
                     columns={columns}
-                    actions={actions}
+                    // actions={actions}
                   />
                 </div>
                 {
