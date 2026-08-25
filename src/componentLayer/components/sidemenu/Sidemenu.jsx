@@ -46,7 +46,7 @@ const Sidemenu = ({ isExpanded }) => {
     "/student/requestedcertificate",
     "/student/refunddata",
     "/student/feedback",
-    "/student/abroad",
+    // "/student/abroad",
   ];
 
   // Batch Management child paths
@@ -321,7 +321,7 @@ const Sidemenu = ({ isExpanded }) => {
                           </NavLink>
                         </li>
                       </GateKeeper>
-                      <GateKeeper
+                      {/* <GateKeeper
                         requiredModule="Student Management"
                         requiredPermission="all"
                         submenumodule="Abroad Study"
@@ -338,7 +338,7 @@ const Sidemenu = ({ isExpanded }) => {
                             Abroad Students
                           </NavLink>
                         </li>
-                      </GateKeeper>
+                      </GateKeeper> */}
                     </ul>
                   </li>
                 </GateKeeper>
