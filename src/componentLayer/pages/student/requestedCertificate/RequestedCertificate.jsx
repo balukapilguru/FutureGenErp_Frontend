@@ -31,7 +31,7 @@ export const requestCertificateLoader = async ({ request, params }) => {
         ERPApi.get(`/settings/getbranch`),
         ERPApi.get(`/batch/course`, {
           params: {
-            search: url.searchParams.get('course_label') || ''
+            search: url.searchParams.get('courses_label') || ''
           }
         }),
       ]);
@@ -84,11 +84,11 @@ function RequestedCertificate() {
       type: "search-select",
       inputname: "filter[course]",
       urlParam: "filter[course]",
-      urlSearchParam: "course_label",
+      urlSearchParam: "courses_label",
       options: coursesList ?? [],
       fetchOptions: async (search) => {
         const coursesData = await ERPApi.get(`/batch/course`, {
-          params: { search: search ? search : searchParams.get('course_label') ?? "" }
+          params: { search: search ? search : searchParams.get('courses_label') ?? "" }
         });
         const coursesList = coursesData?.data?.reversedCourses?.map((item) => ({
           label: item?.course_name,
@@ -170,7 +170,7 @@ function RequestedCertificate() {
     initialFilterStructure.forEach(filter => {
       newSearchParams.delete(filter.urlParam || filter.inputname || filter?.urlSearchParam);
     });
-    newSearchParams.delete("filter[course_label]");
+    newSearchParams.delete("filter[courses_label]");
 
     setSearchParams(newSearchParams);
   };

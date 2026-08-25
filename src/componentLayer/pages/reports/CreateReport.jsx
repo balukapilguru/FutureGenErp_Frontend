@@ -1046,7 +1046,7 @@ function CreateReport() {
                   <div className="card ">
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
-                        <h5 className="pb-2 black_300">Dimensions</h5>
+                        <h5 className="pb-2 black_300">Dimensions <span className="text-danger">*</span></h5>
                         <div>
                           {reportForm.reportType === "Multi Dimensional" &&
                             Object.keys(reportForm.dimensions).length < 3 && (

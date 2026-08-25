@@ -359,18 +359,18 @@ const FeeViewAndUpdate = () => {
                 return;
             }
         }
-        // else if (admissionState?.modeofpayment !== "loan" || admissionState?.modeofpayment !== "Cash") {
+        else if (admissionState?.modeofpayment !== "loan" || admissionState?.modeofpayment !== "Cash") {
 
-        //     // if (!admissionState?.transactionID) {
-        //     //     toast.error("Transaction Id is Required");
-        //     //     return;
+            if (!admissionState?.transactionID) {
+                toast.error("Transaction Id is Required");
+                return;
 
-        //     // }
-        //     // if(admissionState?.transactionID?.replace(/\s/g, '').length<3){
-        //     //     toast.error("Invalid Transaction Id");
-        //     //     return;                                
-        //     // }
-        // }
+            }
+            if(admissionState?.transactionID?.replace(/\s/g, '').length<3){
+                toast.error("Invalid Transaction Id");
+                return;                                
+            }
+        }
 
         Swal.fire({
             title: "Confirm Admission Fee Payment",

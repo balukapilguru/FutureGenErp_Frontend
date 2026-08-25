@@ -218,7 +218,7 @@ const {id} = useParams()
       return;
     }
     //banks
-    if (BranchFrom.banks.length <= 0) {
+    if (BranchFrom?.banks?.length <= 0) {
       setErrors((prev) => ({
         ...prev,
         banks: "banks is  required",
@@ -327,7 +327,7 @@ const {id} = useParams()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = BankDetailsState;
+    const data = BranchFrom;
     try {
       await fetcher?.submit(data, {
         method: "PATCH",
@@ -412,7 +412,7 @@ const {id} = useParams()
                               htmlFor="branch_name"
                               className="form-label fs-s fw-medium black_300"
                             >
-                              Branch Name <span className="text-danger">*</span>
+                              Branch Name
                             </label>
                             <input
                               type="text"
