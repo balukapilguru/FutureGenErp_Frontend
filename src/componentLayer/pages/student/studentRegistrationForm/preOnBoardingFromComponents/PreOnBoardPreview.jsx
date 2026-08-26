@@ -437,7 +437,7 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
                     <p className="fw-bold mt-2">2. Fees:</p>
                     <p className="ms-3">1. Students shall pay the course fees as per the due dates/terms mentioned. Fees shall not be refundable/non-transferable/non-adjustable under any circumstances.</p>
                     <p className="ms-3">2. Late payment of fees shall attract penal interest @1.5% per month.</p>
-                    <p className="ms-3">3. Teks Academy reserves the right to cancel admission in case of non-payment of fees.</p>
+                    <p className="ms-3">3. Future Gen Technologies reserves the right to cancel admission in case of non-payment of fees.</p>
                     <p className="ms-3">4. Course fees may vary based on merit and other relevant factors determined by the Academy.</p>
 
                     <p className="fw-bold mt-2">3. Course Material:</p>

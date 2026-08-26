@@ -128,7 +128,7 @@ const FeeAdminInvoice = () => {
               </span>{" "}
               <br />
               <span className="ps-2   fs-14  black_300">
-                <b>Branch : </b> Teks-{studentData && studentData?.branch}
+                <b>Branch : </b> Future Gen Technologies-{studentData && studentData?.branch}
               </span>
             </div>
 
@@ -834,7 +834,7 @@ export default FeeAdminInvoice;
 //         <div className="invoice-border black_300 border-black d-flex justify-content-center">
 //           <img
 //             className=" my-3 w-25"
-//             // src="https://www.admin.teksacademy.com/static/media/Teks-Logo-with-Trade.07d75f2c54a71180af08.png"
+//             // src="https://www.admin.teksacademy.com/static/media/Future Gen Technologies-Logo-with-Trade.07d75f2c54a71180af08.png"
 //             src="https://teksacademy.com/assets/img/logo/mainlogo.svg"
 //             alt="logo"
 //           />
@@ -974,7 +974,7 @@ export default FeeAdminInvoice;
 //             </span>{" "}
 //             <br />
 //             <span className="ps-2   fs-14  black_300">
-//               <b>Branch : </b> Teks-{studentdata && studentdata?.branch}
+//               <b>Branch : </b> Future Gen Technologies-{studentdata && studentdata?.branch}
 //             </span>
 //           </div>
 
@@ -1685,7 +1685,7 @@ export default FeeAdminInvoice;
 //         <div className="invoice-border black_300 border-black d-flex justify-content-center">
 //           <img
 //             className=" my-3 w-25"
-//             // src="https://www.admin.teksacademy.com/static/media/Teks-Logo-with-Trade.07d75f2c54a71180af08.png"
+//             // src="https://www.admin.teksacademy.com/static/media/Future Gen Technologies-Logo-with-Trade.07d75f2c54a71180af08.png"
 //             src="https://teksacademy.com/assets/img/logo/mainlogo.svg"
 //             alt="logo"
 //           />
@@ -1824,7 +1824,7 @@ export default FeeAdminInvoice;
 //             </span>{" "}
 //             <br />
 //             <span className="ps-2   fs-14  black_300">
-//               <b>Branch : </b> Teks-{studentdata && studentdata?.branch}
+//               <b>Branch : </b> Future Gen Technologies-{studentdata && studentdata?.branch}
 //             </span>
 //           </div>
 

@@ -30,7 +30,7 @@ const fieldTypes = {
 const selectOptions = {
   Gender: ["Select", "Male", "Female", "Other"],
   "Working Professional": ["Select", "Yes", "No"],
-  "Are you a Teks Student?": ["Select", "Yes", "No"],
+  "Are you a Future Gen Technologies Student?": ["Select", "Yes", "No"],
   "Highest Qualification": [
     "Select",
     "High School",

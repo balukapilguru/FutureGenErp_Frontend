@@ -5507,7 +5507,7 @@ const StudentRegistrationFrom = () => {
                     </p>
 
                     <p className="black_300 fs-14 ms-3">
-                      3.Teks academy reserves its right to cancel the admission,
+                      3.Future Gen Technologies reserves its right to cancel the admission,
                       in case of non-payment of fees, as per the agreed due
                       dates.
                     </p>
@@ -5515,7 +5515,7 @@ const StudentRegistrationFrom = () => {
                     <p className="black_300 fs-14 ms-3">
                       4. Course fees may vary from student to student, based on
                       their merit and other relevant factors as determined by
-                      the Teks Academy (“Academy) administration, at its sole
+                      the Future Gen Technologies administration, at its sole
                       discretion.
                     </p>
                   </div>
@@ -5529,7 +5529,7 @@ const StudentRegistrationFrom = () => {
                     <p className="black_300 fs-14 ms-3">
                       {" "}
                       1. The course material provided by the Academy is the
-                      intellectual property of Teks Academy and cannot be
+                      intellectual property of Future Gen Technologies and cannot be
                       reproduced or used for commercial purposes without written
                       permission of the Academy.
                     </p>
@@ -5952,7 +5952,7 @@ const StudentRegistrationFrom = () => {
 
                     <p className="black_300 fs-14 ">
                       Further I hereby give my consent for Kapil Group of
-                      Companies or Teks Academy and its affiliates, to send
+                      Companies or Future Gen Technologies and its affiliates, to send
                       their promotional emails/communication to me.
                     </p>
                   </div>

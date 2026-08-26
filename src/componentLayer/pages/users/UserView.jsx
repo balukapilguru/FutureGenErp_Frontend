@@ -150,7 +150,7 @@ const UserView = () => {
             <div className="card h-auto">
               <div className="rounded-top">
                 <div className="btn_primary text-center rounded-top">
-                  <h6 className="py-2 mb-0">Welcome to Teks Academy</h6>
+                  <h6 className="py-2 mb-0">Welcome to Future Gen Technologies</h6>
                 </div>
                 <div className="my-2">
 

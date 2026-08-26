@@ -84,7 +84,7 @@ const Login = () => {
                 </div>
                     <h5 className="login_welcome_text">Welcome Back!</h5>
                     {/* <p className="text-mute login_welcome_description">
-                      Sign in to continue to TeksAcademy.
+                      Sign in to continue to Future Gen Technologies.
                     </p> */}
                   </div>
                   <div className="p-2 mt-4">

@@ -688,7 +688,7 @@ function OrganizationProfile() {
                                   <tbody>
                                     <tr>
                                       <td className="fs-13 black_300 fw-500 lh-xs bg_light ">
-                                        Teks
+                                        Future Gen Technologies
                                       </td>
                                       <td className="fs-13 black_300  lh-xs bg_light">
                                         21-03-2021
@@ -790,7 +790,7 @@ function OrganizationProfile() {
                                   <tbody>
                                     <tr>
                                       <td className="fs-13 black_300 fw-500 lh-xs bg_light ">
-                                        Teks
+                                        Future Gen Technologies
                                       </td>
                                       <td className="fs-13 black_300  lh-xs bg_light">
                                         21-03-2021
@@ -898,7 +898,7 @@ function OrganizationProfile() {
                                   <tbody>
                                     <tr>
                                       <td className="fs-13 black_300 fw-500 lh-xs bg_light ">
-                                        Teks
+                                        Future Gen Technologies
                                       </td>
                                       <td className="fs-13 black_300  lh-xs bg_light">
                                         21-03-2021
