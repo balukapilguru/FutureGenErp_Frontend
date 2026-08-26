@@ -13,6 +13,7 @@ import Button from "../../../components/button/Button";
 import BackButton from "../../../components/backbutton/BackButton";
 import mainLogo from "../../../../assets/images/FG-LOGO.png";
 import DefaultBG from "../../../../assets/images/student_idCard_images/DefaultimgBG.png";
+import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import {
   useFetcher,
@@ -1445,8 +1446,14 @@ const StudentRegistrationFrom = () => {
 
   const branchImage = studentdata?.branches?.logoName;
   const branchLogo = branchImage
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
+  const studentImageSource = studentdata?.imagePerview
+    || (studentdata?.studentImg?.startsWith("data:")
+      ? studentdata.studentImg
+      : studentdata?.studentImg
+        ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
+        : null);
   useEffect(() => {
     let timer;
 
@@ -1527,9 +1534,17 @@ const StudentRegistrationFrom = () => {
 
       // 3. CREATE_ENROLLEMENT & PDF SUBMISSION
       if (fetcher.data.type === "CREATE_ENROLLEMENT") {
-        const updatedData = fetcher.data.data;
-        const studentId = updatedData?.studentId;
-        setStudentData(studentId);
+        const updatedData = fetcher.data.data || {};
+        const enrolledStudent = updatedData?.studentId || updatedData;
+        setStudentData({
+          ...studentDetails,
+          ...parentsDetails,
+          ...educationDetails,
+          ...admissionDetails,
+          ...feeAndBillingDetails,
+          ...enrolledStudent,
+          id: enrolledStudent?.id,
+        });
       }
     }
   }, [fetcher.state, fetcher.data]);
@@ -1556,18 +1571,29 @@ const StudentRegistrationFrom = () => {
         compress: true,
       });
 
-      await pdf.html(input, {
-        margin: [10, 10, 10, 10],
-        autoPaging: "text",
-        html2canvas: {
-          scale: 1.5,
-          useCORS: true,
-          backgroundColor: "#ffffff",
-        },
-        x: 8,
-        y: 8,
-        width: 194,
+      const canvas = await html2canvas(input, {
+        scale: 1.5,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
       });
+
+      const imageData = canvas.toDataURL("image/jpeg", 0.85);
+      const imageWidth = 210;
+      const pageHeight = 297;
+      const imageHeight = (canvas.height * imageWidth) / canvas.width;
+      let remainingHeight = imageHeight;
+      let position = 0;
+
+      pdf.addImage(imageData, "JPEG", 0, position, imageWidth, imageHeight);
+      remainingHeight -= pageHeight;
+
+      while (remainingHeight > 0) {
+        position = remainingHeight - imageHeight;
+        pdf.addPage();
+        pdf.addImage(imageData, "JPEG", 0, position, imageWidth, imageHeight);
+        remainingHeight -= pageHeight;
+      }
 
       const pdfBlob = pdf.output("blob");
       const pdfFile = new File([pdfBlob], "Student_Application.pdf", {
@@ -1585,7 +1611,7 @@ const StudentRegistrationFrom = () => {
       //     method: "POST",
       //     encType: "multipart/form-data",
       // });
-      studentApplicationPrintAction(formData);
+      await studentApplicationPrintAction(formData);
 
       // 4. CLEANUP & SUCCESS
       localStorage.removeItem("emailVerificationState");
@@ -1615,7 +1641,7 @@ const StudentRegistrationFrom = () => {
         "Enrollment was successful but PDF failed to generate.",
         "warning",
       );
-      navigate(`/student/feeUpdate?studentId=${studentId}`);
+      navigate(`/student/feeUpdate?studentId=${studentdata?.id}`);
     }
   };
 
@@ -3304,7 +3330,7 @@ const StudentRegistrationFrom = () => {
                         )}
                       </div>
                     </div>
-                    <div className="form-group text-start col-lg-3 col-md-6">
+                    {/* <div className="form-group text-start col-lg-3 col-md-6">
                       <label
                         className="form-label fs-s text_color"
                         htmlFor="readyToGoAbroad"
@@ -3339,7 +3365,7 @@ const StudentRegistrationFrom = () => {
                           </p>
                         )}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="row mt-3">
@@ -4670,10 +4696,11 @@ const StudentRegistrationFrom = () => {
         className="container-fluid "
         ref={componentRefff}
         style={{
-          position: "absolute",
-          left: "-9999px",
-          top: "-9999px",
+          position: "fixed",
+          left: 0,
+          top: 0,
           width: "210mm",
+          zIndex: -1,
         }}
       >
         <div className="page">
@@ -4828,16 +4855,15 @@ const StudentRegistrationFrom = () => {
                   </div>
 
                   <div className=" col-12 col-md-5 col-lg-4 col-xl-4  text-center mt-2">
-                    {!studentdata?.studentImg && (
+                    {!studentImageSource && (
                       <img src={DefaultBG} alt="photo" />
                     )}
 
-                    {studentdata?.studentImg && (
+                    {studentImageSource && (
                       <img
-                        // src={`https://teksacademyimages.s3.amazonaws.com/${studentdata?.studentImg}`}
-                        src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
+                        src={studentImageSource}
                         className="w-50 admform-sd  "
-                        alt=""
+                        alt="Student"
                       />
                     )}
                   </div>

@@ -43,7 +43,7 @@ const FeeAdminInvoice = () => {
   const { AuthState } = useAuthContext();
   const branchLogoImage = studentData?.branches?.logoName
   const branchLogo = branchLogoImage
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage}`
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage}`
     : null;
 
   const componentRefff = React.useRef();

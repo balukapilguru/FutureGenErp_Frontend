@@ -967,7 +967,7 @@ export const Batch = () => {
 
           {/* placement preparation
            */}
-          <GateKeeper
+          {/* <GateKeeper
             requiredModule="Batch Management"
             submenumodule="Pending Batches"
             submenuReqiredPermission="canRead"
@@ -995,8 +995,8 @@ export const Batch = () => {
                 </button>
               </Link>
             </li>
-          </GateKeeper>
-          <GateKeeper
+          </GateKeeper> */}
+          {/* <GateKeeper
             requiredModule="Batch Management"
             submenumodule="Pending Batches"
             submenuReqiredPermission="canRead"
@@ -1024,7 +1024,7 @@ export const Batch = () => {
                 </button>
               </Link>
             </li>
-          </GateKeeper>
+          </GateKeeper> */}
         </ul>
         <div className="tab-content mt-3" id="pills-tabContent">
           <div className="row">

@@ -40,7 +40,7 @@ const StudentIdCard = () => {
 
 
   const branchLogo = branchImage
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
   // const downloadIdCard = () => {
   //   if (!imageLoaded) {
@@ -161,7 +161,7 @@ const StudentIdCard = () => {
                 <img
                   src={
                     StudentIdCard?.studentImg
-                      ? `https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`
+                      ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`
                       : Defaultimg
                   }
                   alt="Student Img"
@@ -293,7 +293,7 @@ export default StudentIdCard;
 //                     <img
 //                       className=" w-75"
 //                       // src={`https://teksacademyimages.s3.amazonaws.com/${StudentIdCard?.studentImg}`}
-//                       src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`}
+//                       src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`}
 //                       alt="photo"
 //                     />
 //                   )}

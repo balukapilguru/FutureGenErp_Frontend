@@ -20,7 +20,7 @@ const LaunchBatch = () => {
   const { batchType } = useParams();
 
   // S3 Base URL
-  const BASE_S3_URL = "https://teksacademy.s3.ap-south-1.amazonaws.com/";
+  const BASE_S3_URL = "https://futuregen.s3.ap-south-1.amazonaws.com/";
 
   const [activeButton, setActiveButton] = useState("toggle-button2");
   const [showOptions, setShowOptions] = useState(false);

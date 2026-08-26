@@ -27,7 +27,7 @@ const Sidemenu = ({ isExpanded }) => {
   const profile = AuthState?.user?.profile;
   // const branchLogoImage = AuthState?.user;
   // const branchLogo = branchLogoImage?.branch_setting?.logoName
-  //   ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
+  //   ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
   //   : null;
 
   // Function to check if any child path is active (for parent menus)
@@ -434,7 +434,7 @@ const Sidemenu = ({ isExpanded }) => {
                       </GateKeeper>
 
                       {/* Placed Students */}
-                      <GateKeeper
+                      {/* <GateKeeper
                         requiredModule="Batch Management"
                         requiredPermission="all"
                         submenumodule="Placed Students"
@@ -451,7 +451,7 @@ const Sidemenu = ({ isExpanded }) => {
                             Placed Students
                           </NavLink>
                         </li>
-                      </GateKeeper>
+                      </GateKeeper> */}
 
                       {/* Attendance */}
                       <GateKeeper
@@ -475,7 +475,7 @@ const Sidemenu = ({ isExpanded }) => {
                     </ul>
                   </li>
                 </GateKeeper>
-                <GateKeeper
+                {/* <GateKeeper
                   requiredModule="Demo batches"
                   requiredPermission="all"
                 >
@@ -591,10 +591,9 @@ const Sidemenu = ({ isExpanded }) => {
                         </NavLink>
                       </li>
                       </GateKeeper>
-                       */}
                     </ul>
                   </li>
-                </GateKeeper>
+                </GateKeeper> */}
                 {/* Referrals */}
                 <GateKeeper requiredModule="Referrals" requiredPermission="all">
                   <li className="sidebar-item cursor-pointer">

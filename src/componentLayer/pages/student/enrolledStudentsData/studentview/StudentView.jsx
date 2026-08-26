@@ -86,7 +86,7 @@ const StudentView = () => {
                       {studentdata?.studentImg && (
                         <img
                           className=" w-50 admform-sd "
-                          src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
+                          src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
                           alt="photo"
                         />
                       )}
@@ -262,7 +262,7 @@ const StudentView = () => {
                                   </div>
                                   <div className="modal-body text-center">
                                     <img
-                                      src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.aadharCardImage}`}
+                                      src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.aadharCardImage}`}
                                       alt="Preview"
                                       className="img-fluid rounded"
                                     />
@@ -278,7 +278,7 @@ const StudentView = () => {
                                     <button
                                       type="button"
                                       className="btn btn-primary"
-                                      onClick={() => handleDownload(`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.aadharCardImage}`)}
+                                      onClick={() => handleDownload(`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.aadharCardImage}`)}
                                     >
                                       Download Image
                                     </button>

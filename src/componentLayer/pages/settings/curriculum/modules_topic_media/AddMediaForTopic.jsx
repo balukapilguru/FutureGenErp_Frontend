@@ -10,7 +10,7 @@ import Select from "react-select";
 import { ERPApi } from "../../../../../../src/serviceLayer/interceptor";
 
 // S3 Base URL
-const BASE_S3_URL = "https://teksacademy.s3.ap-south-1.amazonaws.com/";
+const BASE_S3_URL = "https://futuregen.s3.ap-south-1.amazonaws.com/";
 
 const AddMediaForTopic = () => {
   const fetcher = useFetcher();

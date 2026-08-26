@@ -96,7 +96,7 @@ const StudentViewTabs = () => {
                 </NavLink>
               </li>
               {/* Attended Jobs */}
-              <li role="presentation" className="me-2">
+              {/* <li role="presentation" className="me-2">
                 <NavLink
                   to={`/student/views/jobs-attended/${registrationNumber ?? studentId}`}
                   className={({ isActive }) =>
@@ -119,7 +119,7 @@ const StudentViewTabs = () => {
                 >
                   Jobs Attended
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
