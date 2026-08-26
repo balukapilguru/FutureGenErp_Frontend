@@ -24,13 +24,13 @@ const Accordian = ({
   // const handlePreviewMedia = (media) => {
   //   if (media.assetType === "pdf") {
   //     setPreviewUrl(
-  //       `https://futuregen.s3.ap-south-1.amazonaws.com/${media.path}`
+  //       `https://teksacademy.s3.ap-south-1.amazonaws.com/${media.path}`
   //     );
   //   }
   // };
 
   const handlePreviewMedia = (media) => {
-    const baseUrl = "https://futuregen.s3.ap-south-1.amazonaws.com/";
+    const baseUrl = "https://teksacademy.s3.ap-south-1.amazonaws.com/";
     const fileUrl = `${baseUrl}${media.path}`;
 
     if (media.assetType === "pdf") {
@@ -146,7 +146,7 @@ const Accordian = ({
                                             loading="lazy"
                                             src={
                                               media.thumbnail
-                                                ? `https://futuregen.s3.ap-south-1.amazonaws.com/${media.thumbnail}`
+                                                ? `https://teksacademy.s3.ap-south-1.amazonaws.com/${media.thumbnail}`
                                                 : thumbnail
                                             }
                                             width="40"

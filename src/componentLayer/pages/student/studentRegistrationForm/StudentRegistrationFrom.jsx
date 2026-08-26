@@ -1446,13 +1446,13 @@ const StudentRegistrationFrom = () => {
 
   const branchImage = studentdata?.branches?.logoName;
   const branchLogo = branchImage
-    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
+    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
   const studentImageSource = studentdata?.imagePerview
     || (studentdata?.studentImg?.startsWith("data:")
       ? studentdata.studentImg
       : studentdata?.studentImg
-        ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
+        ? `https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
         : null);
   useEffect(() => {
     let timer;

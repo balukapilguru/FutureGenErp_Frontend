@@ -203,7 +203,7 @@ const BatchAttendance = () => {
     // Add Student Image (Right Side)
     if (studentInfo?.studentImg) {
       // Validate the URL or Base64 string
-      const imageUrl = `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentInfo.studentImg}`;
+      const imageUrl = `https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentInfo.studentImg}`;
 
       // Load the image and then add it to the PDF
       const image = new Image();

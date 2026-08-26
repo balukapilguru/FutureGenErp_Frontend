@@ -152,7 +152,7 @@ const TicketsView = () => {
 
     const handleImageClick = (imgSrc, chatImg = false) => {
         setSelectedImage(
-            `https://futuregen.s3.ap-south-1.amazonaws.com/support/ticket/${
+            `https://teksacademy.s3.ap-south-1.amazonaws.com/support/ticket/${
                 chatImg ? imgSrc : ticketData?.ticket_screenshot
             }`
         );
@@ -425,7 +425,7 @@ const TicketsView = () => {
                                     {ticketData?.ticket_screenshot !== "" ? (
                                         <div style={{ position: "relative" }}>
                                             <img
-                                                src={`https://futuregen.s3.ap-south-1.amazonaws.com/support/ticket/${ticketData?.ticket_screenshot}`}
+                                                src={`https://teksacademy.s3.ap-south-1.amazonaws.com/support/ticket/${ticketData?.ticket_screenshot}`}
                                                 onClick={handleImageClick}
                                                 alt="Ticket screenshot"
                                                 style={{
@@ -577,7 +577,7 @@ const TicketsView = () => {
                                                                     ?.split(".")
                                                                     .pop()
                                                                     ?.toLowerCase();
-                                                                const fileUrl = `https://futuregen.s3.ap-south-1.amazonaws.com/support/ticket/${msg.imageUrl}`;
+                                                                const fileUrl = `https://teksacademy.s3.ap-south-1.amazonaws.com/support/ticket/${msg.imageUrl}`;
                                                                 const fileName =
                                                                     msg.imageUrl.split("/").pop() ||
                                                                     msg.imageUrl;

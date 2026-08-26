@@ -27,7 +27,7 @@ const Sidemenu = ({ isExpanded }) => {
   const profile = AuthState?.user?.profile;
   // const branchLogoImage = AuthState?.user;
   // const branchLogo = branchLogoImage?.branch_setting?.logoName
-  //   ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
+  //   ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchLogoImage?.branch_setting?.logoName}`
   //   : null;
 
   // Function to check if any child path is active (for parent menus)

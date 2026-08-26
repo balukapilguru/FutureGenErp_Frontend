@@ -2545,7 +2545,7 @@ function EditStudent() {
                           ) : (
                             <img
                               className="img-fluid"
-                              src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${formData?.studentImg}`}
+                              src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${formData?.studentImg}`}
                               alt="default_user_img"
                               width="50%"
                             />
