@@ -276,10 +276,19 @@ const CreateRegistrationForm = () => {
 
                                 return (
                                     <div className="mb-3 col-lg-6 col-md-12 col-sm-12" key={index}>
-                                        {/* <label className="form-label fs-s fw-medium text_color">{field.label}{field.label == "Voucher Code" ? null : <span className="text-danger">*</span>}</label> */}
+                                        <label
+                                            className="form-label fs-s fw-medium text_color"
+                                            htmlFor={`registration-field-${index}`}
+                                        >
+                                            {field.label}
+                                            {field.label !== "Voucher Code" && (
+                                                <span className="text-danger">*</span>
+                                            )}
+                                        </label>
 
                                         {field.type === "select" && selectOptions[field.label] ? (
                                             <select
+                                                id={`registration-field-${index}`}
                                                 className={`form-select ${errors[field.label] ? "is-invalid" : ""}`}
                                                 value={field.value}
                                                 onChange={(e) => handleInputChange(field.label, e)}
@@ -291,6 +300,7 @@ const CreateRegistrationForm = () => {
                                             </select>
                                         ) : (
                                             <input
+                                                id={`registration-field-${index}`}
                                                 type={field.type}
                                                 className={`form-control custom-input ${errors[field.label] ? "is-invalid" : ""}`}
                                                 value={field.value}

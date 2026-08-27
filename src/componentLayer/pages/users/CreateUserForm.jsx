@@ -328,14 +328,22 @@ function CreateUserForm() {
       }));
       return;
     } else if (formData.email) {
-      const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-      if (!emailPattern.test(formData.email)) {
+      const email = formData.email.trim().toLowerCase();
+      const isTrainer = formData.profile?.trim().toLowerCase() === "trainer";
+      const message = isTrainer ? "trainer email should be @futuregentechnologies.com " : "Enter valid email"
+      const emailPattern = isTrainer
+        ? /^[a-z0-9._%+-]+@futuregentechnologies\.com$/
+        : /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+      if (!emailPattern.test(email)) {
         setError((prev) => ({
           ...prev,
-          email: "Enter valid email",
+          email: message,
         }));
         return;
       }
+
+      setFormData((prev) => ({ ...prev, email }));
     }
 
     if (!formData.phonenumber || formData.phonenumber.trim() === "") {

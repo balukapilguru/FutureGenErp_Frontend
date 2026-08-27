@@ -73,7 +73,7 @@ const StudentApplicationPrint = () => {
   
   const branchImage = studentdata?.branches?.logoName
   const branchLogo = branchImage
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
   const handleDownloadPDF = async () => {
     setIsSubmitting(true);
@@ -291,7 +291,7 @@ const StudentApplicationPrint = () => {
                         {studentdata?.studentImg && (
                           <img
                             // src={`https://teksacademyimages.s3.amazonaws.com/${studentdata?.studentImg}`}
-                            src={`https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
+                            src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
                             className="w-50 admform-sd  "
                             alt=""
                           />

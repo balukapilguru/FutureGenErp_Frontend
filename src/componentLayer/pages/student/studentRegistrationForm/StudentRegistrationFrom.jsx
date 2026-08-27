@@ -366,7 +366,7 @@ const StudentRegistrationFrom = () => {
     const OtpNumber = OtpString ? Number(OtpString) : null;
 
     if (!OtpNumber || OtpString.length !== 6) {
-      setErrors((prev) => ({ ...prev, emailOTP: "OTP must be 6 digits long" }));
+      setErrors((prev) => ({ ...prev, emailOTP: "Please Enter Valid OTP" }));
       return;
     }
 
@@ -1446,13 +1446,13 @@ const StudentRegistrationFrom = () => {
 
   const branchImage = studentdata?.branches?.logoName;
   const branchLogo = branchImage
-    ? `https://teksacademy.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
   const studentImageSource = studentdata?.imagePerview
     || (studentdata?.studentImg?.startsWith("data:")
       ? studentdata.studentImg
       : studentdata?.studentImg
-        ? `https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
+        ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
         : null);
   useEffect(() => {
     let timer;

@@ -246,6 +246,7 @@ const AuthContextProvider = ({ children }) => {
     } catch (e) {
       console.error(e, "Logout data");
     } finally {
+      navigate("/auth/login", { replace: true });
       localStorage.removeItem("data");
       localStorage.removeItem("password");
       localStorage.removeItem("emailVerificationState");
@@ -258,7 +259,6 @@ const AuthContextProvider = ({ children }) => {
       DispatchAuth({ type: "SET_TOKEN", payload: "" });
       DispatchAuth({ type: "SET_ROLE", payload: {} });
       DispatchAuth({ type: "SET_PASSWORD_LOCALSTORAGE", payload: "" });
-      navigate("/auth/login", { replace: true });
     }
   };
 

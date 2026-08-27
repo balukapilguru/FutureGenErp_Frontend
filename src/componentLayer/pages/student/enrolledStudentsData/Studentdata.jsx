@@ -845,7 +845,7 @@ function Studentdata() {
                                       <img
                                         src={
                                           item?.studentImg
-                                            ? `https://teksacademy.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${item?.studentImg}`
+                                            ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${item?.studentImg}`
                                             : Defaultimg
                                         }
                                         alt="Student Img"
