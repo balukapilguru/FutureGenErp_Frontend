@@ -1208,61 +1208,61 @@ const StudentRegistrationFrom = () => {
         ...prev,
         enquirydate: "Enquiry Date is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.enquirytakenby) {
       setErrors((prev) => ({
         ...prev,
         enquirytakenby: "Enquiry Taken by is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.coursepackage) {
       setErrors((prev) => ({
         ...prev,
         coursepackage: "Course Package is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.courses) {
       setErrors((prev) => ({ ...prev, courses: "Courses is required" }));
-      return;
+      // return;
     } else if (!admissionDetails?.leadsource[0]?.source) {
       setErrors((prev) => ({
         ...prev,
         leadsource: "Lead Source is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.branch) {
       setErrors((prev) => ({ ...prev, branch: "Branch is required" }));
-      return;
+      // return;
     } else if (!admissionDetails?.modeoftraining) {
       setErrors((prev) => ({
         ...prev,
         modeoftraining: "Mode of Training is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.admissiondate) {
       setErrors((prev) => ({
         ...prev,
         admissiondate: "Admission Date is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.validitystartdate) {
       setErrors((prev) => ({
         ...prev,
         validitystartdate: "Validity Start Date is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.validityenddate) {
       setErrors((prev) => ({
         ...prev,
         validityenddate: "Validity End Date is required",
       }));
-      return;
+      // return;
     } else if (!admissionDetails?.readyToGoAbroad) {
       setErrors((prev) => ({
         ...prev,
         readyToGoAbroad: "Ready to go Abroad selection is required",
       }));
-      return;
+      // return;
     }
     // if (admissionDetails?.voucherCode && !isVouherVerified) {
     //   setErrors((prev) => ({
