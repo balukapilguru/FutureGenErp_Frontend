@@ -106,18 +106,14 @@ const {id} = useParams()
       }
     }
     // GST_NO
-    if (!BranchFrom.GST_NO || BranchFrom.GST_NO?.trim() == "") {
-      setErrors((prev) => ({
-        ...prev,
-        GST_NO: "GST Number required",
-      }));
-      return;
-    } else if (BranchFrom.GST_NO?.trim().replace(/\s/g, "").length <= 2) {
-      setErrors((prev) => ({
-        ...prev,
-        GST_NO: "Enter minimum 3 characters",
-      }));
-      return;
+    if (BranchFrom.GST_NO && BranchFrom.GST_NO?.trim() !== "") {
+      if (BranchFrom.GST_NO?.trim().replace(/\s/g, "").length <= 2) {
+        setErrors((prev) => ({
+          ...prev,
+          GST_NO: "Enter minimum 3 characters",
+        }));
+        return;
+      }
     }
     // address_line1
     if (!BranchFrom.address_line1 || BranchFrom.address_line1?.trim() == "") {
@@ -477,7 +473,7 @@ const {id} = useParams()
                               htmlFor="GST_NO"
                               className="form-label fs-s fw-medium black_300"
                             >
-                              GST-NO<span className="text-danger">*</span>
+                              GST-NO
                             </label>
                             <input
                               type="text"
