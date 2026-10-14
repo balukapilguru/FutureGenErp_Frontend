@@ -5977,8 +5977,7 @@ const StudentRegistrationFrom = () => {
                     </p>
 
                     <p className="black_300 fs-14 ">
-                      Further I hereby give my consent for Kapil Group of
-                      Companies or Future Gen Technologies and its affiliates, to send
+                      Further I hereby give my consent for Future Gen Technologies and its affiliates, to send
                       their promotional emails/communication to me.
                     </p>
                   </div>

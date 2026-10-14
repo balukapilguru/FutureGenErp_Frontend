@@ -193,8 +193,7 @@ const IEPCertificate = () => {
                             <h6 className="black_300">Bhaskar Saragadam</h6>
                             <h6 className="black_300">Project Manager</h6>
                             <h6 className="black_300">
-                              Future Gen (A Unit of Kapil Knowledge Hub
-                              Pvt Ltd)
+                              Future Gen Technologies
                             </h6>
                           </div>
                         </div>

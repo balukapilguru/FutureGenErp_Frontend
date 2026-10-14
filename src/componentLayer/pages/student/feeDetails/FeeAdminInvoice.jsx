@@ -114,7 +114,7 @@ const FeeAdminInvoice = () => {
               <p className="">
                 <strong className="ps-2  black_300 fs-14">
                   {" "}
-                  KAPIL KNOWLEDGE HUB PVT LTD
+                  <b>Future Gen Technologies</b>
                 </strong>
               </p>
               <span className=" black_300 fs-14">
@@ -629,10 +629,10 @@ const FeeAdminInvoice = () => {
             <div className="col-6 m-auto">
               <div className="black-color fs-14">
                 {" "}
-                KAPIL KNOWLEDGE HUB PVT LMD
+                <b>Future Gen Technologies</b>
               </div>
               <div>
-                <small>(Formerly Kapil Food Park Pvt Ltd)</small>
+                <small>(<b>Note:</b> This is system generated invoice singnature not required)</small>
               </div>
             </div>
           </div>
