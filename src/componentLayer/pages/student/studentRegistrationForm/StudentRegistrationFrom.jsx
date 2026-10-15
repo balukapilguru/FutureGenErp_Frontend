@@ -4708,7 +4708,7 @@ const StudentRegistrationFrom = () => {
             <div className="row">
               <div className="col-12 col-md-5 col-lg-5 col-xl-5">
                 <h5 className="black_300 fw-600 fs_18 p-0 ms-3">
-                  Futuregen Technologies Private Limited
+                  Future Gen Technologies Private Limited
                 </h5>
                 <p className="p-0 fs-14 black_300 ms-3">
                   {" "}

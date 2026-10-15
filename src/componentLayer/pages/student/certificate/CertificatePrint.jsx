@@ -115,7 +115,7 @@ const CertificatePrint = () => {
 
                 {/* LOGO */}
                 <div className="cert-logo-section">
-                  <img src={fgLogo} alt="FutureGen Technologies Logo" className="cert-logo-img" />
+                  <img src={fgLogo} alt="Future Gen Technologies Logo" className="cert-logo-img" />
                 </div>
 
                 {/* CERTIFICATE HEADING */}
