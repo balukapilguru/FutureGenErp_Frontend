@@ -34,6 +34,7 @@ import { ERPApi } from "../../../../serviceLayer/interceptor";
 import { PiAtBold } from "react-icons/pi";
 import useFormattedDate from "../../../../dataLayer/hooks/useFormattedDate";
 import { SearchSelect } from "../../../../utils/SearchSelect";
+import StudentTermsAndConditions from "../StudentTermsAndConditions";
 
 const StudentRegistrationFrom = () => {
   const data = useLoaderData();
@@ -212,7 +213,7 @@ const StudentRegistrationFrom = () => {
     parentsname: "",
     parentsnumber: "",
   });
-  const[selectedLeadSource, setSelectedLeadSource] = useState(null);
+  const [selectedLeadSource, setSelectedLeadSource] = useState(null);
 
   const [educationDetails, setEducationDetails] = useState({
     educationtype: "",
@@ -3066,7 +3067,7 @@ const StudentRegistrationFrom = () => {
                           selectedLeadSource
                         }
                         defaultOptions={leadSourceList.length ? leadSourceList : true}
-                        onChange={(selectedOption,val) =>{
+                        onChange={(selectedOption, val) => {
                           handleInputChange(val, "leadsource")
                           setSelectedLeadSource(val)
                         }
@@ -4730,7 +4731,7 @@ const StudentRegistrationFrom = () => {
               </div>
               <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-center ">
                 <img
-                  src={ mainLogo}
+                  src={mainLogo}
                   alt="Branch Logo"
                   className=" w-75 "
                 />
@@ -5500,6 +5501,8 @@ const StudentRegistrationFrom = () => {
                 </div>
 
                 <div className="application-tbl-td p-3">
+                  <StudentTermsAndConditions />
+                  {/*
                   <div className=" ps-4">
                     <h5 className="fs-14 fw-600 black_300"> 1.Admission:</h5>
 
@@ -5981,6 +5984,7 @@ const StudentRegistrationFrom = () => {
                       their promotional emails/communication to me.
                     </p>
                   </div>
+                  */}
                   <div className=" ps-4 row">
                     <div className="col-6">
                       <h6 className="fs-14 fw-600 p-2 black_300">Date :</h6>

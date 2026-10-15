@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { ERPApi } from "../../../../../serviceLayer/interceptor";
 import { useAuthContext } from "../../../../../dataLayer/hooks/useAuthContext";
+import StudentTermsAndConditions from "../../StudentTermsAndConditions";
 
 const formatSimpleDate = (dateStr) => {
     if (!dateStr) return "N/A";
@@ -49,32 +50,46 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
         if (!input) return;
 
         try {
-            // Create a temporary div with the response data for PDF generation
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = input.innerHTML; // Clone the structure
-
-            // You might need to update the registration number in the cloned content
-            // This is a bit complex - better to use the next approach
-
-            // Using higher scale for PDF quality
             const canvas = await html2canvas(input, { scale: 2, useCORS: true });
-            const imgData = canvas.toDataURL("image/jpeg", 0.7);
             const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+            const pageWidth = 210;
+            const pageHeight = 297;
+            const pageMargins = { top: 14, right: 10, bottom: 14, left: 10 };
+            const contentWidth = pageWidth - pageMargins.left - pageMargins.right;
+            const contentHeight = pageHeight - pageMargins.top - pageMargins.bottom;
+            const pixelsPerMillimeter = canvas.width / contentWidth;
+            const sliceHeight = Math.floor(contentHeight * pixelsPerMillimeter);
+            const pageCount = Math.ceil(canvas.height / sliceHeight);
 
-            const imgWidth = 210;
-            const pageHeight = 295;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
+            for (let pageIndex = 0; pageIndex < pageCount; pageIndex += 1) {
+                const sourceY = pageIndex * sliceHeight;
+                const currentSliceHeight = Math.min(sliceHeight, canvas.height - sourceY);
+                const pageCanvas = document.createElement("canvas");
+                pageCanvas.width = canvas.width;
+                pageCanvas.height = currentSliceHeight;
+                pageCanvas
+                    .getContext("2d")
+                    ?.drawImage(
+                        canvas,
+                        0,
+                        sourceY,
+                        canvas.width,
+                        currentSliceHeight,
+                        0,
+                        0,
+                        canvas.width,
+                        currentSliceHeight
+                    );
 
-            pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft > 0) {
-                position = heightLeft - imgHeight;
-                pdf.addPage();
-                pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                if (pageIndex > 0) pdf.addPage();
+                pdf.addImage(
+                    pageCanvas.toDataURL("image/jpeg", 0.7),
+                    "JPEG",
+                    pageMargins.left,
+                    pageMargins.top,
+                    contentWidth,
+                    currentSliceHeight / pixelsPerMillimeter
+                );
             }
 
             const pdfBlob = pdf.output("blob");
@@ -428,7 +443,9 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
                     TERMS AND CONDITIONS
                 </h6>
 
-                <div className="border p-3" style={{ fontSize: "11px", lineHeight: "1.5" }}>
+                <div className="border p-3" style={{ lineHeight: "1.5" }}>
+                    <StudentTermsAndConditions />
+                    {/*
 
                     <p className="fw-bold">1. Admission:</p>
                     <p className="ms-3">1. Students must provide all required documents and information during the admission process.</p>
@@ -537,8 +554,8 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
                         By signing this form, you acknowledge that you have read and agreed to the Terms & Conditions and Privacy Policy.
                     </p>
 
+                    */}
                 </div>
-
                 <div className="row mt-5 text-center">
                     <div className="col-6"><p className="border-top pt-2">Counsellor Signature</p></div>
                     <div className="col-6"><p className="border-top pt-2">Student Signature</p></div>

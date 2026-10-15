@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../../assets/css/StudentApplicationPrint.css";
+import StudentTermsAndConditions from "../StudentTermsAndConditions";
 import { useReactToPrint } from "react-to-print";
 import { IoMdMail } from "react-icons/io";
 import { MdLocalPrintshop } from "react-icons/md";
@@ -70,7 +71,7 @@ const StudentApplicationPrint = () => {
   let IssueDate = useFormattedDate(studentdata?.admissiondate);
 
   const branchLogoImage = AuthState?.user
-  
+
   const branchImage = studentdata?.branches?.logoName
   const branchLogo = branchImage
     ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
@@ -87,16 +88,14 @@ const StudentApplicationPrint = () => {
     });
 
     await pdf.html(input, {
-      margin: [10, 10, 10, 10],
+      margin: [14, 10, 14, 10],
       autoPaging: "text",
       html2canvas: {
         scale: 1.5,
         useCORS: true,
         backgroundColor: "#ffffff",
       },
-      x: 8,
-      y: 8,
-      width: 194,
+      width: 190,
     });
 
     const pdfBlob = pdf.output("blob");
@@ -155,14 +154,14 @@ const StudentApplicationPrint = () => {
                   </div>
                   <div className=" col-md-6 col-lg-6 col-xl-6 text-center ">
                     <img
-                      src= {fgLogo}
+                      src={fgLogo}
                       alt="Branch Logo"
                       className=" w-75 "
 
                     />
                     <p className="fs-15 mt-4 black_300">
                       {/* <b className="">Branch:</b> {studentdata?.branch} */}
-                       <b className="">Branch:</b> Kukatpally, Hyderabad
+                      <b className="">Branch:</b> Kukatpally, Hyderabad
                     </p>
                   </div>
                   <div className=" mt-3 ">
@@ -940,6 +939,8 @@ const StudentApplicationPrint = () => {
                     </div>
 
                     <div className="application-tbl-td p-3">
+                      <StudentTermsAndConditions />
+                      {/*
                       <div className=" ps-4">
                         <h5 className="fs-14 fw-600 black_300">
                           {" "}
@@ -1436,6 +1437,7 @@ const StudentApplicationPrint = () => {
                           their promotional emails/communication to me.
                         </p>
                       </div>
+                      */}
                       <div className=" ps-4 row">
                         <div className="col-6">
                           <h6 className="fs-14 fw-600 p-2 black_300">Date :</h6>
