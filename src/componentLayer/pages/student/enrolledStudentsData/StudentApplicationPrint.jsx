@@ -1,4 +1,5 @@
 import React from "react";
+import StudentTermsAndConditions from "../StudentTermsAndConditions";
 import "../../../../assets/css/StudentApplicationPrint.css";
 import { useReactToPrint } from "react-to-print";
 import { IoMdMail } from "react-icons/io";
@@ -14,6 +15,7 @@ import BackButton from "../../../components/backbutton/BackButton";
 import { ERPApi } from "../../../../serviceLayer/interceptor.jsx";
 import { useLoaderData } from "react-router-dom";
 import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../../../dataLayer/hooks/useAuthContext.jsx";
 import fgLogo from "../../../../assets/images/FG-LOGO.png";
@@ -75,29 +77,87 @@ const StudentApplicationPrint = () => {
   const branchLogo = branchImage
     ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
     : null;
+  const studentImageUrl = studentdata?.studentImg
+    ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata.studentImg}`
+    : null;
   const handleDownloadPDF = async () => {
     setIsSubmitting(true);
     const input = componentRefff.current;
+    if (!input) {
+      setIsSubmitting(false);
+      return;
+    }
 
-    const pdf = new jsPDF({
-      orientation: "portrait",
-      unit: "mm",
-      format: "a4",
-      compress: true,
-    });
+    await document.fonts?.ready;
+    let canvas;
+    try {
+      const studentPhoto = input.querySelector(".admform-sd");
+      if (studentdata?.studentImg && studentPhoto) {
+        await studentPhoto.decode();
+      }
 
-    await pdf.html(input, {
-      margin: [10, 10, 10, 10],
-      autoPaging: "text",
-      html2canvas: {
-        scale: 1.5,
+      canvas = await html2canvas(input, {
+        scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
-      },
-      x: 8,
-      y: 8,
-      width: 194,
-    });
+      });
+    } catch (error) {
+      console.error("Unable to prepare the student application PDF:", error);
+      toast.error(error.message || "Unable to prepare the PDF. Please try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4", compress: true });
+    const margin = 10;
+    const contentWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+    const contentHeight = pdf.internal.pageSize.getHeight() - margin * 2;
+    const maxSliceHeight = Math.floor(canvas.width * (contentHeight / contentWidth));
+    const inputBounds = input.getBoundingClientRect();
+    const pixelScale = canvas.width / inputBounds.width;
+    const breakPoints = Array.from(input.querySelectorAll("tr, h5, li, .terms-and-condition p"))
+      .map((element) => {
+        const bounds = element.getBoundingClientRect();
+        const y = element.matches("h5") ? bounds.top : bounds.bottom;
+        return Math.round((y - inputBounds.top) * pixelScale);
+      })
+      .filter((y) => y > 0 && y < canvas.height)
+      .sort((a, b) => a - b);
+
+    let sourceY = 0;
+    let pageIndex = 0;
+    while (sourceY < canvas.height) {
+      const targetEnd = Math.min(sourceY + maxSliceHeight, canvas.height);
+      const safeEnd = breakPoints.filter((point) => point > sourceY && point <= targetEnd).at(-1);
+      const safeBreakIsNearPageEnd = safeEnd && safeEnd >= targetEnd - maxSliceHeight * 0.12;
+      const sliceEnd = targetEnd === canvas.height
+        ? canvas.height
+        : safeBreakIsNearPageEnd ? safeEnd : targetEnd;
+      const sliceHeight = sliceEnd - sourceY;
+      const pageCanvas = document.createElement("canvas");
+      pageCanvas.width = canvas.width;
+      pageCanvas.height = sliceHeight;
+      pageCanvas.getContext("2d").drawImage(
+        canvas,
+        0,
+        sourceY,
+        canvas.width,
+        sliceHeight,
+        0,
+        0,
+        canvas.width,
+        sliceHeight
+      );
+
+      if (pageIndex > 0) pdf.addPage();
+      const renderedHeight = (sliceHeight / canvas.width) * contentWidth;
+      pdf.addImage(pageCanvas, "PNG", margin, margin, contentWidth, renderedHeight);
+      pdf.setDrawColor(0, 0, 0);
+      pdf.setLineWidth(0.3);
+      pdf.rect(margin, margin, contentWidth, contentHeight);
+      sourceY = sliceEnd;
+      pageIndex += 1;
+    }
 
     const pdfBlob = pdf.output("blob");
 
@@ -133,7 +193,7 @@ const StudentApplicationPrint = () => {
                 <div className="row justify-content-between align-items-center">
                   <div className="col-12 col-md-5 col-lg-5 col-xl-5">
                     <h5 className="black_300 fw-600 fs_18 p-0 ms-3">
-                      Futuregen Technologies Private Limited
+                      Future Gen Technologies Private Limited
                     </h5>
                     <p className="p-0 fs-14 black_300 ms-3">
                       {" "}
@@ -291,7 +351,7 @@ const StudentApplicationPrint = () => {
                         {studentdata?.studentImg && (
                           <img
                             // src={`https://teksacademyimages.s3.amazonaws.com/${studentdata?.studentImg}`}
-                            src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${studentdata?.studentImg}`}
+                            src={studentImageUrl}
                             className="w-50 admform-sd  "
                             alt=""
                           />
@@ -459,7 +519,7 @@ const StudentApplicationPrint = () => {
                     </div>
                   </div>
 
-                  <div className="  mt-3 ">
+                  <div className="asset-section mt-4">
                     <div className="">
                       <h5 className=" text-center caption p-2">
                         {" "}
@@ -940,520 +1000,7 @@ const StudentApplicationPrint = () => {
                     </div>
 
                     <div className="application-tbl-td p-3">
-                      <div className=" ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          {" "}
-                          1.Admission:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. Students must provide all required documents and
-                          information during the admission process.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2. Admission will be confirmed only after payment of
-                          the booking amount, as decided by the management from
-                          time to time.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300"> 2. Fees:</h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. Students shall pay the course fees as per the due
-                          dates / terms mentioned overleaf. Fees shall not
-                          refundable/non-transferable/non-adjustable, under any
-                          circumstances.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Late payment of fees shall attract penal interest
-                          @1.5% per month.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.Future Gen Technologies reserves its right to cancel the
-                          admission, in case of non-payment of fees, as per the
-                          agreed due dates.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          4. Course fees may vary from student to student, based
-                          on their merit and other relevant factors as
-                          determined by the Future Gen Technologies
-                          administration, at its sole discretion.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          {" "}
-                          3. Course Material:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. The course material provided by the Academy is the
-                          intellectual property of Future Gen Technologies and cannot be
-                          reproduced or used for commercial purposes without
-                          written permission of the Academy.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Any damage or loss of course material will be the
-                          responsibility of the student and shall attract
-                          additional charges for extra material copy of the
-                          course material as decided by the administration from
-                          time to time.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          {" "}
-                          4. Attendence:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. Regular attendance is essential for successfully
-                          completing the course and obtaining a certificate.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.In case of Continuous absence of 3 classes, without
-                          intimation, Academy reserves its right, to terminate
-                          the admission.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.In case of absence, Make-up / Extra classes may be
-                          arranged at the discretion of the Academy and subject
-                          to availability of resources. For clarity, the Academy
-                          is not obliged to provide the makeup/extra classes.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300 ">5. Conduct</h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.Students must conduct themselves respectfully
-                          towards the Academy staff, fellow students, and not
-                          spoil the Academy's property.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Any form of harassment, discrimination, or bullying
-                          will not be tolerated and may lead to immediate
-                          expulsion of the student from the Academy.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.Use of drugs or alcohol within the Academy's
-                          premises is strictly prohibited and shall lead to
-                          immediate expulsion from the Academy.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300 next-page  student-data">
-                          6. Certification :
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.Certificates will be awarded to students who
-                          successfully complete the course as per the Academy's
-                          criteria, as decided by the management from time to
-                          time.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The certificate does not guarantee employment or
-                          acceptance/admission into any institution.student from
-                          the Academy.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">7. Liablity:</h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.The Academy is not responsible for any injury, loss,
-                          or damage to the students or their belongings within
-                          the Academy's premises or during any offsite activit
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Students must take responsibility for their personal
-                          safety and belongings while attending classes at the
-                          Academy or any other location.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          8. Change in Policies:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.The Academy may revise its policies, rules and
-                          regulations, course structure, fees, timings, or any
-                          other aspect of the Academy at its sole discretion
-                          from time to time, without prior notice to the
-                          students.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Such revised policies will be applicable to all
-                          existing and new students.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          9. Dispute Resolutions:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.Any dispute arising out of or related to these terms
-                          and conditions shall be resolved amicably through
-                          mutual discussion and agreement between the Academy
-                          and the student. Any unresolved dispute shall be
-                          subject to the jurisdiction of the courts of
-                          Hyderabad, Telangana, India.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          10. Termination of Admission:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.The Academy reserves the right to terminate the
-                          admission of any student at any time, without
-                          assigning any reason.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.In such cases, Academy may at its sole discretion,
-                          refund a portion of the fees that completely depends
-                          on Academy’s decision and on the duration of the
-                          course completed by the student.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          11. No Placemets Guarantee
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.The Academy does not provide any placement guarantee
-                          to the students but may assist them in finding
-                          suitable job opportunities through guidance,
-                          counseling.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600  black_300">
-                          12. Using Id Card
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.Each student will be issued an identification card
-                          (ID card) by the Academy, and it must be carried by
-                          the student at all times while attending classes or
-                          any other activities conducted by the Academy.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300 ">
-                          13. Copiying Institute Content
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.Distributing any of the any other Academy's /
-                          Coaching centers brochures /course material, including
-                          lectures, notes, presentations, or any other content,
-                          promoting of any other coaching institutes is strictly
-                          prohibited. Any violation of this rule may lead to
-                          immediate expulsion from the Academy and legal action
-                          may be taken against the student.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300 next-page  student-data">
-                          14. Teaching Staff:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.While the Academy will endeavor to provide training
-                          with a specific teaching staff member, there is no
-                          commitment to do so.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The Academy reserves the right to assign trainers
-                          based on availability, and students cannot demand a
-                          specific trainer.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          15. Course Curriculum
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. The Academy reserves the right to update the course
-                          curriculum at its discretion, without any prior notice
-                          to the students.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.Students are expected to keep themselves updated
-                          with any changes in the course curriculum.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          16. Course Duration:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. The course duration may vary from batch to batch,
-                          depending on factors such as students' attendance,
-                          training methodology, and other relevant factors as
-                          determined by the Academy.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The Academy reserves the right to change the course
-                          duration at any time without prior notice.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          17. Paid Internship Support:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1. The Academy may assist students in finding suitable
-                          paid internships based on their skills and interests.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The Academy will not guarantee any specific
-                          internship or job placement.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.The Academy may charge a separate fee for providing
-                          internship support services.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          4.The Academy will not be liable for any issues or
-                          disputes that arise between the student and the
-                          internship provider.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          18. Project Assignment:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.The Academy may provide practice projects to the
-                          students for upgrading their learning and skill
-                          development.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The projects assigned may be either Capstone, live
-                          or previously completed projects, depending on
-                          availability and suitability.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.Students must complete the project within the given
-                          time frame and submit it to the Academy for
-                          evaluation.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600  black_300">
-                          19. Intellectual Property:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          1.All intellectual property created by students during
-                          the live project or internship belongs to the Academy.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          2.The Academy may use such intellectual property for
-                          promotional or educational purposes, at its sole
-                          discretion.
-                        </p>
-
-                        <p className="black_300 fs-14 ms-3">
-                          3.The Academy will not claim any ownership rights over
-                          the student's intellectual property.
-                        </p>
-                      </div>
-
-                      <div className="ps-4 student-data">
-                        {" "}
-                        <h5 className="fs-14 fw-600 next-page student-data  pb-2 black_300">
-                          Privacy Policy:
-                        </h5>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300  student-data">
-                          1. Information Collection :
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We collect personal information such as name, email
-                          address, phone number, and other details from students
-                          at the time of enrollment.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          2. Use Of Information:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We use the information collected to contact students
-                          regarding course updates, provide course materials,
-                          and issue certificates of completion.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          3. Information Sharing:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We do not share personal information with any third
-                          parties without the student's consent, except as
-                          required by law.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">4. Security:</h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We take reasonable measures to ensure the security of
-                          the personal information collected from students.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">5. Cookies:</h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We use cookies on our website to track user behavior
-                          and improve the user experience. Students can disable
-                          cookies in their web browser if they choose to do so.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          6. Data Retention :
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We retain personal information for as long as
-                          necessary to provide the course and related services,
-                          or until the student requests that their information
-                          be deleted.
-                        </p>
-                      </div>
-
-                      <div className="ps-4">
-                        <h5 className="fs-14 fw-600 black_300">
-                          7.Modification:
-                        </h5>
-
-                        <p className="black_300 fs-14 ms-3">
-                          {" "}
-                          We reserve the right to modify this privacy policy at
-                          any time without prior notice.
-                        </p>
-                      </div>
-
-                      <div className="p-4">
-                        <p className="black_300 fs-14 ">
-                          By signing this form, you acknowledge that you have
-                          read, understood, and agree to abide by the terms and
-                          conditions and privacy policy.{" "}
-                        </p>
-
-                        <p className="black_300 fs-14 ">
-                          Further I hereby give my consent for Future Gen Technologies and its affiliates, to send
-                          their promotional emails/communication to me.
-                        </p>
-                      </div>
-                      <div className=" ps-4 row">
-                        <div className="col-6">
-                          <h6 className="fs-14 fw-600 p-2 black_300">Date :</h6>
-                          <h6 className="fs-14 fw-600 p-2 black_300">
-                            {" "}
-                            Place :
-                          </h6>
-                        </div>
-                        <div className="col-6">
-                          <h6 className="fs-14 fw-600 p-2 black_300">
-                            Counsellor Signature :{" "}
-                          </h6>
-                          <h6 className="fs-14 fw-600 p-2 black_300">
-                            {" "}
-                            Student Signature :{" "}
-                          </h6>
-                        </div>
-                      </div>
+                      <StudentTermsAndConditions />
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ import BackButton from "../../../components/backbutton/BackButton";
 import { toast } from "react-toastify";
 
 const defaultOrgDetails = {
-  organization_name: "Futuregen Technologies ",
+  organization_name: "Future Gen Technologies ",
   institute_type: "Computer/Dance/Music Training Institute",
   office_address: "	Kukatpally",
   whatsapp_number: "9848947799",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import StudentTermsAndConditions from "../../StudentTermsAndConditions";
 import { useFetcher, useNavigate } from "react-router-dom";
 import { IoMdArrowBack, IoMdCheckmark, IoMdMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
@@ -49,32 +50,46 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
         if (!input) return;
 
         try {
-            // Create a temporary div with the response data for PDF generation
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = input.innerHTML; // Clone the structure
-
-            // You might need to update the registration number in the cloned content
-            // This is a bit complex - better to use the next approach
-
-            // Using higher scale for PDF quality
             const canvas = await html2canvas(input, { scale: 2, useCORS: true });
-            const imgData = canvas.toDataURL("image/jpeg", 0.7);
             const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+            const pageWidth = 210;
+            const pageHeight = 297;
+            const pageMargins = { top: 14, right: 10, bottom: 14, left: 10 };
+            const contentWidth = pageWidth - pageMargins.left - pageMargins.right;
+            const contentHeight = pageHeight - pageMargins.top - pageMargins.bottom;
+            const pixelsPerMillimeter = canvas.width / contentWidth;
+            const sliceHeight = Math.floor(contentHeight * pixelsPerMillimeter);
+            const pageCount = Math.ceil(canvas.height / sliceHeight);
 
-            const imgWidth = 210;
-            const pageHeight = 295;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
+            for (let pageIndex = 0; pageIndex < pageCount; pageIndex += 1) {
+                const sourceY = pageIndex * sliceHeight;
+                const currentSliceHeight = Math.min(sliceHeight, canvas.height - sourceY);
+                const pageCanvas = document.createElement("canvas");
+                pageCanvas.width = canvas.width;
+                pageCanvas.height = currentSliceHeight;
+                pageCanvas
+                    .getContext("2d")
+                    ?.drawImage(
+                        canvas,
+                        0,
+                        sourceY,
+                        canvas.width,
+                        currentSliceHeight,
+                        0,
+                        0,
+                        canvas.width,
+                        currentSliceHeight
+                    );
 
-            pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft > 0) {
-                position = heightLeft - imgHeight;
-                pdf.addPage();
-                pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                if (pageIndex > 0) pdf.addPage();
+                pdf.addImage(
+                    pageCanvas.toDataURL("image/jpeg", 0.7),
+                    "JPEG",
+                    pageMargins.left,
+                    pageMargins.top,
+                    contentWidth,
+                    currentSliceHeight / pixelsPerMillimeter
+                );
             }
 
             const pdfBlob = pdf.output("blob");
@@ -241,7 +256,7 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
             <div className="application-template bg-white p-5 text-dark text-start" style={{ fontFamily: "serif", fontSize: "13px", lineHeight: "1.4" }}>
                 <div className="row border-bottom pb-2">
                     <div className="col-7">
-                        <h5 className="fw-bold m-0" style={{ fontSize: "18px" }}>Futuregen Technologies Private Limited</h5>
+                        <h5 className="fw-bold m-0" style={{ fontSize: "18px" }}>Future Gen Technologies Private Limited</h5>
                         <p className="m-0 small">PAN : AALFF5087H</p>
                         <p className="m-0 small"><IoMdMail />  info@futuregentechnologies.com</p>
                         <p className="m-0 small"><IoCall /> 91 98489 47799</p>
@@ -429,114 +444,7 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
                 </h6>
 
                 <div className="border p-3" style={{ fontSize: "11px", lineHeight: "1.5" }}>
-
-                    <p className="fw-bold">1. Admission:</p>
-                    <p className="ms-3">1. Students must provide all required documents and information during the admission process.</p>
-                    <p className="ms-3">2. Admission will be confirmed only after payment of the booking amount, as decided by the management from time to time.</p>
-
-                    <p className="fw-bold mt-2">2. Fees:</p>
-                    <p className="ms-3">1. Students shall pay the course fees as per the due dates/terms mentioned. Fees shall not be refundable/non-transferable/non-adjustable under any circumstances.</p>
-                    <p className="ms-3">2. Late payment of fees shall attract penal interest @1.5% per month.</p>
-                    <p className="ms-3">3. Future Gen Technologies reserves the right to cancel admission in case of non-payment of fees.</p>
-                    <p className="ms-3">4. Course fees may vary based on merit and other relevant factors determined by the Academy.</p>
-
-                    <p className="fw-bold mt-2">3. Course Material:</p>
-                    <p className="ms-3">1. Course material is the intellectual property of the Academy and cannot be reproduced for commercial purposes.</p>
-                    <p className="ms-3">2. Any damage or loss of material will attract additional charges.</p>
-
-                    <p className="fw-bold mt-2">4. Attendance:</p>
-                    <p className="ms-3">1. Regular attendance is essential for successful course completion.</p>
-                    <p className="ms-3">2. Continuous absence of 3 classes without intimation may lead to termination.</p>
-                    <p className="ms-3">3. Make-up classes are subject to availability and not guaranteed.</p>
-
-                    <p className="fw-bold mt-2">5. Conduct:</p>
-                    <p className="ms-3">1. Students must behave respectfully and not damage Academy property.</p>
-                    <p className="ms-3">2. Harassment or bullying may lead to expulsion.</p>
-                    <p className="ms-3">3. Use of drugs or alcohol is strictly prohibited.</p>
-
-                    <p className="fw-bold mt-2">6. Certification:</p>
-                    <p className="ms-3">1. Certificates are awarded based on Academy criteria.</p>
-                    <p className="ms-3">2. Certificate does not guarantee employment.</p>
-
-                    <p className="fw-bold mt-2">7. Liability:</p>
-                    <p className="ms-3">1. The Academy is not responsible for injury, loss, or damage within premises or offsite activities.</p>
-                    <p className="ms-3">2. Students are responsible for their personal belongings.</p>
-
-                    <p className="fw-bold mt-2">8. Change in Policies:</p>
-                    <p className="ms-3">1. Policies, fees, curriculum, and structure may change without prior notice.</p>
-                    <p className="ms-3">2. Revised policies apply to all students.</p>
-
-                    <p className="fw-bold mt-2">9. Dispute Resolution:</p>
-                    <p className="ms-3">1. Disputes shall be resolved amicably. Unresolved disputes fall under the jurisdiction of Hyderabad, Telangana courts.</p>
-
-                    <p className="fw-bold mt-2">10. Termination of Admission:</p>
-                    <p className="ms-3">1. The Academy reserves the right to terminate admission at any time.</p>
-                    <p className="ms-3">2. Refund, if any, depends on Academy discretion.</p>
-
-                    <p className="fw-bold mt-2">11. No Placement Guarantee:</p>
-                    <p className="ms-3">1. The Academy does not guarantee placements but may assist with guidance.</p>
-
-                    <p className="fw-bold mt-2">12. Using ID Card:</p>
-                    <p className="ms-3">1. Students must carry their ID card at all times.</p>
-
-                    <p className="fw-bold mt-2">13. Copying Institute Content:</p>
-                    <p className="ms-3">1. Distributing Academy material or promoting other institutes is prohibited and may lead to legal action.</p>
-
-                    <p className="fw-bold mt-2">14. Teaching Staff:</p>
-                    <p className="ms-3">1. Trainer allocation depends on availability.</p>
-                    <p className="ms-3">2. Students cannot demand a specific trainer.</p>
-
-                    <p className="fw-bold mt-2">15. Course Curriculum:</p>
-                    <p className="ms-3">1. Curriculum may be updated without prior notice.</p>
-                    <p className="ms-3">2. Students must stay updated.</p>
-
-                    <p className="fw-bold mt-2">16. Course Duration:</p>
-                    <p className="ms-3">1. Duration may vary based on attendance and methodology.</p>
-                    <p className="ms-3">2. Duration may change without notice.</p>
-
-                    <p className="fw-bold mt-2">17. Paid Internship Support:</p>
-                    <p className="ms-3">1. Internship assistance may be provided.</p>
-                    <p className="ms-3">2. No guarantee of internship or job placement.</p>
-                    <p className="ms-3">3. Separate fee may apply.</p>
-                    <p className="ms-3">4. Academy not liable for disputes with internship provider.</p>
-
-                    <p className="fw-bold mt-2">18. Project Assignment:</p>
-                    <p className="ms-3">1. Practice projects may be provided.</p>
-                    <p className="ms-3">2. Projects may be capstone/live/previous.</p>
-                    <p className="ms-3">3. Students must complete within given timeframe.</p>
-
-                    <p className="fw-bold mt-2">19. Intellectual Property:</p>
-                    <p className="ms-3">1. Intellectual property created during live projects belongs to the Academy.</p>
-                    <p className="ms-3">2. Academy may use it for promotional/educational purposes.</p>
-                    <p className="ms-3">3. Academy will not claim ownership over student's personal intellectual property.</p>
-
-                    <p className="fw-bold mt-3">PRIVACY POLICY:</p>
-
-                    <p className="fw-bold mt-2">1. Information Collection:</p>
-                    <p className="ms-3">We collect personal information at enrollment.</p>
-
-                    <p className="fw-bold mt-2">2. Use of Information:</p>
-                    <p className="ms-3">Used for communication, materials, and certification.</p>
-
-                    <p className="fw-bold mt-2">3. Information Sharing:</p>
-                    <p className="ms-3">We do not share personal data except as required by law.</p>
-
-                    <p className="fw-bold mt-2">4. Security:</p>
-                    <p className="ms-3">We take reasonable measures to protect information.</p>
-
-                    <p className="fw-bold mt-2">5. Cookies:</p>
-                    <p className="ms-3">Website may use cookies for tracking and improvement.</p>
-
-                    <p className="fw-bold mt-2">6. Data Retention:</p>
-                    <p className="ms-3">Information retained as long as necessary or until deletion request.</p>
-
-                    <p className="fw-bold mt-2">7. Modification:</p>
-                    <p className="ms-3">Policy may be modified without notice.</p>
-
-                    <p className="mt-3">
-                        By signing this form, you acknowledge that you have read and agreed to the Terms & Conditions and Privacy Policy.
-                    </p>
-
+                    <StudentTermsAndConditions />
                 </div>
 
                 <div className="row mt-5 text-center">

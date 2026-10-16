@@ -585,8 +585,15 @@ export const Batch = () => {
     },
     {
       id: "sessions",
-      header: "Sessions",
+      header: "Curriculum Sessions",
       accessor: (row) => `${row.completedSessions}/${row.totalSessions}`,
+      sortable: true,
+      hideable: true,
+    },
+    {
+      id: "totalsessions",
+      header: "Extended Sessions",
+      accessor: (row) => row.totalCurriculumDuration,
       sortable: true,
       hideable: true,
     },
@@ -621,14 +628,15 @@ export const Batch = () => {
           0,
         ) || 0;
 
-      const progress = item?.copyCurriculum?.totalModuleCount
+        const progress = item?.copyCurriculum?.totalModuleCount
         ? (
-            (item.copyCurriculum.completedModuleCount /
-              item.copyCurriculum.totalModuleCount) *
+          (item.copyCurriculum.completedModuleCount /
+            item.copyCurriculum.totalModuleCount) *
             100
           ).toFixed(1)
-        : "0.00";
-
+          : "0.00";
+          
+          const totalCurriculumDuration = item?.totalSessions
       return {
         id: item.id,
         batchName: item.batchName,
@@ -641,6 +649,7 @@ export const Batch = () => {
         startTime: item?.startTime,
         endTime: item?.endTime,
         completedSessions: item?.actualSessionCount,
+        totalCurriculumDuration,
         totalSessions,
         studentsCount: item?.totalStudentCount || 0,
         progress,
