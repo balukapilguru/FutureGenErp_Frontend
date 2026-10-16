@@ -90,13 +90,13 @@ const FeeAdminInvoice = () => {
                   (invoiceFor === "Installment" || invoiceFor === "Admission Fee")
                   ? FeeInstallmentData?.invoice?.adminInvoiceNo
                   : null}
-
-                <p>
+<br />
+                <span >
                   {(invoiceFor === "Installment" ||
                     invoiceFor === "Admission Fee") &&
                     FeeInstallmentData?.paiddate ? (
                     <>
-                      <b>Date:</b>{" "}
+                      <b className="pt-2  black_300 fs-14">Date:</b>{" "}
                       {new Date(FeeInstallmentData.paiddate)
                         .toLocaleDateString("en-GB")
                         .replace(/\//g, "-")}
@@ -104,7 +104,7 @@ const FeeAdminInvoice = () => {
                   ) : (
                     "No Date Found"
                   )}
-                </p>
+                </span>
               </div>
             </div>
           </div>
@@ -122,18 +122,20 @@ const FeeAdminInvoice = () => {
                   AALFF5087H
               </span>{" "}
               <br />
-              <span className="   black_300 fs-14">
+              {/* <span className="   black_300 fs-14">
                 <b className="ps-2  black_300 fs-14 ">GSTIN : </b>{" "}
                 36AAHCK0599C1ZI{" "}
               </span>{" "}
-              <br />
+              <br /> */}
               <span className="ps-2   fs-14  black_300">
                 <b>Branch : </b> Future Gen Technologies-{studentData && studentData?.branch}
               </span>
             </div>
 
             <div className="col-6 invoice-sideborder border-black py-2   black_300 fs-14">
-              <p className="">BILL TO : </p>
+              <span className=""><b>BILL TO :</b> </span>
+              <br />
+              <br />
               <span>
                 <b>Name : </b>
                 {studentData && studentData?.name}
@@ -605,7 +607,7 @@ const FeeAdminInvoice = () => {
             </table>
           </div>
           <div className="row">
-            <div className="col-6">
+            {/* <div className="col-6">
               <p>
                 <u>
                   <b className="ps-2 black-color fs-14">Bank details:</b>
@@ -625,8 +627,8 @@ const FeeAdminInvoice = () => {
               <p>
                 <b className="ps-2 black_300 fs-14">Branch:</b> ..........
               </p>
-            </div>
-            <div className="col-6 m-auto">
+            </div> */}
+            <div className="col-12 text-center">
               <div className="black-color fs-14">
                 {" "}
                 <b>Future Gen Technologies</b>

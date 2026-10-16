@@ -359,7 +359,7 @@ const FeeViewAndUpdate = () => {
                 return;
             }
         }
-        else if (admissionState?.modeofpayment !== "loan" || admissionState?.modeofpayment !== "Cash") {
+        else if (admissionState?.modeofpayment !== "loan" && admissionState?.modeofpayment !== "Cash") {
 
             if (!admissionState?.transactionID) {
                 toast.error("Transaction Id is Required");

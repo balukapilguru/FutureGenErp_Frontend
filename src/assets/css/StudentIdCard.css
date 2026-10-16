@@ -106,7 +106,8 @@ object-fit: cover;
   margin-bottom: 30px;
 }
 .student-info {
-  background-image: url(../images/student_idCard_images/Teks_Shape_01.png);
+  /* background-image: url(../images/student_idCard_images/Teks_Shape_01.png); */
+  background-image: url(../images/FGTWatermark.png);
   background-repeat: no-repeat;
   background-size: 200px 200px;
   background-position:center;
