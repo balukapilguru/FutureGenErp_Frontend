@@ -21,7 +21,11 @@ const DetailTable = ({ title, rows }) => (
         {rows.map(([label, value], index) => (
           <tr key={`${label}-${index}`}>
             <td className="fs-13 fw-600 bg-head application-tbl-td">{label}</td>
-            <td className="fs-13 application-tbl-td">{value || ""}</td>
+            <td className="fs-13 application-tbl-td">
+              {typeof value === "object" && value !== null && !React.isValidElement(value)
+                ? value?.name || value?.source || JSON.stringify(value)
+                : value || ""}
+            </td>
           </tr>
         ))}
       </tbody>
@@ -95,8 +99,24 @@ const StudentApplicationDocument = ({ data = {} }) => {
         ]} />
         <DetailTable title="Admission Details" rows={[
           ["Enquiry Taken", formatDate(student.enquirydate)], ["Registration Number", student.registrationnumber],
-          ["Enquiry Taken By", student.enquirytakenby], ["Lead Source", student.leadsource],
-          ["Course Package", student.coursepackage], ["Course", student.courses],
+          ["Enquiry Taken By", student.enquirytakenby],
+          [
+            "Lead Source",
+            Array.isArray(student.leadsource)
+              ? student.leadsource.map((item) => (typeof item === "object" ? item?.source || item?.name || JSON.stringify(item) : item)).filter(Boolean).join(", ")
+              : typeof student.leadsource === "object" && student.leadsource !== null
+              ? student.leadsource?.source || student.leadsource?.name || ""
+              : student.leadsource,
+          ],
+          ["Course Package", student.coursepackage],
+          [
+            "Course",
+            Array.isArray(student.courses)
+              ? student.courses.map((item) => (typeof item === "object" ? item?.course_name || item?.name || JSON.stringify(item) : item)).filter(Boolean).join(", ")
+              : typeof student.courses === "object" && student.courses !== null
+              ? student.courses?.course_name || student.courses?.name || ""
+              : student.courses,
+          ],
           ["Admission Date", formatDate(student.admissiondate)], ["Mode of Training", student.modeoftraining],
           ["Expected End Date", formatDate(student.validityenddate)], ["Course Start Date", formatDate(student.validitystartdate)],
         ]} />

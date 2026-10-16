@@ -1587,17 +1587,17 @@ const StudentRegistrationFrom = () => {
       await studentApplicationPrintAction(formData);
 
       // 4. CLEANUP & SUCCESS
-      // localStorage.removeItem("emailVerificationState");
-      // localStorage.removeItem("studentDetails");
-      // localStorage.removeItem("parentsDetails");
-      // localStorage.removeItem("educationDetails");
-      // localStorage.removeItem("feeAndBillingDetails");
-      // localStorage.removeItem("admissionDetails");
-      // localStorage.removeItem("voucherVerified");
-      // localStorage.removeItem("voucherSuccessMessage");
-      // localStorage.removeItem("voucherCode");
-      // localStorage.removeItem("voucherAmount");
-      // localStorage.removeItem("VoucherData");
+      localStorage.removeItem("emailVerificationState");
+      localStorage.removeItem("studentDetails");
+      localStorage.removeItem("parentsDetails");
+      localStorage.removeItem("educationDetails");
+      localStorage.removeItem("feeAndBillingDetails");
+      localStorage.removeItem("admissionDetails");
+      localStorage.removeItem("voucherVerified");
+      localStorage.removeItem("voucherSuccessMessage");
+      localStorage.removeItem("voucherCode");
+      localStorage.removeItem("voucherAmount");
+      localStorage.removeItem("VoucherData");
 
       await Swal.fire({
         title: "Enrollment Successful!",
