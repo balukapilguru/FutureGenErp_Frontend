@@ -29,21 +29,21 @@ const POPUP_CREATE_CURRICULUM = ({
     curriculumDescription: "",
   });
 
-  // useEffect(() => {
-  //   const fetchExams = async () => {
-  //     try {
-  //       const response = await ERPApi.get(
-  //         "/exam/allexams?filter[isTeksExam]=1",
-  //       );
-  //       setExamOptions(response.data?.exams || []);
-  //     } catch (err) {
-  //       console.error("Failed to fetch exams:", err);
-  //       toast.error("Failed to fetch exams.");
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchExams = async () => {
+      try {
+        const response = await ERPApi.get(
+          "/exam/allexams?filter[isTeksExam]=1",
+        );
+        setExamOptions(response.data?.exams || []);
+      } catch (err) {
+        console.error("Failed to fetch exams:", err);
+        toast.error("Failed to fetch exams.");
+      }
+    };
 
-  //   fetchExams();
-  // }, []);
+    fetchExams();
+  }, []);
 
   useEffect(() => {
     if (mode === "edit" && selectedCurriculum) {
