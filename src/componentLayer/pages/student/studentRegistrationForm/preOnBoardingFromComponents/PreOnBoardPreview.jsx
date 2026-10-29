@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import StudentTermsAndConditions from "../../StudentTermsAndConditions";
 import { useFetcher, useNavigate } from "react-router-dom";
 import { IoMdArrowBack, IoMdCheckmark, IoMdMail } from "react-icons/io";
 import { IoCall } from "react-icons/io5";
@@ -443,118 +444,8 @@ const PreOnBoardPreview = ({ activeStep, onNavigate }) => {
                     TERMS AND CONDITIONS
                 </h6>
 
-                <div className="border p-3" style={{ lineHeight: "1.5" }}>
+                <div className="border p-3" style={{ fontSize: "11px", lineHeight: "1.5" }}>
                     <StudentTermsAndConditions />
-                    {/*
-
-                    <p className="fw-bold">1. Admission:</p>
-                    <p className="ms-3">1. Students must provide all required documents and information during the admission process.</p>
-                    <p className="ms-3">2. Admission will be confirmed only after payment of the booking amount, as decided by the management from time to time.</p>
-
-                    <p className="fw-bold mt-2">2. Fees:</p>
-                    <p className="ms-3">1. Students shall pay the course fees as per the due dates/terms mentioned. Fees shall not be refundable/non-transferable/non-adjustable under any circumstances.</p>
-                    <p className="ms-3">2. Late payment of fees shall attract penal interest @1.5% per month.</p>
-                    <p className="ms-3">3. Future Gen Technologies reserves the right to cancel admission in case of non-payment of fees.</p>
-                    <p className="ms-3">4. Course fees may vary based on merit and other relevant factors determined by the Academy.</p>
-
-                    <p className="fw-bold mt-2">3. Course Material:</p>
-                    <p className="ms-3">1. Course material is the intellectual property of the Academy and cannot be reproduced for commercial purposes.</p>
-                    <p className="ms-3">2. Any damage or loss of material will attract additional charges.</p>
-
-                    <p className="fw-bold mt-2">4. Attendance:</p>
-                    <p className="ms-3">1. Regular attendance is essential for successful course completion.</p>
-                    <p className="ms-3">2. Continuous absence of 3 classes without intimation may lead to termination.</p>
-                    <p className="ms-3">3. Make-up classes are subject to availability and not guaranteed.</p>
-
-                    <p className="fw-bold mt-2">5. Conduct:</p>
-                    <p className="ms-3">1. Students must behave respectfully and not damage Academy property.</p>
-                    <p className="ms-3">2. Harassment or bullying may lead to expulsion.</p>
-                    <p className="ms-3">3. Use of drugs or alcohol is strictly prohibited.</p>
-
-                    <p className="fw-bold mt-2">6. Certification:</p>
-                    <p className="ms-3">1. Certificates are awarded based on Academy criteria.</p>
-                    <p className="ms-3">2. Certificate does not guarantee employment.</p>
-
-                    <p className="fw-bold mt-2">7. Liability:</p>
-                    <p className="ms-3">1. The Academy is not responsible for injury, loss, or damage within premises or offsite activities.</p>
-                    <p className="ms-3">2. Students are responsible for their personal belongings.</p>
-
-                    <p className="fw-bold mt-2">8. Change in Policies:</p>
-                    <p className="ms-3">1. Policies, fees, curriculum, and structure may change without prior notice.</p>
-                    <p className="ms-3">2. Revised policies apply to all students.</p>
-
-                    <p className="fw-bold mt-2">9. Dispute Resolution:</p>
-                    <p className="ms-3">1. Disputes shall be resolved amicably. Unresolved disputes fall under the jurisdiction of Hyderabad, Telangana courts.</p>
-
-                    <p className="fw-bold mt-2">10. Termination of Admission:</p>
-                    <p className="ms-3">1. The Academy reserves the right to terminate admission at any time.</p>
-                    <p className="ms-3">2. Refund, if any, depends on Academy discretion.</p>
-
-                    <p className="fw-bold mt-2">11. No Placement Guarantee:</p>
-                    <p className="ms-3">1. The Academy does not guarantee placements but may assist with guidance.</p>
-
-                    <p className="fw-bold mt-2">12. Using ID Card:</p>
-                    <p className="ms-3">1. Students must carry their ID card at all times.</p>
-
-                    <p className="fw-bold mt-2">13. Copying Institute Content:</p>
-                    <p className="ms-3">1. Distributing Academy material or promoting other institutes is prohibited and may lead to legal action.</p>
-
-                    <p className="fw-bold mt-2">14. Teaching Staff:</p>
-                    <p className="ms-3">1. Trainer allocation depends on availability.</p>
-                    <p className="ms-3">2. Students cannot demand a specific trainer.</p>
-
-                    <p className="fw-bold mt-2">15. Course Curriculum:</p>
-                    <p className="ms-3">1. Curriculum may be updated without prior notice.</p>
-                    <p className="ms-3">2. Students must stay updated.</p>
-
-                    <p className="fw-bold mt-2">16. Course Duration:</p>
-                    <p className="ms-3">1. Duration may vary based on attendance and methodology.</p>
-                    <p className="ms-3">2. Duration may change without notice.</p>
-
-                    <p className="fw-bold mt-2">17. Paid Internship Support:</p>
-                    <p className="ms-3">1. Internship assistance may be provided.</p>
-                    <p className="ms-3">2. No guarantee of internship or job placement.</p>
-                    <p className="ms-3">3. Separate fee may apply.</p>
-                    <p className="ms-3">4. Academy not liable for disputes with internship provider.</p>
-
-                    <p className="fw-bold mt-2">18. Project Assignment:</p>
-                    <p className="ms-3">1. Practice projects may be provided.</p>
-                    <p className="ms-3">2. Projects may be capstone/live/previous.</p>
-                    <p className="ms-3">3. Students must complete within given timeframe.</p>
-
-                    <p className="fw-bold mt-2">19. Intellectual Property:</p>
-                    <p className="ms-3">1. Intellectual property created during live projects belongs to the Academy.</p>
-                    <p className="ms-3">2. Academy may use it for promotional/educational purposes.</p>
-                    <p className="ms-3">3. Academy will not claim ownership over student's personal intellectual property.</p>
-
-                    <p className="fw-bold mt-3">PRIVACY POLICY:</p>
-
-                    <p className="fw-bold mt-2">1. Information Collection:</p>
-                    <p className="ms-3">We collect personal information at enrollment.</p>
-
-                    <p className="fw-bold mt-2">2. Use of Information:</p>
-                    <p className="ms-3">Used for communication, materials, and certification.</p>
-
-                    <p className="fw-bold mt-2">3. Information Sharing:</p>
-                    <p className="ms-3">We do not share personal data except as required by law.</p>
-
-                    <p className="fw-bold mt-2">4. Security:</p>
-                    <p className="ms-3">We take reasonable measures to protect information.</p>
-
-                    <p className="fw-bold mt-2">5. Cookies:</p>
-                    <p className="ms-3">Website may use cookies for tracking and improvement.</p>
-
-                    <p className="fw-bold mt-2">6. Data Retention:</p>
-                    <p className="ms-3">Information retained as long as necessary or until deletion request.</p>
-
-                    <p className="fw-bold mt-2">7. Modification:</p>
-                    <p className="ms-3">Policy may be modified without notice.</p>
-
-                    <p className="mt-3">
-                        By signing this form, you acknowledge that you have read and agreed to the Terms & Conditions and Privacy Policy.
-                    </p>
-
-                    */}
                 </div>
                 <div className="row mt-5 text-center">
                     <div className="col-6"><p className="border-top pt-2">Counsellor Signature</p></div>
