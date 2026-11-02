@@ -1,17 +1,13 @@
-import React, { useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { MdLocalPrintshop } from "react-icons/md";
+import { useEffect, useRef, useState } from "react";
+import { MdLocalPrintshop, MdFileDownload } from "react-icons/md";
 import { useReactToPrint } from "react-to-print";
-import { useStudentsContext } from "../../../../dataLayer/hooks/useStudentsContext";
 import "../../../../assets/css/StudentIdCard.css";
 import Button from "../../../components/button/Button";
 import BackButton from "../../../components/backbutton/BackButton";
 import { ERPApi } from "../../../../serviceLayer/interceptor";
-import html2canvas from "html2canvas"; // To generate canvas for ID card
-import logo from "../../../../assets/images/student_idCard_images/Tesks_Logo.png";
+import html2canvas from "html2canvas";
 import Defaultimg from "../../../../assets/images/student_idCard_images/DefaultimgBG.png";
 import { useLoaderData } from "react-router-dom";
-import { useAuthContext } from "../../../../dataLayer/hooks/useAuthContext";
 import fgLogo from "../../../../assets/images/FG-LOGO.png";
 
 export const studentIdCardLoader = async ({ params }) => {
@@ -28,54 +24,74 @@ export const studentIdCardLoader = async ({ params }) => {
   }
 };
 
-const StudentIdCard = () => {
-  const { AuthState } = useAuthContext()
-  const data = useLoaderData();
-  const StudentIdCard = data?.studentData;
-  const componentRefff = useRef();
-  const [imageLoaded, setImageLoaded] = useState(false);
+const formatStudentImageUrl = (imgName) => {
+  if (!imgName) return null;
+  if (imgName.startsWith("http://") || imgName.startsWith("https://")) {
+    return imgName;
+  }
+  const cleanName = imgName.startsWith("/") ? imgName.slice(1) : imgName;
+  const encodedName = encodeURI(decodeURI(cleanName));
+  return `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${encodedName}`;
+};
 
-  const branchLogoImage = AuthState?.user
-  const branchImage = StudentIdCard?.branches?.logoName
-
-
-  const branchLogo = branchImage
-    ? `https://futuregen.s3.ap-south-1.amazonaws.com/branches/logos/${branchImage}`
-    : null;
-  // const downloadIdCard = () => {
-  //   if (!imageLoaded) {
-  //     alert("Please wait, the image is still loading.");
-  //     return;
-  //   }
-
-  //   html2canvas(componentRefff.current, {
-  //     useCORS: true,
-  //     allowTaint: false,
-  //     scale: 2,
-  //     logging: true,
-  //   }).then((canvas) => {
-  //     canvas.toBlob((blob) => {
-  //       const link = document.createElement("a");
-  //       link.href = URL.createObjectURL(blob);
-  //       link.download = `student_id_card_${
-  //         StudentIdCard?.name || "unknown"
-  //       }.png`;
-  //       link.click();
-  //     });
-  //   });
-  // };
-
-  const getBase64FromUrl = async (url) => {
-    const response = await fetch(url);
+const convertImageToBase64 = async (url) => {
+  try {
+    const separator = url.includes("?") ? "&" : "?";
+    // Adding timestamp query param bypasses poisoned browser cache from non-CORS image requests
+    const cacheBusterUrl = `${url}${separator}t=${Date.now()}`;
+    const response = await fetch(cacheBusterUrl, { mode: "cors" });
+    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
     const blob = await response.blob();
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
       reader.readAsDataURL(blob);
     });
-  };
+  } catch (err) {
+    console.warn("Failed to convert image to base64:", err);
+    return null;
+  }
+};
 
+const StudentIdCard = () => {
+  const data = useLoaderData();
+  const studentData = data?.studentData;
+  const componentRefff = useRef();
+
+  const [studentPhoto, setStudentPhoto] = useState(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const studentImageUrl = formatStudentImageUrl(studentData?.studentImg);
+
+  // Pre-load student image as Base64 to prevent CORS taint issues during html2canvas and print
+  useEffect(() => {
+    let isMounted = true;
+
+    if (!studentImageUrl) {
+      setStudentPhoto(Defaultimg);
+      setImageLoaded(true);
+      return;
+    }
+
+    convertImageToBase64(studentImageUrl).then((base64) => {
+      if (isMounted) {
+        if (base64) {
+          setStudentPhoto(base64);
+        } else {
+          // Fallback to direct URL if conversion failed
+          setStudentPhoto(studentImageUrl);
+        }
+        setImageLoaded(true);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [studentImageUrl]);
 
   const downloadIdCard = async () => {
     if (!imageLoaded) {
@@ -83,31 +99,64 @@ const StudentIdCard = () => {
       return;
     }
 
-    const img = componentRefff.current.querySelector("img");
+    if (!componentRefff.current) return;
 
-    if (img && img.src.startsWith("http")) {
-      const base64 = await getBase64FromUrl(img.src);
-      img.setAttribute("src", base64);
-    }
+    try {
+      setIsDownloading(true);
 
-    html2canvas(componentRefff.current, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: false,
-    }).then((canvas) => {
+      // Ensure any remote <img> within the element is converted to base64 before capturing
+      const imgElements = componentRefff.current.querySelectorAll("img");
+      for (const img of imgElements) {
+        if (
+          img.src &&
+          img.src.startsWith("http") &&
+          !img.src.startsWith(window.location.origin) &&
+          !img.src.startsWith("data:")
+        ) {
+          const b64 = await convertImageToBase64(img.src);
+          if (b64) {
+            img.src = b64;
+          }
+        }
+      }
+
+      // Small pause to ensure DOM update is rendered
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      const canvas = await html2canvas(componentRefff.current, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: null,
+        logging: false,
+      });
+
       canvas.toBlob((blob) => {
+        if (!blob) {
+          alert("Failed to generate image.");
+          return;
+        }
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = `student_id_card_${StudentIdCard?.name || "unknown"}.png`;
+        const safeName = studentData?.name
+          ? studentData.name.trim().replace(/\s+/g, "_")
+          : "student";
+        link.download = `student_id_card_${safeName}.png`;
         link.click();
-      });
-    });
+        URL.revokeObjectURL(link.href);
+      }, "image/png");
+    } catch (error) {
+      console.error("ID Card Download Error:", error);
+      alert("Failed to download ID card. Please try again.");
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
-
-
   const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "N/A";
     const day = date.getUTCDate();
     const monthIndex = date.getUTCMonth();
     const year = date.getUTCFullYear();
@@ -125,14 +174,12 @@ const StudentIdCard = () => {
       "Nov",
       "Dec",
     ];
-    return `${day < 10 ? "0" : ""}${day}-${monthAbbreviations[monthIndex]
-      }-${year}`;
+    return `${day < 10 ? "0" : ""}${day}-${monthAbbreviations[monthIndex]}-${year}`;
   };
 
   const handlePrint = useReactToPrint({
     content: () => componentRefff.current,
   });
-
 
   return (
     <div>
@@ -145,9 +192,9 @@ const StudentIdCard = () => {
           <Button
             className="btn btn_primary me-2"
             onClick={downloadIdCard}
-            disabled={!imageLoaded} // Disable button until image is loaded
+            disabled={!imageLoaded || isDownloading}
           >
-            Download ID Card
+            <MdFileDownload /> {isDownloading ? "Downloading..." : "Download ID Card"}
           </Button>
         </div>
 
@@ -159,37 +206,33 @@ const StudentIdCard = () => {
             <div className="card_Content">
               <div className="studid-photo text-center">
                 <img
-                  src={
-                    StudentIdCard?.studentImg
-                      ? `https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`
-                      : Defaultimg
-                  }
+                  src={studentPhoto || studentImageUrl || Defaultimg}
                   alt="Student Img"
-                  onLoad={() => setImageLoaded(true)} // Mark image as loaded
+                  crossOrigin="anonymous"
+                  onLoad={() => setImageLoaded(true)}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = Defaultimg; // Fallback to default image
-                    setImageLoaded(true); // Treat fallback as loaded
+                    e.target.src = Defaultimg;
+                    setImageLoaded(true);
                   }}
-                // crossOrigin="anonymous" // Enable cross-origin for external images
                 />
               </div>
 
-              <p className="student_name">{StudentIdCard?.name}</p>
+              <p className="student_name">{studentData?.name}</p>
               <div className="student-info text-left">
                 <p className="fs-14 black_300">
-                  Registration No: {StudentIdCard?.registrationnumber}
+                  Registration No: {studentData?.registrationnumber}
                 </p>
                 <p className="fs-14 black_300">
-                  Course: {StudentIdCard?.courses}
+                  Course: {studentData?.courses}
                 </p>
                 <p className="fs-14 black_300">
-                  Branch: {StudentIdCard?.branch}
+                  Branch: {studentData?.branch}
                 </p>
                 <p className="fs-14 black_300">
                   Valid Upto:{" "}
-                  {StudentIdCard?.validityenddate
-                    ? formatDate(StudentIdCard.validityenddate)
+                  {studentData?.validityenddate
+                    ? formatDate(studentData.validityenddate)
                     : "N/A"}
                 </p>
               </div>
@@ -202,121 +245,3 @@ const StudentIdCard = () => {
 };
 
 export default StudentIdCard;
-
-// import React from "react";
-// import logo from "../../../../assets/images/student_idCard_images/Tesks_Logo.png";
-// import Defaultimg from "../../../../assets/images/student_idCard_images/Defaultimg.jpg";
-// import detail from "../../../../assets/images/student_idCard_images/Courses&details.png";
-// import { useReactToPrint } from "react-to-print";
-// import { useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { MdLocalPrintshop } from "react-icons/md";
-// import { useEffect } from "react";
-// import { useStudentsContext } from "../../../../dataLayer/hooks/useStudentsContext";
-// import "../../../../assets/css/StudentIdCard.css";
-// import Button from "../../../components/button/Button";
-// import BackButton from "../../../components/backbutton/BackButton";
-// import axios from "axios";
-// import { ERPApi } from "../../../../serviceLayer/interceptor.jsx";
-// function StudentIdCard() {
-//   const componentRefff = React.useRef();
-//   const [StudentIdCard, setStudentIdCard] = useState("");
-//   const { id } = useParams("");
-//   const { studentState, Dispatchstudents } = useStudentsContext();
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       if (id) {
-//         try {
-//           const { data, status } = await ERPApi.get(
-//             `${import.meta.env.VITE_API_URL}/student/viewstudentdata/${id}`
-//           );
-//           if (status === 200) {
-//             setStudentIdCard(data?.student[0]);
-//           }
-//         } catch (error) {}
-//       }
-//     };
-
-//     fetchData();
-//     // Clean-up function
-//     return () => {
-//       // Perform any clean-up operations here if needed
-//     };
-//   }, [id]);
-//   const handlePrint = useReactToPrint({
-//     content: () => componentRefff.current,
-//   });
-
-//   return (
-//     <div>
-//       <BackButton heading="Student Id Card" content="Back" />
-//       <div className="container-fluid">
-//         <div className="text-end p-3">
-//           <Button className="btn btn_primary me-2 " onClick={handlePrint}>
-//             <MdLocalPrintshop /> Print
-//           </Button>
-//         </div>
-
-//         <div className="studentid" ref={componentRefff}>
-//           <div className="idcard1">
-//             <div className="row bg-white">
-//               <div className="col-6 col-md-6 col-lg-6 col-xl-6">
-//                 <div className="student-info  ">
-//                   <div className="teksimg">
-//                     <img className="mb-4 " src={logo} alt="" />
-//                   </div>
-//                   <p className="fs-14 black_300">
-//                     {" "}
-//                     Name: {StudentIdCard?.name}
-//                   </p>
-//                   <p className=" fs-14 black_300">
-//                     {" "}
-//                     Course: {StudentIdCard?.courses}
-//                   </p>
-//                   <p className=" fs-14 black_300">
-//                     {" "}
-//                     Registration No: {StudentIdCard?.registrationnumber}
-//                   </p>
-
-//                   <p className="fs-14 black_300">
-//                     {" "}
-//                     Branch: {StudentIdCard?.branch}
-//                   </p>
-//                 </div>
-//               </div>
-//               <div className="studid-photo col-6 col-md-6 col-lg-6 col-xl-6">
-//                 <div className=" stuimg">
-//                   {!StudentIdCard?.studentImg && (
-//                     <img src={Defaultimg} alt="photo" />
-//                   )}
-//                   {StudentIdCard?.studentImg && (
-//                     <img
-//                       className=" w-75"
-//                       // src={`https://teksacademyimages.s3.amazonaws.com/${StudentIdCard?.studentImg}`}
-//                       src={`https://futuregen.s3.ap-south-1.amazonaws.com/studentManagement/regStudentImgs/${StudentIdCard?.studentImg}`}
-//                       alt="photo"
-//                     />
-//                   )}
-//                 </div>
-
-//                 <p className="mb-5" style={{ color: "#2a619d" }}>
-//                   Valid Upto:
-//                 </p>
-//               </div>
-//             </div>
-
-//             <div className="idcard2  w-100 m-auto mt-3 ">
-//               <div className="d-flex flex-column justify-content-center p-4">
-//                 {/* <img className=" tekslogo m-auto " src={logo} alt=""></img> */}
-
-//                 <img className="detail  m-auto" src={detail} alt=""></img>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default StudentIdCard;
